@@ -19,9 +19,22 @@ Map::Map(int screen_width, int screen_height, int map_width, int map_height)
 		for (int j = 0; j < map_width; ++j)
 		{
 			// Randomly assign TileTypes
-			terrain[i][j] = (std::rand() % 3 == 0) ? obstacle : normal; // 1/3 chance of obstacle
+			terrain[i][j] = (std::rand() % 5 == 0) ? obstacle : normal; // 1/3 chance of obstacle
 		}
 	}
+	// for (int i = 0; i < map_height; ++i)
+	// {
+	// 	terrain[i].resize(map_width);
+	// 	for (int j = 0; j < map_width; ++j)
+	// 	{
+	// 		// Randomly assign TileTypes
+	// 		if (i > map_width / 2 && j > map_height / 2 || i < map_width / 2 && j < map_height / 2)
+	// 			terrain[i][j] = obstacle; // 1/3 chance of obstacle
+	// 		else
+	// 			terrain[i][j] = normal;
+	// 	}
+	// }
+	terrain[map_width / 2][map_height/2] = normal;
 }
 
 Map::~Map()
@@ -119,8 +132,8 @@ void Map::drawMap(GLuint shader_program, GLuint VAO)
 		for (int j = 0; j < terrain[i].size(); j++)
 		{
 			// Calculate the original tile position relative to the map center
-			float original_x = (i - map_width / 2) * tile_size;
-			float original_y = (j - map_height / 2) * tile_size;
+			float original_x = (i - map_width / 2 + 0.5f) * tile_size;
+			float original_y = (j - map_height / 2 + 0.5f) * tile_size;
 
 			// Apply the rotation around the center (this->x, this->y)
 			float new_x = (original_x - this->x) * cos_theta - (original_y - this->y) * sin_theta;
@@ -143,3 +156,14 @@ void Map::drawMap(GLuint shader_program, GLuint VAO)
 		}
 	}
 }
+
+bool Map::is_tile_obstacle(int x, int y)
+{
+	return terrain[x][y] == TileTypes::obstacle;
+}
+
+bool Map::is_obstacle(float x, float y)
+{
+	return is_tile_obstacle(x / tile_size + map_width / 2, y / tile_size + map_height / 2);
+}
+

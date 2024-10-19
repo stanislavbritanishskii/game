@@ -50,6 +50,8 @@ public:
 
 	void setMap(std::vector<std::vector<TileTypes> > map);
 	void drawMap(GLuint shader_program, GLuint VAO);
+	bool is_tile_obstacle(int x, int y);
+	bool is_obstacle(float x, float y);
 };
 
 

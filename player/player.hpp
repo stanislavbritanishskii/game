@@ -1,6 +1,8 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 #include "utils.hpp"
+#include "map.hpp"
+
 class Player {
 private:
 	float _x;
@@ -9,6 +11,8 @@ private:
 	float _velocity;
 	float _rotation_speed;
 	int _fps;
+	int _size;
+	GLuint _texture;
 
 
 public:
@@ -45,13 +49,15 @@ public:
 
 	void rotate_right();
 
-	void move_front();
+	void move_front(Map map);
 
-	void move_back();
+	void move_back(Map map);
 
-	void move_left();
+	void move_left(Map map);
 
-	void move_right();
+	void move_right(Map map);
+
+	void draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height);
 };
 
 #endif

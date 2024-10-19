@@ -14,7 +14,7 @@
 #include "map.hpp"
 #include "player.hpp"
 
-void processInput(GLFWwindow *window, Player* player) {
+void processInput(GLFWwindow *window, Player* player, Map *map) {
 	// Check if the ESC key is pressed
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true); // Close the window
@@ -23,19 +23,19 @@ void processInput(GLFWwindow *window, Player* player) {
 	// Movement controls (WASD)
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
 		std::cout << "W key pressed: Moving up!" << std::endl;
-		player->move_front();
+		player->move_front(*map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
 		std::cout << "S key pressed: Moving down!" << std::endl;
-		player->move_back();
+		player->move_back(*map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
 		std::cout << "A key pressed: Moving left!" << std::endl;
-		player->move_left();
+		player->move_left(*map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
 		std::cout << "D key pressed: Moving right!" << std::endl;
-		player->move_right();
+		player->move_right(*map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
 	{
@@ -68,9 +68,9 @@ int main()
 
 	// Main loop
 	Map my_map(width, height, 1000, 1000);
-	my_map.setTileSize(20);
+	my_map.setTileSize(32);
 	Player player;
-	player.setVelocity(300);
+	player.setVelocity(600);
 	player.setRotationSpeed(100);
 	float rotation = 0;
 	while (!glfwWindowShouldClose(window))
@@ -90,13 +90,14 @@ int main()
 		// renderTexture(shaderProgram, texture, VAO, x, y, rotation, width, height, 100);
 		// renderTexture(shaderProgram, texture, VAO, -x, -y, rotation, width, height, 100);
 		// renderTexture(shaderProgram, texture, VAO, 0,0, rotation, width, height, 100);
-		processInput(window, &player);
+		processInput(window, &player, &my_map);
 		std::cout << player.getX() << " " << player.getY() << " " << player.getOrientation() << std::endl;
+		std::cout << my_map.is_obstacle(player.getX(), player.getY()) << std::endl;
 		my_map.setX(player.getX());
 		my_map.setY(player.getY());
 		my_map.setOrientation(player.getOrientation());
 		my_map.drawMap(shaderProgram, VAO);
-
+		player.draw(shaderProgram, VAO, width, height);
 		// Swap buffers
 		glfwSwapBuffers(window);
 	}
