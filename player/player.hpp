@@ -2,7 +2,12 @@
 #define PLAYER_HPP
 #include "utils.hpp"
 #include "map.hpp"
+#include "projectile.hpp"
 
+typedef struct cursor {
+	int x;
+	int y;
+}cursor_t;
 class Player {
 private:
 	float _x;
@@ -10,10 +15,18 @@ private:
 	float _orientation;
 	float _velocity;
 	float _rotation_speed;
-	int _fps;
+	float _fps;
 	int _size;
+	cursor_t _cursor;
 	GLuint _texture;
-
+	float _shoot_delay;
+	float _teleport_delay;
+	int _bullet_count;
+	float _bullet_speed;
+	int _accuracy;
+	float _bullet_lifetime;
+	double _last_shot;
+	double _last_teleport;
 
 public:
 	Player();
@@ -42,8 +55,9 @@ public:
 
 	void setRotationSpeed(float rotation_speed);
 
-	void setFps(int fps);
+	void setFps(float fps);
 
+	void setSize(int size);
 
 	void rotate_left();
 
@@ -57,7 +71,28 @@ public:
 
 	void move_right(Map map);
 
+	void move(float new_x, float new_y, Map map);
+
 	void draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height);
+
+	void update_cursor(int x, int y);
+
+	int getCursorX() const;
+
+	int getCursorY() const;
+
+	void reset_orientation();
+
+	void teleport(Map map);
+
+	void setShootDelay(float delay);
+	void setTeleportDelay(float delay);
+	void setBulletCount(int count);
+	void setBulletSpeed(float speed);
+	void setBulletLifetime(float lifetime);
+	void setAccuracy(int accuracy);
+	void shoot(Projectiles &projs);
+	int getBulletCount();
 };
 
 #endif

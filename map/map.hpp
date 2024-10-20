@@ -5,8 +5,12 @@
 #include "utils.hpp"
 enum TileTypes {
 	normal,
-	obstacle
+	obstacle,
+	obstacle2,
+	marked
 };
+
+
 
 class Map {
 private:
@@ -19,7 +23,7 @@ private:
 	std::vector<std::vector<TileTypes> > terrain;
 	std::map<TileTypes, GLuint> textures;
 	GLuint shader_program;
-
+	std::vector<std::pair<int, int>> chosen_tiles;
 public:
 	Map(int screen_width, int screen_height, int map_width, int map_height);
 
@@ -52,6 +56,11 @@ public:
 	void drawMap(GLuint shader_program, GLuint VAO);
 	bool is_tile_obstacle(int x, int y);
 	bool is_obstacle(float x, float y);
+
+	void addChosenTile(int x, int y);
+
+	void clearChosenTiles();
+
 };
 
 

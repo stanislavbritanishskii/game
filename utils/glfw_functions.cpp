@@ -4,6 +4,32 @@
 #include <stb/stb_image.h> // Include after defining the implementation
 
 
+void changeCursor(GLFWwindow *window, const char *imagePath) {
+	// Load the image using stb_image
+	int width, height, channels;
+	unsigned char *imageData = stbi_load(imagePath, &width, &height, &channels, 4); // Force 4 channels (RGBA)
+	if (!imageData) {
+		std::cerr << "Failed to load cursor image" << std::endl;
+		return;
+	}
+
+	// Create a GLFWimage and fill it with the loaded image data
+	GLFWimage image;
+	image.width = width;
+	image.height = height;
+	image.pixels = imageData;
+
+
+	// Create a custom cursor with the loaded image
+	GLFWcursor* customCursor = glfwCreateCursor(&image, width / 2, height / 2); // (0, 0) defines the cursor's hotspot
+
+	// Set the custom cursor
+	glfwSetCursor(window, customCursor);
+
+	// Free the image data loaded by stb_image
+	stbi_image_free(imageData);
+}
+
 // Function to load texture from file
 GLuint loadTexture(const char *path)
 {
@@ -97,6 +123,8 @@ GLFWwindow *init_glfw_window(int x, int y)
 		glfwTerminate();
 		exit(-1);
 	}
+	// glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	changeCursor(window, cursor);
 	glfwMakeContextCurrent(window);
 	glewInit();
 

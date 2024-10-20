@@ -27,16 +27,17 @@ WHITE = \033[0;97m
 SRC_DIR := ./src
 OBJ_DIR	:= ./obj
 LIBS_DIR := libs
-VPATH =			./libs ./map ./player ./src ./textures ./tile ./utils 
+VPATH =			./libs ./map ./player ./projectile ./src ./textures ./tile ./utils 
 SRCS=			$(shell find  ./libs -name "*.cpp")\
 			$(shell find  ./map -name "*.cpp")\
 			$(shell find  ./player -name "*.cpp")\
+			$(shell find  ./projectile -name "*.cpp")\
 			$(shell find  ./src -name "*.cpp")\
 			$(shell find  ./textures -name "*.cpp")\
 			$(shell find  ./tile -name "*.cpp")\
 			$(shell find  ./utils -name "*.cpp")\
 			
-INCLUDE =		 -I ./libs -I ./libs -I ./map -I ./player -I ./src -I ./textures -I ./tile -I ./utils 
+INCLUDE =		 -I ./libs -I ./libs -I ./map -I ./player -I ./projectile -I ./src -I ./textures -I ./tile -I ./utils 
 OBJS	= $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 NAME := game
 

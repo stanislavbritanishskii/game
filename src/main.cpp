@@ -13,8 +13,10 @@
 #include "utils.hpp"
 #include "map.hpp"
 #include "player.hpp"
+#include <thread> // For std::this_thread::sleep_for
+#include <projectile.hpp>
 
-void processInput(GLFWwindow *window, Player* player, Map *map) {
+void processInput(GLFWwindow *window, Player* player, Map *map, int width, int height, Projectiles &prjcts) {
 	// Check if the ESC key is pressed
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true); // Close the window
@@ -22,32 +24,47 @@ void processInput(GLFWwindow *window, Player* player, Map *map) {
 
 	// Movement controls (WASD)
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-		std::cout << "W key pressed: Moving up!" << std::endl;
 		player->move_front(*map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-		std::cout << "S key pressed: Moving down!" << std::endl;
 		player->move_back(*map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-		std::cout << "A key pressed: Moving left!" << std::endl;
 		player->move_left(*map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-		std::cout << "D key pressed: Moving right!" << std::endl;
 		player->move_right(*map);
 	}
-	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
-	{
-		std::cout << "Q key pressed: rotating left!" << std::endl;
+	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
 		player->rotate_left();
 	}
-	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
-	{
-		std::cout << "E key pressed: rotating right!" << std::endl;
+	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
 		player->rotate_right();
 	}
+
+	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
+		player->reset_orientation();
+		map->clearChosenTiles();
+	}
+
+	// Mouse position tracking
+	double xpos, ypos;
+	glfwGetCursorPos(window, &xpos, &ypos);
+	player->update_cursor(xpos - width / 2, ypos - height / 2);
+
+	// Mouse button tracking
+	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+		player->teleport(*map);
+	}
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
+		player->shoot(prjcts);
+		// prjcts->add_projectile(ProjectileType::player_proj, player->getX(), player->getY(), player->getOrientation() + atan2(ypos - height / 2, xpos - width / 2)/ M_PI * 180 + 90, 50);
+	}
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
+		std::cout << "Right Mouse Button Pressed" << std::endl;
+	}
 }
+
 
 int main()
 {
@@ -58,46 +75,52 @@ int main()
 
 	// Compile shaders
 	GLuint shaderProgram = init_shader();
-	// Load the texture
-	GLuint texture = loadTexture("textures/normal.png");
-
 	// Set up vertices
 
 	GLuint VAO, VBO, EBO;
 	setupVertices(VAO, VBO, EBO);
 
 	// Main loop
-	Map my_map(width, height, 1000, 1000);
+	Map my_map(width, height, 100, 100);
 	my_map.setTileSize(32);
 	Player player;
-	player.setVelocity(600);
-	player.setRotationSpeed(100);
-	float rotation = 0;
+	player.setVelocity(400);
+	player.setRotationSpeed(200);
+	player.setSize(25);
+	Projectiles prjcts(0,0,0,shaderProgram, VAO, width, height, 32, 60);
+	double lastTime = glfwGetTime();
+
+	float fps = 60;
+	float frame_duration = 1 / fps;
+	double next_frame_time = lastTime + frame_duration;
 	while (!glfwWindowShouldClose(window))
 	{
-		rotation += 0.05f;
-		// Input handling
+
+		if (glfwGetTime() < next_frame_time)
+		{
+			std::this_thread::sleep_for(std::chrono::duration<double>(lastTime + frame_duration - glfwGetTime()));
+		}
+		fps = 1 / (glfwGetTime() - lastTime);
+		lastTime = glfwGetTime();
+		next_frame_time = lastTime + frame_duration;
+
 		glfwPollEvents();
 
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		// Calculate position based on rotation
-		float x = sin(rotation / 180 * M_PI) * 100; // X position
-		float y = cos(rotation / 180 * M_PI) * 100; // Y position
-
-		// Render the texture
-		// renderTexture(shaderProgram, texture, VAO, x, y, rotation, width, height, 100);
-		// renderTexture(shaderProgram, texture, VAO, -x, -y, rotation, width, height, 100);
-		// renderTexture(shaderProgram, texture, VAO, 0,0, rotation, width, height, 100);
-		processInput(window, &player, &my_map);
-		std::cout << player.getX() << " " << player.getY() << " " << player.getOrientation() << std::endl;
-		std::cout << my_map.is_obstacle(player.getX(), player.getY()) << std::endl;
+		processInput(window, &player, &my_map, width, height, prjcts);
 		my_map.setX(player.getX());
 		my_map.setY(player.getY());
 		my_map.setOrientation(player.getOrientation());
 		my_map.drawMap(shaderProgram, VAO);
 		player.draw(shaderProgram, VAO, width, height);
+
+		prjcts.setX(player.getX());
+		prjcts.setY(player.getY());
+		prjcts.setOrientation(player.getOrientation());
+		prjcts.move(my_map);
+		prjcts.draw();
 		// Swap buffers
 		glfwSwapBuffers(window);
 	}
@@ -106,7 +129,6 @@ int main()
 	// Cleanup
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
-	glDeleteTextures(1, &texture);
 	glfwTerminate();
 	return 0;
 }
