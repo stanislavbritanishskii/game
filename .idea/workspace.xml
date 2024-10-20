@@ -23,23 +23,22 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43abc370-e9dd-42d4-a265-144e924bd68a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+    <list default="true" id="4f7159af-37c9-4bca-950d-4812992b7c74" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/enemies.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/enemies.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/enemies.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/enemies.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game" beforeDir="false" afterPath="$PROJECT_DIR$/game" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map/map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/map/map.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/map/map.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/glfw_functions.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/glfw_functions.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/main.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/map.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/map.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/player.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/player.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/tile.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/tile.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/projectile.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/projectile.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player/player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player/player.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectile/projectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/projectile/projectile.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectile/projectile.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/projectile/projectile.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/player.png" beforeDir="false" afterPath="$PROJECT_DIR$/textures/player.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/glfw_functions.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utils/glfw_functions.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/utils.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +94,7 @@
   "customColor": "",
   "associatedIndex": 5
 }]]></component>
-  <component name="ProjectId" id="2nhhsLWDnXD9eMDfdJCPta3k7XG" />
+  <component name="ProjectId" id="2niU39qX0aztvSA62TnQz85P0Dy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -171,21 +170,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="43abc370-e9dd-42d4-a265-144e924bd68a" name="Changes" comment="" />
-      <created>1729431424034</created>
+      <changelist id="4f7159af-37c9-4bca-950d-4812992b7c74" name="Changes" comment="" />
+      <created>1729455188592</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1729431424034</updated>
-      <workItem from="1729431427200" duration="18443000" />
+      <updated>1729455188592</updated>
+      <workItem from="1729455190394" duration="6672000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VCPKGProject">
-    <isAutomaticCheckingOnLaunch value="false" />
-    <isAutomaticFoundErrors value="true" />
-    <isAutomaticReloadCMake value="true" />
   </component>
 </project>

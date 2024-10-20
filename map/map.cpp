@@ -26,7 +26,7 @@ Map::Map(int screen_width, int screen_height, int map_width, int map_height)
 		for (int j = 0; j < map_width; ++j)
 		{
 			// Randomly assign TileTypes
-			if (std::rand() % 10 > 0)
+			if (std::rand() % 20 > 0)
 				terrain[i][j] = normal;
 			else
 			{

@@ -5,6 +5,7 @@ Projectiles::Projectiles(float x, float y, float orientation, GLuint shader, GLu
 	// Initialize textures for different projectile types
 	// Load texture for player projectile as an example
 	_textures[player_proj] = loadTexture(player_projectile); // Assuming you have a loadTexture function in utils.hpp
+	_textures[enemy_proj1] = loadTexture(player_projectile);
 }
 
 Projectiles::~Projectiles() {
@@ -51,9 +52,9 @@ void Projectiles::setOrientation(float orientation) {
 void Projectiles::draw() {
 	float cos_theta = cos(_orientation / 180 * M_PI);
 	float sin_theta = sin(_orientation / 180 * M_PI);
+
 	for (const auto &proj : _projectiles) {
 		if (proj.active) {
-
 			float new_x = (proj.x - this->_x) * cos_theta - (proj.y - this->_y) * sin_theta;
 			float new_y = (proj.x - this->_x) * sin_theta + (proj.y - this->_y) * cos_theta;
 			renderTexture(shader, _textures[proj.type], VAO, new_x, new_y,
@@ -79,4 +80,20 @@ void Projectiles::add_projectile(ProjectileType type, float x, float y, float or
 void Projectiles::add_projectile(Projectile proj)
 {
 	_projectiles.push_back(proj);
+}
+
+
+float Projectiles::get_damage(float x, float y, float size, ProjectileType type)
+{
+	float res = 0;
+	for (auto &proj : _projectiles)
+	{
+		if (proj.active && proj.type == type) {
+			if (pow(proj.x - x, 2) + pow(proj.y - y, 2) < pow(size, 2)) {
+				res += proj.damage;
+				proj.active = false;
+			}
+		}
+	}
+	return res;
 }

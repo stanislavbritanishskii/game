@@ -47,6 +47,7 @@ public:
 
 	void add_projectile(Projectile proj);
 
+	float get_damage(float x, float y, float size, ProjectileType type);
 };
 
 #endif

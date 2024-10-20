@@ -17,9 +17,11 @@ inline const char * obstacle2_tile = "textures/obstacle2.png";
 inline const char * cursor = "textures/crosshair.png";
 inline const char * bigX = "textures/x.png";
 inline const char * player_projectile = "textures/arrow.png";
+inline const char * enemy1 = "textures/pumpkin.png";
 
 enum ProjectileType {
-	player_proj
+	player_proj,
+	enemy_proj1
 };
 
 typedef struct Projectile {
@@ -31,6 +33,7 @@ typedef struct Projectile {
 	ProjectileType type;
 	double start_time;
 	double lifetime;
+	float damage;
 };
 
 GLFWwindow* init_glfw_window(int x, int y);

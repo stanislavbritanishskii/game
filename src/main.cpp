@@ -1,12 +1,4 @@
-// #include <GL/glew.h>
-// #include <GLFW/glfw3.h>
-// #include <glm/glm.hpp>
-// #include <glm/gtc/matrix_transform.hpp>
-// #include <glm/gtc/type_ptr.hpp>
-// // #define STB_IMAGE_IMPLEMENTATION
-// #include <stb/stb_image.h>
 
-// #include <iostream>
 #include <player.hpp>
 
 #include "tile.hpp"
@@ -15,6 +7,8 @@
 #include "player.hpp"
 #include <thread> // For std::this_thread::sleep_for
 #include <projectile.hpp>
+#include "enemies.hpp"
+#include "enemy.hpp"
 
 void processInput(GLFWwindow *window, Player* player, Map *map, int width, int height, Projectiles &prjcts) {
 	// Check if the ESC key is pressed
@@ -69,6 +63,8 @@ void processInput(GLFWwindow *window, Player* player, Map *map, int width, int h
 int main()
 {
 	// Initialize GLFW
+
+
 	int width = 800;
 	int height = 800;
 	GLFWwindow *window = init_glfw_window(width, height);
@@ -93,6 +89,11 @@ int main()
 	float fps = 60;
 	float frame_duration = 1 / fps;
 	double next_frame_time = lastTime + frame_duration;
+	GLuint pumpkin_texture = loadTexture(enemy1);
+	std::vector<Enemy> enemies;
+	for (int i =0; i < 10; i++)as
+		enemies.push_back(Enemy(100 * i, 100 * i, 100, 60, 5, 400, 1, 10, 1, 10, 10, true, ProjectileType::enemy_proj1, pumpkin_texture, EnemyType::pumpkin, 30, 32));
+
 	while (!glfwWindowShouldClose(window))
 	{
 
@@ -115,7 +116,14 @@ int main()
 		my_map.setOrientation(player.getOrientation());
 		my_map.drawMap(shaderProgram, VAO);
 		player.draw(shaderProgram, VAO, width, height);
-
+		for (auto &enemy : enemies)
+		{
+			enemy.setPlayerPosition(player.getX(), player.getY(), player.getOrientation());
+			enemy.move(my_map);
+			enemy.shoot(prjcts);
+			enemy.draw(shaderProgram, VAO, width, height);
+			enemy.check_for_hit(prjcts);
+		}
 		prjcts.setX(player.getX());
 		prjcts.setY(player.getY());
 		prjcts.setOrientation(player.getOrientation());

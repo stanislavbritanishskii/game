@@ -5,7 +5,7 @@
 
 Player::Player()
 	: _x(0.0f), _y(0.0f), _orientation(0.0f), _velocity(5.0f), _rotation_speed(5.0f), _fps(60.0f), _shoot_delay(0.1),
-	_teleport_delay(1), _bullet_count(1), _bullet_speed(200),_accuracy(30), _bullet_lifetime(1)
+	_teleport_delay(1), _bullet_count(1), _bullet_speed(200),_accuracy(60), _bullet_lifetime(1), _max_hp(10), _cur_hp(10)
 {
 	_texture = loadTexture(player_texture);
 	_size = 32;
@@ -230,9 +230,8 @@ void Player::shoot(Projectiles &projs)
 
 		Projectile new_proj = {
 			_x, _y, orientation, true, _bullet_speed, ProjectileType::player_proj,
-			glfwGetTime(), _bullet_lifetime
+			glfwGetTime(), _bullet_lifetime, 1
 		};
-		std::cout << "shooting" << std::endl;
 		projs.add_projectile(new_proj);
 	}
 }

@@ -27,6 +27,8 @@ private:
 	float _bullet_lifetime;
 	double _last_shot;
 	double _last_teleport;
+	float _max_hp;
+	float _cur_hp;
 
 public:
 	Player();
