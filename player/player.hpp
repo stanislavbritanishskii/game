@@ -95,6 +95,7 @@ public:
 	void setAccuracy(int accuracy);
 	void shoot(Projectiles &projs);
 	int getBulletCount();
+	void check_for_hit(Projectiles &prjs);
 };
 
 #endif

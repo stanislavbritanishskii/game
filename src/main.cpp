@@ -91,8 +91,8 @@ int main()
 	double next_frame_time = lastTime + frame_duration;
 	GLuint pumpkin_texture = loadTexture(enemy1);
 	std::vector<Enemy> enemies;
-	for (int i =0; i < 10; i++)as
-		enemies.push_back(Enemy(100 * i, 100 * i, 100, 60, 5, 400, 1, 10, 1, 10, 10, true, ProjectileType::enemy_proj1, pumpkin_texture, EnemyType::pumpkin, 30, 32));
+	for (int i =10; i < 20; i++)
+		enemies.push_back(Enemy(100 * i, 100 * i, 100, 60, 5, 400, 1, 10, 1, 10, 10, true, ProjectileType::enemy_proj1, pumpkin_texture, EnemyType::pumpkin, 30, 32, 400));
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -116,13 +116,17 @@ int main()
 		my_map.setOrientation(player.getOrientation());
 		my_map.drawMap(shaderProgram, VAO);
 		player.draw(shaderProgram, VAO, width, height);
+		player.check_for_hit(prjcts);
 		for (auto &enemy : enemies)
 		{
 			enemy.setPlayerPosition(player.getX(), player.getY(), player.getOrientation());
-			enemy.move(my_map);
-			enemy.shoot(prjcts);
-			enemy.draw(shaderProgram, VAO, width, height);
-			enemy.check_for_hit(prjcts);
+			if (enemy.getActive())
+			{
+				enemy.move(my_map);
+				enemy.shoot(prjcts);
+				enemy.draw(shaderProgram, VAO, width, height);
+				enemy.check_for_hit(prjcts);
+			}
 		}
 		prjcts.setX(player.getX());
 		prjcts.setY(player.getY());

@@ -31,10 +31,12 @@ private:
 	float bullet_spread;
 	float size;
 	bool alive;
+	bool active;
 	ProjectileType projectile_type;
 	GLuint texture;
 	EnemyType type;
 	PlayerPosition_T player_pos;
+	float active_distance;
 
 public:
 	// Default constructor
@@ -44,7 +46,7 @@ public:
 	Enemy(float x, float y, float speed, float fps, float bullet_count, float bullet_speed,
 		  float bullet_duration, float bullet_damage, float shoot_delay, float max_hp,
 		  float current_hp, bool alive, ProjectileType projectile_type, GLuint texture,
-		  EnemyType type, float bullet_spread, float size);
+		  EnemyType type, float bullet_spread, float size, float active_distance);
 
 	// Getters
 	float getX() const;
@@ -62,6 +64,8 @@ public:
 	ProjectileType getProjectileType() const;
 	GLuint getTexture() const;
 	EnemyType getType() const;
+	float getActiveDistance() const;
+	bool getActive() const;
 
 	// Setters
 	void setX(float x);
@@ -80,6 +84,7 @@ public:
 	void setTexture(GLuint texture);
 	void setType(EnemyType type);
 	void setPlayerPosition(float player_x, float player_y, float player_or);
+	float setActiveDistance(float active_distance);
 
 	void shoot(Projectiles &prjs);
 	void draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height);

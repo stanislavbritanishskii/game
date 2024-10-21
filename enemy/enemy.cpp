@@ -18,17 +18,21 @@ Enemy::Enemy() : x(0.0f), y(0.0f), speed(0.0f), fps(60.0f), bullet_count(0.0f),
 Enemy::Enemy(float x, float y, float speed, float fps, float bullet_count, float bullet_speed,
 			float bullet_duration, float bullet_damage, float shoot_delay, float max_hp,
 			float current_hp, bool alive, ProjectileType projectile_type, GLuint texture,
-			EnemyType type, float bullet_spread, float size) : x(x), y(y), speed(speed), fps(fps),
-																bullet_count(bullet_count),
-																bullet_speed(bullet_speed),
-																bullet_duration(bullet_duration),
-																bullet_damage(bullet_damage),
-																shoot_delay(shoot_delay),
-																max_hp(max_hp), current_hp(current_hp), alive(alive),
-																projectile_type(projectile_type),
-																texture(texture), type(type),
-																bullet_spread(bullet_spread),
-																last_shot(0), size(size)
+			EnemyType type, float bullet_spread, float size, float active_distance) : x(x), y(y), speed(speed),
+																					fps(fps),
+																					bullet_count(bullet_count),
+																					bullet_speed(bullet_speed),
+																					bullet_duration(bullet_duration),
+																					bullet_damage(bullet_damage),
+																					shoot_delay(shoot_delay),
+																					max_hp(max_hp),
+																					current_hp(current_hp),
+																					alive(alive),
+																					projectile_type(projectile_type),
+																					texture(texture), type(type),
+																					bullet_spread(bullet_spread),
+																					last_shot(0), size(size),
+																					active_distance(active_distance)
 {
 	player_pos.x = 0;
 	player_pos.y = 0;
@@ -51,6 +55,13 @@ bool Enemy::isAlive() const { return alive; }
 ProjectileType Enemy::getProjectileType() const { return projectile_type; }
 GLuint Enemy::getTexture() const { return texture; }
 EnemyType Enemy::getType() const { return type; }
+float Enemy::getActiveDistance() const { return active_distance; };
+
+bool Enemy::getActive() const
+{
+	return (pow(x - player_pos.x, 2) + pow(y - player_pos.y, 2) < pow(active_distance, 2));
+}
+
 
 // Setters
 void Enemy::setX(float x) { this->x = x; }
@@ -68,6 +79,7 @@ void Enemy::setAlive(bool alive) { this->alive = alive; }
 void Enemy::setProjectileType(ProjectileType projectile_type) { this->projectile_type = projectile_type; }
 void Enemy::setTexture(GLuint texture) { this->texture = texture; }
 void Enemy::setType(EnemyType type) { this->type = type; }
+float Enemy::setActiveDistance(float active_distance) { this->active_distance = active_distance; }
 
 void Enemy::setPlayerPosition(float player_x, float player_y, float player_or)
 {
@@ -88,7 +100,7 @@ void Enemy::shoot(Projectiles &prjs)
 
 		for (int i = 0; i < bullet_count; i++)
 		{
-			std::cout <<"shooting" << std::endl;
+			std::cout << "shooting" << std::endl;
 			float current_angle = base_orientation - (spread_angle / 2.0f) + (i * angle_step);
 			Projectile new_proj = {
 				x, y, current_angle, true, bullet_speed, projectile_type,
@@ -130,17 +142,21 @@ void Enemy::move(Map map)
 		}
 
 		// Update position
-		x += direction_x * speed / fps;
-		y += direction_y * speed / fps;
+		float new_x = x + direction_x * speed / fps;
+		float new_y = y + direction_y * speed / fps;
 
 		// Optionally, check for collision with the map or boundaries
-		if (map.is_obstacle(x, y))
+		if (map.is_obstacle(new_x, y))
+			new_x = x;
+		if (map.is_obstacle(x, new_y))
+			new_y = y;
+		if (map.is_obstacle(new_x, new_y))
 		{
-			// Handle collision with the map
-			// For now, just reverse the movement
-			x -= direction_x * speed / fps;
-			y -= direction_y * speed / fps;
+			new_x = x;
+			new_y= y;
 		}
+		x= new_x;
+		y = new_y;
 	}
 }
 
@@ -150,4 +166,3 @@ void Enemy::check_for_hit(Projectiles &prjs)
 	if (current_hp < 0)
 		alive = false;
 }
-
