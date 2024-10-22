@@ -52,7 +52,7 @@ void processInput(GLFWwindow *window, Player* player, Map &map, int width, int h
 	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
 		player->teleport(map);
 	}
-	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS) {
+	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
 		player->shoot_nova(prjcts);
 	}
 	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
@@ -85,14 +85,15 @@ int main()
 	int map_width = 1000;
 	int map_height =1000;
 	int tile_size = 32 * RATIO;
-	Map my_map(width, height, map_width, map_height);
-	my_map.setTileSize(tile_size);
 	Player player;
 	player.setVelocity(400 * RATIO);
 	player.setRotationSpeed(200);
 	player.setSize(25 * RATIO);
 	player.setBulletCount(2);
 	player.setTeleportDelay(0.2);
+	GLuint texture = loadTexture(player_texture);
+	Map my_map(width, height, map_width, map_height, window, texture, shaderProgram, VAO);
+	my_map.setTileSize(tile_size);
 
 	player.setAccuracy(1);
 	player.setBulletSpeed(400 * RATIO);

@@ -6,7 +6,7 @@
 #define TEST_MAP 0
 
 
-Map::Map(int screen_width, int screen_height, int map_width, int map_height)
+Map::Map(int screen_width, int screen_height, int map_width, int map_height, GLFWwindow *window, GLuint texture, GLuint shader, GLuint VAO)
 	: screen_width(screen_width), screen_height(screen_height),
 	map_width(map_width), map_height(map_height),
 	tile_size(32), // Assuming default tile size
@@ -22,14 +22,20 @@ Map::Map(int screen_width, int screen_height, int map_width, int map_height)
 	std::srand(std::time(nullptr)); // Seed for random generation
 	terrain.resize(map_height);
 	std::cout << std::fixed << std::setprecision(1);
+
 	for (int i = 0; i < map_height; ++i)
 	{
 
 		terrain[i].resize(map_width);
 		for (int j = 0; j < map_width; ++j)
 		{
-
+//			glfwWindowShouldClose(window);
+//			glClear(GL_COLOR_BUFFER_BIT);
+//
+//			renderTexture(shader, texture, VAO, 0, 0, glfwGetTime(), screen_width, screen_height, 1);
+			glfwSwapBuffers(window);
 			std::cout <<"\rcreating map "<< ((float)(i * map_width + j) * 100) / (map_height * map_width) << "%" << std::flush;
+
 			// Randomly assign TileTypes
 			if (std::rand() % 10 > 0)
 				terrain[i][j] = normal;
@@ -223,7 +229,7 @@ bool Map::is_obstacle(float x, float y)
 
 void Map::addChosenTile(int x, int y)
 {
-	chosen_tiles.emplace_back(x / tile_size + map_width / 2,y / tile_size + map_height / 2);
+	chosen_tiles.emplace_back(x / tile_size + map_width / 2 - (x < 0),y / tile_size + map_height / 2 -( y < 0));
 }
 
 
