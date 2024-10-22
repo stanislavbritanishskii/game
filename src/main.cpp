@@ -10,6 +10,8 @@
 #include "enemies.hpp"
 #include "enemy.hpp"
 
+#define RATIO 2
+
 void processInput(GLFWwindow *window, Player* player, Map *map, int width, int height, Projectiles &prjcts) {
 	// Check if the ESC key is pressed
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -65,8 +67,8 @@ int main()
 	// Initialize GLFW
 
 
-	int width = 800;
-	int height = 800;
+	int width = 800 * RATIO;
+	int height = 800 * RATIO;
 	GLFWwindow *window = init_glfw_window(width, height);
 
 	// Compile shaders
@@ -78,12 +80,17 @@ int main()
 
 	// Main loop
 	Map my_map(width, height, 100, 100);
-	my_map.setTileSize(32);
+	my_map.setTileSize(32 * RATIO);
 	Player player;
-	player.setVelocity(400);
+	player.setVelocity(400 * RATIO);
 	player.setRotationSpeed(200);
-	player.setSize(25);
-	Projectiles prjcts(0,0,0,shaderProgram, VAO, width, height, 32, 60);
+	player.setSize(25 * RATIO);
+	player.setBulletCount(1000);
+
+	player.setAccuracy(360);
+	player.setBulletSpeed(400 * RATIO);
+
+	Projectiles prjcts(0,0,0,shaderProgram, VAO, width, height, 32 * RATIO, 60);
 	double lastTime = glfwGetTime();
 
 	float fps = 60;
@@ -92,7 +99,7 @@ int main()
 	GLuint pumpkin_texture = loadTexture(enemy1);
 	std::vector<Enemy> enemies;
 	for (int i =10; i < 20; i++)
-		enemies.push_back(Enemy(100 * i, 100 * i, 100, 60, 5, 400, 1, 10, 1, 10, 10, true, ProjectileType::enemy_proj1, pumpkin_texture, EnemyType::pumpkin, 30, 32, 400));
+		enemies.push_back(Enemy(100 * i, 100 * i, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::enemy_proj1, pumpkin_texture, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
 
 	while (!glfwWindowShouldClose(window))
 	{

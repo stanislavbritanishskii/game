@@ -1,7 +1,7 @@
 #include "utils.hpp"
 
 #define STB_IMAGE_IMPLEMENTATION // Define this here
-#include <stb/stb_image.h> // Include after defining the implementation
+#include <stb_image.h> // Include after defining the implementation
 
 
 void changeCursor(GLFWwindow *window, const char *imagePath) {

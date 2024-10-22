@@ -5,7 +5,7 @@
 
 Player::Player()
 	: _x(0.0f), _y(0.0f), _orientation(0.0f), _velocity(5.0f), _rotation_speed(5.0f), _fps(60.0f), _shoot_delay(0.1),
-	_teleport_delay(1), _bullet_count(1), _bullet_speed(200),_accuracy(60), _bullet_lifetime(1), _max_hp(10), _cur_hp(10)
+	_teleport_delay(1), _bullet_count(1), _bullet_speed(200),_accuracy(60), _bullet_lifetime(1), _max_hp(1000), _cur_hp(1000)
 {
 	_texture = loadTexture(player_texture);
 	_size = 32;
@@ -81,6 +81,10 @@ void Player::setRotationSpeed(float rotation_speed)
 void Player::setFps(float fps)
 {
 	_fps = fps;
+}
+float Player::getCurHP()
+{
+	return _cur_hp;
 }
 
 // Rotate left by decreasing the orientation, considering FPS
@@ -222,17 +226,20 @@ void Player::shoot(Projectiles &projs)
 {
 	if (glfwGetTime() > _shoot_delay + _last_shot)
 	{
-		_last_shot = glfwGetTime();
-		float offset = (std::rand() % _accuracy) - _accuracy / 2;
-		std::cout << offset << std::endl;
-		float orientation = atan2(_x - _cursor.x, _cursor.y - _y) +M_PI / 2.0f + offset / 180 *  M_PI;
-		std::cout << orientation << std::endl;
+		for ( int i =0; i < _bullet_count; i++)
+		{
+			_last_shot = glfwGetTime();
+			float offset = (std::rand() % _accuracy) - _accuracy / 2;
 
-		Projectile new_proj = {
-			_x, _y, orientation, true, _bullet_speed, ProjectileType::player_proj,
-			glfwGetTime(), _bullet_lifetime, 1
-		};
-		projs.add_projectile(new_proj);
+			float orientation = atan2(_x - _cursor.x, _cursor.y - _y) + M_PI / 2.0f + offset / 180 * M_PI;
+
+
+			Projectile new_proj = {
+					_x, _y, orientation, true, _bullet_speed, ProjectileType::player_proj,
+					glfwGetTime(), _bullet_lifetime, 1
+			};
+			projs.add_projectile(new_proj);
+		}
 	}
 }
 

@@ -12,6 +12,7 @@ Enemy::Enemy() : x(0.0f), y(0.0f), speed(0.0f), fps(60.0f), bullet_count(0.0f),
 	player_pos.x = 0;
 	player_pos.y = 0;
 	player_pos.orientation = 0;
+	active = true;
 }
 
 // Constructor with all parameters
@@ -37,6 +38,7 @@ Enemy::Enemy(float x, float y, float speed, float fps, float bullet_count, float
 	player_pos.x = 0;
 	player_pos.y = 0;
 	player_pos.orientation = 0;
+	active = true;
 }
 
 // Getters
@@ -59,7 +61,7 @@ float Enemy::getActiveDistance() const { return active_distance; };
 
 bool Enemy::getActive() const
 {
-	return (pow(x - player_pos.x, 2) + pow(y - player_pos.y, 2) < pow(active_distance, 2));
+	return alive && (pow(x - player_pos.x, 2) + pow(y - player_pos.y, 2) < pow(active_distance, 2));
 }
 
 
@@ -100,7 +102,7 @@ void Enemy::shoot(Projectiles &prjs)
 
 		for (int i = 0; i < bullet_count; i++)
 		{
-			std::cout << "shooting" << std::endl;
+
 			float current_angle = base_orientation - (spread_angle / 2.0f) + (i * angle_step);
 			Projectile new_proj = {
 				x, y, current_angle, true, bullet_speed, projectile_type,
