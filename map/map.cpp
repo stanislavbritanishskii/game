@@ -2,6 +2,7 @@
 #include <cstdlib> // For std::rand
 #include <ctime>   // For std::time
 #include <cmath>
+#include <iomanip>
 #define TEST_MAP 0
 
 
@@ -20,13 +21,17 @@ Map::Map(int screen_width, int screen_height, int map_width, int map_height)
 
 	std::srand(std::time(nullptr)); // Seed for random generation
 	terrain.resize(map_height);
+	std::cout << std::fixed << std::setprecision(1);
 	for (int i = 0; i < map_height; ++i)
 	{
+
 		terrain[i].resize(map_width);
 		for (int j = 0; j < map_width; ++j)
 		{
+
+			std::cout <<"\rcreating map "<< ((float)(i * map_width + j) * 100) / (map_height * map_width) << "%" << std::flush;
 			// Randomly assign TileTypes
-			if (std::rand() % 20 > 0)
+			if (std::rand() % 3 > 0)
 				terrain[i][j] = normal;
 			else
 			{
@@ -208,7 +213,7 @@ bool Map::is_tile_obstacle(int x, int y)
 {
 	if (y < 0 || x < 0 || y >= map_height || x >= map_width)
 		return true;
-	return terrain[y][x] == TileTypes::obstacle || terrain[y][x] == TileTypes::obstacle2;
+	return terrain[y][x] != TileTypes::normal;
 }
 
 bool Map::is_obstacle(float x, float y)

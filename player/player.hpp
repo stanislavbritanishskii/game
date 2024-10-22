@@ -67,15 +67,15 @@ public:
 
 	void rotate_right();
 
-	void move_front(Map map);
+	void move_front(Map &map);
 
-	void move_back(Map map);
+	void move_back(Map &map);
 
-	void move_left(Map map);
+	void move_left(Map &map);
 
-	void move_right(Map map);
+	void move_right(Map &map);
 
-	void move(float new_x, float new_y, Map map);
+	void move(float new_x, float new_y, Map &map);
 
 	void draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height);
 

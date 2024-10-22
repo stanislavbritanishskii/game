@@ -26,6 +26,9 @@
     <list default="true" id="4f7159af-37c9-4bca-950d-4812992b7c74" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game" beforeDir="false" afterPath="$PROJECT_DIR$/game" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/map/map.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player/player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player/player.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +164,7 @@
       <workItem from="1729455190394" duration="7733000" />
       <workItem from="1729528490600" duration="981000" />
       <workItem from="1729583048448" duration="3147000" />
-      <workItem from="1729591780801" duration="666000" />
+      <workItem from="1729591780801" duration="4019000" />
     </task>
     <servers />
   </component>

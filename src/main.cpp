@@ -12,7 +12,7 @@
 
 #define RATIO 2
 
-void processInput(GLFWwindow *window, Player* player, Map *map, int width, int height, Projectiles &prjcts) {
+void processInput(GLFWwindow *window, Player* player, Map &map, int width, int height, Projectiles &prjcts) {
 	// Check if the ESC key is pressed
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true); // Close the window
@@ -20,16 +20,16 @@ void processInput(GLFWwindow *window, Player* player, Map *map, int width, int h
 
 	// Movement controls (WASD)
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-		player->move_front(*map);
+		player->move_front(map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-		player->move_back(*map);
+		player->move_back(map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-		player->move_left(*map);
+		player->move_left(map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-		player->move_right(*map);
+		player->move_right(map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
 		player->rotate_left();
@@ -40,7 +40,7 @@ void processInput(GLFWwindow *window, Player* player, Map *map, int width, int h
 
 	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
 		player->reset_orientation();
-		map->clearChosenTiles();
+		map.clearChosenTiles();
 	}
 
 	// Mouse position tracking
@@ -50,7 +50,7 @@ void processInput(GLFWwindow *window, Player* player, Map *map, int width, int h
 
 	// Mouse button tracking
 	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
-		player->teleport(*map);
+		player->teleport(map);
 	}
 	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
 		player->shoot(prjcts);
@@ -79,8 +79,8 @@ int main()
 	setupVertices(VAO, VBO, EBO);
 
 	// Main loop
-	int map_width = 200;
-	int map_height =20;
+	int map_width = 2000;
+	int map_height =2000;
 	int tile_size = 32 * RATIO;
 	Map my_map(width, height, map_width, map_height);
 	my_map.setTileSize(tile_size);
@@ -89,6 +89,7 @@ int main()
 	player.setRotationSpeed(200);
 	player.setSize(25 * RATIO);
 	player.setBulletCount(3);
+	player.setTeleportDelay(0.1);
 
 	player.setAccuracy(10);
 	player.setBulletSpeed(400 * RATIO);
@@ -101,9 +102,10 @@ int main()
 	double next_frame_time = lastTime + frame_duration;
 	GLuint pumpkin_texture = loadTexture(enemy1);
 	std::vector<Enemy> enemies;
-	for (int i =10; i < 100; i++)
+	for (int i =10; i < 1000; i++)
 		enemies.push_back(Enemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::enemy_proj1, pumpkin_texture, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
 
+	std::cout << std::endl;
 	while (!glfwWindowShouldClose(window))
 	{
 
@@ -112,6 +114,7 @@ int main()
 			std::this_thread::sleep_for(std::chrono::duration<double>(lastTime + frame_duration - glfwGetTime()));
 		}
 		fps = 1 / (glfwGetTime() - lastTime);
+		std::cout << "\rfps: "<< (int)fps<<std::flush;
 		lastTime = glfwGetTime();
 		next_frame_time = lastTime + frame_duration;
 
@@ -120,7 +123,7 @@ int main()
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		processInput(window, &player, &my_map, width, height, prjcts);
+		processInput(window, &player, my_map, width, height, prjcts);
 		my_map.setX(player.getX());
 		my_map.setY(player.getY());
 		my_map.setOrientation(player.getOrientation());

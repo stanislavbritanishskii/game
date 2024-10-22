@@ -108,7 +108,7 @@ void Player::rotate_right()
 }
 
 
-void Player::move(float new_x, float new_y, Map map)
+void Player::move(float new_x, float new_y, Map &map)
 {
 	float x_size = 0;
 	float y_size = 0;
@@ -135,7 +135,7 @@ void Player::move(float new_x, float new_y, Map map)
 
 
 // Move the player forward in the direction they are facing, considering FPS
-void Player::move_front(Map map)
+void Player::move_front(Map &map)
 {
 	float new_x = _x + _velocity * (1.0f / _fps) * cos(_orientation * PI / 180.0f);
 	float new_y = _y - _velocity * (1.0f / _fps) * sin(_orientation * PI / 180.0f);
@@ -143,7 +143,7 @@ void Player::move_front(Map map)
 }
 
 // Move the player backward opposite to the direction they are facing, considering FPS
-void Player::move_back(Map map)
+void Player::move_back(Map &map)
 {
 	float new_x = _x - _velocity * (1.0f / _fps) * cos(_orientation * PI / 180.0f);
 	float new_y = _y + _velocity * (1.0f / _fps) * sin(_orientation * PI / 180.0f);
@@ -151,7 +151,7 @@ void Player::move_back(Map map)
 }
 
 // Strafe left (move sideways) relative to the current orientation, considering FPS
-void Player::move_left(Map map)
+void Player::move_left(Map &map)
 {
 	float new_x = _x - _velocity * (1.0f / _fps) * cos((_orientation + 90.0f) * PI / 180.0f);
 	float new_y = _y + _velocity * (1.0f / _fps) * sin((_orientation + 90.0f) * PI / 180.0f);
@@ -159,7 +159,7 @@ void Player::move_left(Map map)
 }
 
 // Strafe right (move sideways) relative to the current orientation, considering FPS
-void Player::move_right(Map map)
+void Player::move_right(Map &map)
 {
 	float new_x = _x + _velocity * (1.0f / _fps) * cos((_orientation + 90.0f) * PI / 180.0f);
 	float new_y = _y - _velocity * (1.0f / _fps) * sin((_orientation + 90.0f) * PI / 180.0f);
