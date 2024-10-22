@@ -145,11 +145,11 @@
     </configuration>
     <list>
       <item itemvalue="Native Application.all" />
-      <item itemvalue="Native Application.data_race" />
       <item itemvalue="Native Application.fclean" />
+      <item itemvalue="Native Application.re" />
+      <item itemvalue="Native Application.data_race" />
       <item itemvalue="Native Application.game" />
       <item itemvalue="Native Application.obj" />
-      <item itemvalue="Native Application.re" />
       <item itemvalue="Native Application.show" />
     </list>
   </component>
@@ -165,6 +165,7 @@
       <workItem from="1729528490600" duration="981000" />
       <workItem from="1729583048448" duration="3147000" />
       <workItem from="1729591780801" duration="4019000" />
+      <workItem from="1729609256813" duration="1406000" />
     </task>
     <servers />
   </component>

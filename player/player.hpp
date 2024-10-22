@@ -29,6 +29,9 @@ private:
 	double _last_teleport;
 	float _max_hp;
 	float _cur_hp;
+	float nova_delay;
+	double last_nova;
+	int nova_count;
 
 public:
 	Player();
@@ -96,6 +99,7 @@ public:
 	void setBulletLifetime(float lifetime);
 	void setAccuracy(int accuracy);
 	void shoot(Projectiles &projs);
+	void shoot_nova(Projectiles &projs);
 	int getBulletCount();
 	void check_for_hit(Projectiles &prjs);
 };

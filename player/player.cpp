@@ -5,7 +5,7 @@
 
 Player::Player()
 	: _x(0.0f), _y(0.0f), _orientation(0.0f), _velocity(5.0f), _rotation_speed(5.0f), _fps(60.0f), _shoot_delay(0.1),
-	_teleport_delay(1), _bullet_count(1), _bullet_speed(200),_accuracy(60), _bullet_lifetime(1), _max_hp(1000), _cur_hp(1000)
+	_teleport_delay(1), _bullet_count(1), _bullet_speed(200),_accuracy(60), _bullet_lifetime(1), _max_hp(1000), _cur_hp(1000), nova_delay(2),last_nova(0), nova_count(20)
 {
 	_texture = loadTexture(player_texture);
 	_size = 32;
@@ -240,6 +240,23 @@ void Player::shoot(Projectiles &projs)
 			};
 			projs.add_projectile(new_proj);
 		}
+	}
+}
+
+void Player::shoot_nova(Projectiles &projs)
+{
+	if (glfwGetTime() > nova_delay + last_nova)
+	{
+		for ( int i =0; i < nova_count; i++)
+		{
+			float orientation = 2 * M_PI / nova_count * i;
+			Projectile new_proj = {
+					static_cast<float>(_cursor.x), static_cast<float>(_cursor.y), orientation, true, _bullet_speed, ProjectileType::player_proj,
+					glfwGetTime(), _bullet_lifetime, 1
+			};
+			projs.add_projectile(new_proj);
+		}
+		last_nova = glfwGetTime();
 	}
 }
 

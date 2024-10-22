@@ -52,6 +52,9 @@ void processInput(GLFWwindow *window, Player* player, Map &map, int width, int h
 	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
 		player->teleport(map);
 	}
+	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS) {
+		player->shoot_nova(prjcts);
+	}
 	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
 		player->shoot(prjcts);
 		// prjcts->add_projectile(ProjectileType::player_proj, player->getX(), player->getY(), player->getOrientation() + atan2(ypos - height / 2, xpos - width / 2)/ M_PI * 180 + 90, 50);
@@ -88,10 +91,10 @@ int main()
 	player.setVelocity(400 * RATIO);
 	player.setRotationSpeed(200);
 	player.setSize(25 * RATIO);
-	player.setBulletCount(3);
-	player.setTeleportDelay(0.1);
+	player.setBulletCount(2);
+	player.setTeleportDelay(0.2);
 
-	player.setAccuracy(10);
+	player.setAccuracy(1);
 	player.setBulletSpeed(400 * RATIO);
 
 	Projectiles prjcts(0,0,0,shaderProgram, VAO, width, height, 32 * RATIO, 60);

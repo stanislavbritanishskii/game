@@ -31,7 +31,7 @@ Map::Map(int screen_width, int screen_height, int map_width, int map_height)
 
 			std::cout <<"\rcreating map "<< ((float)(i * map_width + j) * 100) / (map_height * map_width) << "%" << std::flush;
 			// Randomly assign TileTypes
-			if (std::rand() % 30 > 0)
+			if (std::rand() % 10 > 0)
 				terrain[i][j] = normal;
 			else
 			{
