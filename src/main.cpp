@@ -79,15 +79,18 @@ int main()
 	setupVertices(VAO, VBO, EBO);
 
 	// Main loop
-	Map my_map(width, height, 100, 100);
-	my_map.setTileSize(32 * RATIO);
+	int map_width = 200;
+	int map_height =20;
+	int tile_size = 32 * RATIO;
+	Map my_map(width, height, map_width, map_height);
+	my_map.setTileSize(tile_size);
 	Player player;
 	player.setVelocity(400 * RATIO);
 	player.setRotationSpeed(200);
 	player.setSize(25 * RATIO);
-	player.setBulletCount(1000);
+	player.setBulletCount(3);
 
-	player.setAccuracy(360);
+	player.setAccuracy(10);
 	player.setBulletSpeed(400 * RATIO);
 
 	Projectiles prjcts(0,0,0,shaderProgram, VAO, width, height, 32 * RATIO, 60);
@@ -98,8 +101,8 @@ int main()
 	double next_frame_time = lastTime + frame_duration;
 	GLuint pumpkin_texture = loadTexture(enemy1);
 	std::vector<Enemy> enemies;
-	for (int i =10; i < 20; i++)
-		enemies.push_back(Enemy(100 * i, 100 * i, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::enemy_proj1, pumpkin_texture, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
+	for (int i =10; i < 100; i++)
+		enemies.push_back(Enemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::enemy_proj1, pumpkin_texture, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
 
 	while (!glfwWindowShouldClose(window))
 	{

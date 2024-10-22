@@ -62,7 +62,8 @@ Map::Map(int screen_width, int screen_height, int map_width, int map_height)
 		terrain[0][j] = obstacle;
 		terrain[map_height - 1][j] = obstacle;
 	}
-	terrain[map_width / 2][map_height/2] = normal;
+
+	terrain[map_height/2][map_width / 2] = normal;
 }
 
 Map::~Map()
