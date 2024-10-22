@@ -145,11 +145,11 @@
     </configuration>
     <list>
       <item itemvalue="Native Application.all" />
-      <item itemvalue="Native Application.fclean" />
-      <item itemvalue="Native Application.re" />
       <item itemvalue="Native Application.data_race" />
+      <item itemvalue="Native Application.fclean" />
       <item itemvalue="Native Application.game" />
       <item itemvalue="Native Application.obj" />
+      <item itemvalue="Native Application.re" />
       <item itemvalue="Native Application.show" />
     </list>
   </component>

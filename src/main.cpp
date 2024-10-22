@@ -10,7 +10,7 @@
 #include "enemies.hpp"
 #include "enemy.hpp"
 
-#define RATIO 2
+#define RATIO 3
 
 void processInput(GLFWwindow *window, Player* player, Map &map, int width, int height, Projectiles &prjcts) {
 	// Check if the ESC key is pressed
@@ -79,8 +79,8 @@ int main()
 	setupVertices(VAO, VBO, EBO);
 
 	// Main loop
-	int map_width = 2000;
-	int map_height =2000;
+	int map_width = 1000;
+	int map_height =1000;
 	int tile_size = 32 * RATIO;
 	Map my_map(width, height, map_width, map_height);
 	my_map.setTileSize(tile_size);
@@ -102,7 +102,7 @@ int main()
 	double next_frame_time = lastTime + frame_duration;
 	GLuint pumpkin_texture = loadTexture(enemy1);
 	std::vector<Enemy> enemies;
-	for (int i =10; i < 1000; i++)
+	for (int i =10; i < 10000; i++)
 		enemies.push_back(Enemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::enemy_proj1, pumpkin_texture, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
 
 	std::cout << std::endl;
