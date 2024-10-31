@@ -10,7 +10,7 @@
 #include "enemies.hpp"
 #include "enemy.hpp"
 
-#define RATIO 3
+
 
 void processInput(GLFWwindow *window, Player* player, Map &map, int width, int height, Projectiles &prjcts) {
 	// Check if the ESC key is pressed
@@ -104,10 +104,11 @@ int main()
 	float fps = 60;
 	float frame_duration = 1 / fps;
 	double next_frame_time = lastTime + frame_duration;
-	GLuint pumpkin_texture = loadTexture(enemy1);
+	GLuint pumpkin_tex = loadTexture(pumpkin_texture);
 	std::vector<Enemy> enemies;
-	for (int i =10; i < 10000; i++)
-		enemies.push_back(Enemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::enemy_proj1, pumpkin_texture, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
+	for (int i =10; i < 1000; i++)
+		enemies.push_back(Enemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::pumpkin_proj, pumpkin_tex, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
+
 
 	std::cout << std::endl;
 	while (!glfwWindowShouldClose(window))

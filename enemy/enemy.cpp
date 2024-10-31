@@ -4,7 +4,7 @@
 Enemy::Enemy() : x(0.0f), y(0.0f), speed(0.0f), fps(60.0f), bullet_count(0.0f),
 				bullet_speed(0.0f), bullet_duration(0.0f), bullet_damage(0.0f),
 				shoot_delay(0.0f), max_hp(100.0f), current_hp(100.0f), alive(true),
-				projectile_type(ProjectileType::enemy_proj1), texture(0), type(EnemyType::pumpkin), bullet_spread(30),
+				projectile_type(ProjectileType::pumpkin_proj), texture(0), type(EnemyType::pumpkin), bullet_spread(30),
 				last_shot(0), size(32)
 {
 	player_pos.x = 0;
@@ -164,7 +164,7 @@ void Enemy::move(Map map)
 
 void Enemy::check_for_hit(Projectiles &prjs)
 {
-	current_hp -= prjs.get_damage(x, y, size, ProjectileType::player_proj);
+	current_hp -= prjs.get_enemy_damage(x, y, size);
 	if (current_hp < 0)
 		alive = false;
 }

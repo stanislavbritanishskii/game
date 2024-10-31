@@ -282,7 +282,7 @@ int Player::getBulletCount()
 
 void Player::check_for_hit(Projectiles &prjs)
 {
-	_cur_hp -= prjs.get_damage(_x, _y, _size, ProjectileType::enemy_proj1);
+	_cur_hp -= prjs.get_player_damage(_x, _y, _size);
 	if (_cur_hp < 0)
 	{
 		exit(0);

@@ -48,6 +48,9 @@ public:
 	void add_projectile(Projectile proj);
 
 	float get_damage(float x, float y, float size, ProjectileType type);
+
+	float get_player_damage(float x, float y, float size);
+	float get_enemy_damage(float x, float y, float size);
 };
 
 #endif

@@ -33,7 +33,7 @@ Map::Map(int screen_width, int screen_height, int map_width, int map_height, GLF
 //			glClear(GL_COLOR_BUFFER_BIT);
 //
 //			renderTexture(shader, texture, VAO, 0, 0, glfwGetTime(), screen_width, screen_height, 1);
-			glfwSwapBuffers(window);
+//			glfwSwapBuffers(window);
 			std::cout <<"\rcreating map "<< ((float)(i * map_width + j) * 100) / (map_height * map_width) << "%" << std::flush;
 
 			// Randomly assign TileTypes
