@@ -27,7 +27,7 @@ public:
 
 	void setFPS(float fps);
 
-	void move(Map map);
+	void move(Map map, double time, double delta);
 
 	float getX() const;
 

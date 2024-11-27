@@ -108,10 +108,10 @@ void Player::rotate_right()
 }
 
 
-void Player::move(float new_x, float new_y, Map &map)
+void Player::move(double new_x, double new_y, Map &map)
 {
-	float x_size = 0;
-	float y_size = 0;
+	double x_size = 0;
+	double y_size = 0;
 	if (new_x > _x)
 		x_size = _size / 2;
 	if (new_x < _x)
@@ -137,35 +137,57 @@ void Player::move(float new_x, float new_y, Map &map)
 // Move the player forward in the direction they are facing, considering FPS
 void Player::move_front(Map &map)
 {
-	float new_x = _x + _velocity * (1.0f / _fps) * cos(_orientation * PI / 180.0f);
-	float new_y = _y - _velocity * (1.0f / _fps) * sin(_orientation * PI / 180.0f);
+	double new_x = _x + _velocity * (1.0f / _fps) * cos(_orientation * PI / 180.0f);
+	double new_y = _y - _velocity * (1.0f / _fps) * sin(_orientation * PI / 180.0f);
 	move(new_x, new_y, map);
 }
 
 // Move the player backward opposite to the direction they are facing, considering FPS
 void Player::move_back(Map &map)
 {
-	float new_x = _x - _velocity * (1.0f / _fps) * cos(_orientation * PI / 180.0f);
-	float new_y = _y + _velocity * (1.0f / _fps) * sin(_orientation * PI / 180.0f);
+	double new_x = _x - _velocity * (1.0f / _fps) * cos(_orientation * PI / 180.0f);
+	double new_y = _y + _velocity * (1.0f / _fps) * sin(_orientation * PI / 180.0f);
 	move(new_x, new_y, map);
 }
 
 // Strafe left (move sideways) relative to the current orientation, considering FPS
 void Player::move_left(Map &map)
 {
-	float new_x = _x - _velocity * (1.0f / _fps) * cos((_orientation + 90.0f) * PI / 180.0f);
-	float new_y = _y + _velocity * (1.0f / _fps) * sin((_orientation + 90.0f) * PI / 180.0f);
+	double new_x = _x - _velocity * (1.0f / _fps) * cos((_orientation + 90.0f) * PI / 180.0f);
+	double new_y = _y + _velocity * (1.0f / _fps) * sin((_orientation + 90.0f) * PI / 180.0f);
 	move(new_x, new_y, map);
 }
 
 // Strafe right (move sideways) relative to the current orientation, considering FPS
 void Player::move_right(Map &map)
 {
-	float new_x = _x + _velocity * (1.0f / _fps) * cos((_orientation + 90.0f) * PI / 180.0f);
-	float new_y = _y - _velocity * (1.0f / _fps) * sin((_orientation + 90.0f) * PI / 180.0f);
+	double new_x = _x + _velocity * (1.0f / _fps) * cos((_orientation + 90.0f) * PI / 180.0f);
+	double new_y = _y - _velocity * (1.0f / _fps) * sin((_orientation + 90.0f) * PI / 180.0f);
 	move(new_x, new_y, map);
 }
 
+void Player::full_move(Map &map, int up, int right, int rotate_right, double delta_time)
+{
+	double dist = _velocity * delta_time;
+	if (up and right)
+		 dist /= M_SQRT2;
+
+	double new_x = _x + up * (dist * cos(_orientation * PI / 180.0f));
+	new_x += right * (dist * cos((_orientation + 90.0f) * PI / 180.0f));
+	double new_y = _y - up * (dist * sin(_orientation * PI / 180.0f));
+	new_y -= right * (dist * sin((_orientation + 90.0f) * PI / 180.0f));
+	_orientation += _rotation_speed * delta_time * rotate_right;
+	if (_orientation < 0)
+	{
+		_orientation += 360.0f;
+	}
+	if (_orientation > 360)
+	{
+		_orientation -= 360;
+	}
+	move(new_x, new_y, map);
+
+}
 
 void Player::draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height)
 {
@@ -179,6 +201,9 @@ void Player::update_cursor(int x, int y)
 	_cursor.y = _y - (sin((_orientation + 90.0f) * PI / 180.0f) * x + cos((_orientation + 90.0f) * PI / 180.0f) * y);
 	// _cursor.x = 0;
 }
+
+
+
 
 
 int Player::getCursorX() const

@@ -88,7 +88,8 @@ public:
 
 	void shoot(Projectiles &prjs);
 	void draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height);
-	void move(Map map);
+	void move(Map map, double delta_time);
+	void BFSMove(Map map, double delta_time);
 	void check_for_hit(Projectiles &prjs);
 };
 

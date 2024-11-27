@@ -16,20 +16,19 @@ Projectiles::~Projectiles()
 	// Cleanup resources if necessary
 }
 
-void Projectiles::move(Map map)
+void Projectiles::move(Map map, double time, double delta)
 {
-	double cur_time = glfwGetTime();
 	for (auto &proj: _projectiles)
 	{
 		if (proj.active)
 		{
 			// Move the projectile based on its speed and orientation
 
-			proj.x += proj.speed * cos(proj.orientation) / _fps;
-			proj.y += proj.speed * sin(proj.orientation) / _fps;
+			proj.x += proj.speed * cos(proj.orientation) * delta;
+			proj.y += proj.speed * sin(proj.orientation) * delta;
 
 			// Check if the projectile is still inside the map boundaries
-			if (map.is_obstacle(proj.x, proj.y) || proj.start_time + proj.lifetime < cur_time)
+			if (map.is_obstacle(proj.x, proj.y) || proj.start_time + proj.lifetime < time)
 			{
 				proj.active = false; // Deactivate if outside map
 			}

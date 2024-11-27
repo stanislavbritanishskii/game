@@ -10,7 +10,7 @@ Map::Map(int screen_width, int screen_height, int map_width, int map_height, GLF
 	: screen_width(screen_width), screen_height(screen_height),
 	map_width(map_width), map_height(map_height),
 	tile_size(32), // Assuming default tile size
-	x(0.0f), y(0.0f), orientation(0.0f)
+	_x(0.0f), _y(0.0f), orientation(0.0f)
 {
 	textures[TileTypes::normal] = loadTexture(main_map_tile);
 	textures[TileTypes::obstacle] = loadTexture(obstacle1_tile);
@@ -19,25 +19,38 @@ Map::Map(int screen_width, int screen_height, int map_width, int map_height, GLF
 	// Initialize terrain with random TileTypes
 #if !TEST_MAP
 
+	for (int x = 0; x < screen_width; x++)
+	{
+		int font_size = 10, font_width = 100, font_height = 100;
+		std::string text;
+		if (x < 10)
+		text = "0";
+		text += std::to_string(x);
+
+		dist_textures.push_back(createTextTexture("DejaVuSans.ttf", text, font_size, font_width, font_height));
+	}
 	std::srand(std::time(nullptr)); // Seed for random generation
 	terrain.resize(map_height);
+	distances.resize(map_height);
 	std::cout << std::fixed << std::setprecision(1);
 
 	for (int i = 0; i < map_height; ++i)
 	{
 
 		terrain[i].resize(map_width);
+		distances[i].resize(map_width);
 		for (int j = 0; j < map_width; ++j)
 		{
+			distances[i][j] = map_height * map_width;
 //			glfwWindowShouldClose(window);
 //			glClear(GL_COLOR_BUFFER_BIT);
 //
 //			renderTexture(shader, texture, VAO, 0, 0, glfwGetTime(), screen_width, screen_height, 1);
 //			glfwSwapBuffers(window);
 			std::cout <<"\rcreating map "<< ((float)(i * map_width + j) * 100) / (map_height * map_width) << "%" << std::flush;
-
+			glfwPollEvents();
 			// Randomly assign TileTypes
-			if (std::rand() % 10 > 0)
+			if (std::rand() % 3 > 0)
 				terrain[i][j] = normal;
 			else
 			{
@@ -109,22 +122,22 @@ TileTypes Map::getTile(int x, int y)
 
 void Map::setX(float x)
 {
-	this->x = x;
+	this->_x = x;
 }
 
 float Map::getX()
 {
-	return x;
+	return _x;
 }
 
 void Map::setY(float y)
 {
-	this->y = y;
+	this->_y = y;
 }
 
 float Map::getY()
 {
-	return y;
+	return _y;
 }
 
 void Map::setOrientation(float orientation)
@@ -166,10 +179,10 @@ void Map::drawMap(GLuint shader_program, GLuint VAO)
 	// Pre-calculate cos and sin for the given orientation (in radians)
 	float cos_theta = cos(orientation / 180 * M_PI);
 	float sin_theta = sin(orientation / 180 * M_PI);
-	int x_min = std::max((int)(x / tile_size + map_width / 2 - screen_width / tile_size / 2), 0);
-	int x_max = std::min((int)(x / tile_size + map_width / 2 + screen_width / tile_size / 2), map_width);
-	int y_min = std::max((int)(y / tile_size + map_height / 2 - screen_height / tile_size / 2), 0);
-	int y_max = std::min((int)(y / tile_size + map_height / 2 + screen_height / tile_size / 2), map_height);
+	int x_min = std::max((int)(_x / tile_size + map_width / 2 - screen_width / tile_size / 2), 0);
+	int x_max = std::min((int)(_x / tile_size + map_width / 2 + screen_width / tile_size / 2), map_width);
+	int y_min = std::max((int)(_y / tile_size + map_height / 2 - screen_height / tile_size / 2), 0);
+	int y_max = std::min((int)(_y / tile_size + map_height / 2 + screen_height / tile_size / 2), map_height);
 
 
 	for (int i = y_min; i < y_max; i++)
@@ -181,8 +194,8 @@ void Map::drawMap(GLuint shader_program, GLuint VAO)
 			float original_y = (i - map_height / 2 + 0.5f) * tile_size;
 
 			// Apply the rotation around the center (this->x, this->y)
-			float new_x = (original_x - this->x) * cos_theta - (original_y - this->y) * sin_theta;
-			float new_y = (original_x - this->x) * sin_theta + (original_y - this->y) * cos_theta;
+			float new_x = (original_x - this->_x) * cos_theta - (original_y - this->_y) * sin_theta;
+			float new_y = (original_x - this->_x) * sin_theta + (original_y - this->_y) * cos_theta;
 			if (new_x * new_x + new_y * new_y < screen_width * screen_height / 4)
 			// if (new_x < screen_width / 2 && new_y < screen_height / 2 && new_x > -screen_width / 2 && new_y > -screen_height / 2)
 
@@ -199,6 +212,8 @@ void Map::drawMap(GLuint shader_program, GLuint VAO)
 								orientation, screen_width, screen_height, tile_size);
 				}
 
+				if (distances[i][j] < dist_textures.size() && distances[i][j] < 20)
+					renderTexture(shader_program, dist_textures[distances[i][j]], VAO, new_x, new_y, orientation - 90, screen_width, screen_height, tile_size / 2);
 			}
 		}
 	}
@@ -208,8 +223,8 @@ void Map::drawMap(GLuint shader_program, GLuint VAO)
 		float original_y = (chosen_tiles[i].second - map_height / 2 + 0.5f) * tile_size;
 
 		// Apply the rotation around the center (this->x, this->y)
-		float new_x = (original_x - this->x) * cos_theta - (original_y - this->y) * sin_theta;
-		float new_y = (original_x - this->x) * sin_theta + (original_y - this->y) * cos_theta;
+		float new_x = (original_x - this->_x) * cos_theta - (original_y - this->_y) * sin_theta;
+		float new_y = (original_x - this->_x) * sin_theta + (original_y - this->_y) * cos_theta;
 		renderTexture(shader_program, textures[marked], VAO, new_x, new_y,
 					orientation, screen_width, screen_height, tile_size);
 	}
@@ -237,3 +252,73 @@ void Map::clearChosenTiles()
 {
 	chosen_tiles.clear();
 }
+
+void Map::calculateBFSDistance(int depth)
+{
+	// Calculate player's tile position
+	int start_x = static_cast<int>(_x / tile_size + map_width / 2);
+	int start_y = static_cast<int>(_y / tile_size + map_height / 2);
+
+	// Ensure the starting position is valid
+	if (is_tile_obstacle(start_x, start_y))
+	{
+		std::cerr << "Player's position is on an obstacle. Cannot calculate distances." << std::endl;
+		return;
+	}
+
+	// BFS initialization
+	std::queue<std::pair<int, int>> queue;
+	std::vector<std::vector<bool>> visited(map_height, std::vector<bool>(map_width, false));
+
+	// Initialize BFS from player's position
+	queue.push({start_y, start_x});
+	distances[start_y][start_x] = 0;
+	visited[start_y][start_x] = true;
+	// Directions for movement: up, down, left, right
+	const int dx[] = {0, 0, -1, 1};
+	const int dy[] = {-1, 1, 0, 0};
+
+	// BFS traversal
+	while (!queue.empty())
+	{
+		auto [current_y, current_x] = queue.front();
+		queue.pop();
+		// Stop if we've reached the depth limit
+		if (distances[current_y][current_x] >= depth)
+			continue;
+		for (int i = 0; i < 4; ++i)
+		{
+			int new_x = current_x + dx[i];
+			int new_y = current_y + dy[i];
+
+			// Check boundaries and if already visited
+			if (new_x >= 0 && new_x < map_width &&
+				new_y >= 0 && new_y < map_height &&
+				!visited[new_y][new_x])
+			{
+				// Check if the tile is an obstacle
+				visited[new_y][new_x] = true;
+				if (!is_tile_obstacle(new_x, new_y))
+				{
+					// Mark tile as visited and set distance
+
+					distances[new_y][new_x] = distances[current_y][current_x] + 1;
+
+					// Add tile to BFS queue
+					queue.push({new_y, new_x});
+				}
+			}
+		}
+	}
+}
+
+std::pair<int, int> Map::getTile(float x, float y)
+{
+	return std::pair<int, int>(x / tile_size + map_width / 2, y / tile_size + map_height / 2);
+}
+int Map::getBFSDistance(int x, int y)
+{
+	return distances[y][x];
+}
+
+;

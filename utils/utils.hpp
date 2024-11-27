@@ -59,5 +59,7 @@ void renderTexture(unsigned int shaderProgram, unsigned int texture, unsigned in
 					int width, int height, float scale);
 bool is_player_projectile(ProjectileType type);
 bool is_enemy_projectile(ProjectileType type);
+GLuint createTextTexture(const std::string &fontPath, const std::string &text, int fontSize, int &textureWidth, int &textureHeight);
+
 
 #endif

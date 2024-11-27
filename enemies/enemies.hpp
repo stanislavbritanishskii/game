@@ -18,6 +18,6 @@ public:
 				GLuint VAO);
 	~Enemies();
 	void addEnemy(float x, float y, EnemyType type);
-	void iterate(Map &my_map, Projectiles &prjcts, float x, float y, float orientation);
+	void iterate(Map &my_map, Projectiles &prjcts, float x, float y, float orientation, double delta_time);
 };
 #endif

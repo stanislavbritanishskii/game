@@ -102,7 +102,6 @@ void Enemy::shoot(Projectiles &prjs)
 
 		for (int i = 0; i < bullet_count; i++)
 		{
-
 			float current_angle = base_orientation - (spread_angle / 2.0f) + (i * angle_step);
 			Projectile new_proj = {
 				x, y, current_angle, true, bullet_speed, projectile_type,
@@ -129,7 +128,7 @@ void Enemy::draw(GLuint shader_program, GLuint VAO, int screen_width, int screen
 }
 
 // Move method - Moves the enemy towards target_x, target_y based on the speed
-void Enemy::move(Map map)
+void Enemy::move(Map map, double delta_time)
 {
 	if (alive)
 	{
@@ -144,8 +143,8 @@ void Enemy::move(Map map)
 		}
 
 		// Update position
-		float new_x = x + direction_x * speed / fps;
-		float new_y = y + direction_y * speed / fps;
+		float new_x = x + direction_x * speed * delta_time;
+		float new_y = y + direction_y * speed * delta_time;
 
 		// Optionally, check for collision with the map or boundaries
 		if (map.is_obstacle(new_x, y))
@@ -155,12 +154,69 @@ void Enemy::move(Map map)
 		if (map.is_obstacle(new_x, new_y))
 		{
 			new_x = x;
-			new_y= y;
+			new_y = y;
 		}
-		x= new_x;
+		x = new_x;
 		y = new_y;
 	}
 }
+
+void Enemy::BFSMove(Map map, double delta_time)
+{
+	if (alive)
+	{
+		std::pair<int, int> cur_pos = map.getTile(x, y);
+		int cur_x = cur_pos.first;
+		int cur_y = cur_pos.second;
+		int cur_dist = map.getBFSDistance(cur_x, cur_y);
+		int best_dist = cur_dist; // Initialize to current distance (no movement)
+		std::pair<int, int> best_move = cur_pos; // Initialize to current position
+		std::vector<std::pair<int, int> > directions = {
+			{cur_x - 1, cur_y}, // Up
+			{cur_x + 1, cur_y}, // Down
+			{cur_x, cur_y - 1}, // Left
+			{cur_x, cur_y + 1} // Right
+		};
+		for (auto &dir: directions)
+		{
+			int nx = dir.first;
+			int ny = dir.second;
+			int new_dist = map.getBFSDistance(nx, ny);
+			if (new_dist <= best_dist)
+			{
+				best_dist = new_dist;
+				best_move = dir;
+			}
+		}
+		float direction_x = best_move.first - cur_x;
+		float direction_y = best_move.second - cur_y ;
+		float length = sqrt(direction_x * direction_x + direction_y * direction_y);
+
+		if (length != 0.0f)
+		{
+			direction_x /= length; // Normalize
+			direction_y /= length;
+		}
+
+		// Update position
+		float new_x = x + direction_x * speed * delta_time;
+		float new_y = y + direction_y * speed * delta_time;
+
+		// Optionally, check for collision with the map or boundaries
+		if (map.is_obstacle(new_x, y))
+			new_x = x;
+		if (map.is_obstacle(x, new_y))
+			new_y = y;
+		if (map.is_obstacle(new_x, new_y))
+		{
+			new_x = x;
+			new_y = y;
+		}
+		x = new_x;
+		y = new_y;
+	}
+}
+
 
 void Enemy::check_for_hit(Projectiles &prjs)
 {

@@ -3,6 +3,7 @@
 #include <vector>
 #include <map>
 #include "utils.hpp"
+#include <queue>
 enum TileTypes {
 	normal,
 	obstacle,
@@ -17,10 +18,12 @@ private:
 	int screen_width, screen_height;
 	int map_width, map_height;
 	int tile_size;
-	float x;
-	float y;
+	float _x;
+	float _y;
 	float orientation;
 	std::vector<std::vector<TileTypes> > terrain;
+	std::vector<std::vector<int> > distances;
+	std::vector<GLuint> dist_textures;
 	std::map<TileTypes, GLuint> textures;
 	GLuint shader_program;
 	std::vector<std::pair<int, int>> chosen_tiles;
@@ -60,6 +63,9 @@ public:
 	void addChosenTile(int x, int y);
 
 	void clearChosenTiles();
+	void calculateBFSDistance(int depth);
+	int getBFSDistance(int x, int y);
+	std::pair<int, int> getTile(float x, float y);
 
 };
 

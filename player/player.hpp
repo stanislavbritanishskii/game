@@ -78,7 +78,7 @@ public:
 
 	void move_right(Map &map);
 
-	void move(float new_x, float new_y, Map &map);
+	void move(double new_x, double new_y, Map &map);
 
 	void draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height);
 
@@ -102,6 +102,7 @@ public:
 	void shoot_nova(Projectiles &projs);
 	int getBulletCount();
 	void check_for_hit(Projectiles &prjs);
+	void full_move(Map &map, int up, int right, int rotate_right, double delta_time);
 };
 
 #endif

@@ -8,7 +8,7 @@ CXX := g++
 # Compiler flags
 CXXFLAGS := -std=c++17 -pthread -lrt
 
-LDFLAGS := -lGL -lGLEW -lglfw -lm
+LDFLAGS := -lGL -lGLEW -lglfw -lm -lfreetype
 
 # VPath
 
@@ -55,7 +55,7 @@ for name in *; do
 done
 echo
 
-echo -en INCLUDE ="\t\t -I ./libs "
+echo -en INCLUDE ="\t\t -I ./libs -I/usr/include/freetype2 "
 
 for name in *; do
     if [ "$name" != 'tests' ] && [ "$name" != 'obj' ]&& [ "$name" != 'Commander' ] && [ -d $name ]; then

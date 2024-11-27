@@ -9,39 +9,51 @@
 #include <projectile.hpp>
 #include "enemies.hpp"
 #include "enemy.hpp"
+#include <iomanip>
 
 
 
-void processInput(GLFWwindow *window, Player* player, Map &map, int width, int height, Projectiles &prjcts) {
+
+void processInput(GLFWwindow *window, Player* player, Map &map, int width, int height, Projectiles &prjcts, double time, double delta_time) {
 	// Check if the ESC key is pressed
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true); // Close the window
 	}
 
 	// Movement controls (WASD)
+	int move_up = 0;
+	int move_right = 0;
+	int rotate_right = 0;
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-		player->move_front(map);
+		move_up ++;
+		// player->move_front(map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-		player->move_back(map);
+		move_up --;
+		// player->move_back(map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-		player->move_left(map);
+		move_right --;
+		// player->move_left(map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-		player->move_right(map);
+		move_right ++;
+		// player->move_right(map);
 	}
 	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-		player->rotate_left();
+		rotate_right --;
+		// player->rotate_left();
 	}
 	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-		player->rotate_right();
+		rotate_right ++;
+		// player->rotate_right();
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
 		player->reset_orientation();
 		map.clearChosenTiles();
 	}
+	player->full_move(map, move_up, move_right, rotate_right, delta_time);
 
 	// Mouse position tracking
 	double xpos, ypos;
@@ -82,8 +94,8 @@ int main()
 	setupVertices(VAO, VBO, EBO);
 
 	// Main loop
-	int map_width = 1000;
-	int map_height =1000;
+	int map_width = 100;
+	int map_height =100;
 	int tile_size = 32 * RATIO;
 	Player player;
 	player.setVelocity(400 * RATIO);
@@ -101,26 +113,33 @@ int main()
 	Projectiles prjcts(0,0,0,shaderProgram, VAO, width, height, 32 * RATIO, 60);
 	double lastTime = glfwGetTime();
 
-	float fps = 60;
+	float fps = 120;
 	float frame_duration = 1 / fps;
+	double delta_time;
 	double next_frame_time = lastTime + frame_duration;
+	double current_time = glfwGetTime();
 	GLuint pumpkin_tex = loadTexture(pumpkin_texture);
 	std::vector<Enemy> enemies;
-	for (int i =10; i < 1000; i++)
+	for (int i =0; i < std::sqrt(map_height * map_width); i++)
 		enemies.push_back(Enemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::pumpkin_proj, pumpkin_tex, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
 
 
 	std::cout << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
 	while (!glfwWindowShouldClose(window))
 	{
-
-		if (glfwGetTime() < next_frame_time)
+		current_time = glfwGetTime();
+		while (glfwGetTime() < next_frame_time)
 		{
-			std::this_thread::sleep_for(std::chrono::duration<double>(lastTime + frame_duration - glfwGetTime()));
+			std::this_thread::sleep_for(std::chrono::duration<double>((lastTime + frame_duration - current_time) / 10));
+			glfwPollEvents();
+
 		}
-		fps = 1 / (glfwGetTime() - lastTime);
-		std::cout << "\rfps: "<< (int)fps<<std::flush;
-		lastTime = glfwGetTime();
+		current_time = glfwGetTime();
+		delta_time = current_time - lastTime;
+		fps = 1 / delta_time;
+		std::cout << "\r\0[332Kfps: "<< fps<<std::flush;
+		lastTime = current_time;
 		next_frame_time = lastTime + frame_duration;
 
 		glfwPollEvents();
@@ -128,10 +147,11 @@ int main()
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		processInput(window, &player, my_map, width, height, prjcts);
+		processInput(window, &player, my_map, width, height, prjcts, current_time, delta_time);
 		my_map.setX(player.getX());
 		my_map.setY(player.getY());
 		my_map.setOrientation(player.getOrientation());
+		my_map.calculateBFSDistance(30);
 		my_map.drawMap(shaderProgram, VAO);
 		player.draw(shaderProgram, VAO, width, height);
 		player.check_for_hit(prjcts);
@@ -140,7 +160,8 @@ int main()
 			enemy.setPlayerPosition(player.getX(), player.getY(), player.getOrientation());
 			if (enemy.getActive())
 			{
-				enemy.move(my_map);
+				// enemy.move(my_map, delta_time);
+				enemy.BFSMove(my_map, delta_time);
 				enemy.shoot(prjcts);
 				enemy.draw(shaderProgram, VAO, width, height);
 				enemy.check_for_hit(prjcts);
@@ -149,7 +170,7 @@ int main()
 		prjcts.setX(player.getX());
 		prjcts.setY(player.getY());
 		prjcts.setOrientation(player.getOrientation());
-		prjcts.move(my_map);
+		prjcts.move(my_map, current_time, delta_time);
 		prjcts.draw();
 		// Swap buffers
 		glfwSwapBuffers(window);

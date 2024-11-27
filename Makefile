@@ -4,7 +4,7 @@ CXX := g++
 # Compiler flags
 CXXFLAGS := -std=c++17 -pthread -lrt
 
-LDFLAGS := -lGL -lGLEW -lglfw -lm
+LDFLAGS := -lGL -lGLEW -lglfw -lm -lfreetype
 
 # VPath
 
@@ -40,7 +40,7 @@ SRCS=			$(shell find  ./enemies -name "*.cpp")\
 			$(shell find  ./tile -name "*.cpp")\
 			$(shell find  ./utils -name "*.cpp")\
 			
-INCLUDE =		 -I ./libs -I ./enemies -I ./enemy -I ./include -I ./libs -I ./map -I ./player -I ./projectile -I ./src -I ./textures -I ./tile -I ./utils
+INCLUDE =		 -I ./libs -I/usr/include/freetype2 -I ./enemies -I ./enemy -I ./include -I ./libs -I ./map -I ./player -I ./projectile -I ./src -I ./textures -I ./tile -I ./utils 
 OBJS	= $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 NAME := game
 
