@@ -128,7 +128,7 @@ void Enemy::draw(GLuint shader_program, GLuint VAO, int screen_width, int screen
 }
 
 // Move method - Moves the enemy towards target_x, target_y based on the speed
-void Enemy::move(Map map, double delta_time)
+void Enemy::move(Map &map, double delta_time)
 {
 	if (alive)
 	{
@@ -161,7 +161,7 @@ void Enemy::move(Map map, double delta_time)
 	}
 }
 
-void Enemy::BFSMove(Map map, double delta_time)
+void Enemy::BFSMove(Map &map, double delta_time)
 {
 	if (alive)
 	{

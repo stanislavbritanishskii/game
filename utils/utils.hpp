@@ -8,6 +8,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <stb_image.h> // Only include here, no implementation
 #include <iostream>
+#include <map>
 
 #define RATIO 1
 
@@ -60,6 +61,6 @@ void renderTexture(unsigned int shaderProgram, unsigned int texture, unsigned in
 bool is_player_projectile(ProjectileType type);
 bool is_enemy_projectile(ProjectileType type);
 GLuint createTextTexture(const std::string &fontPath, const std::string &text, int fontSize, int &textureWidth, int &textureHeight);
-
+std::map<char, GLuint> char_textures(const std::string &fontPath, int fontSize, int &textureWidth, int &textureHeight);
 
 #endif

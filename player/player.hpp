@@ -90,7 +90,7 @@ public:
 
 	void reset_orientation();
 
-	void teleport(Map map);
+	void teleport(Map &map);
 
 	void setShootDelay(float delay);
 	void setTeleportDelay(float delay);

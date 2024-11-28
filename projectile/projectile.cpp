@@ -16,7 +16,7 @@ Projectiles::~Projectiles()
 	// Cleanup resources if necessary
 }
 
-void Projectiles::move(Map map, double time, double delta)
+void Projectiles::move(Map &map, double time, double delta)
 {
 	for (auto &proj: _projectiles)
 	{

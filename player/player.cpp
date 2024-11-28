@@ -221,7 +221,7 @@ void Player::reset_orientation()
 	_orientation = 0;
 }
 
-void Player::teleport(Map map)
+void Player::teleport(Map &map)
 {
 	if (glfwGetTime() > _teleport_delay + _last_teleport && !map.is_obstacle(_cursor.x, _cursor.y))
 	{

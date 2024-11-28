@@ -38,7 +38,8 @@ void Enemies::iterate(Map &my_map, Projectiles &prjcts, float x, float y, float 
 		enemy.setPlayerPosition(x, y, orientation);
 		if (enemy.getActive())
 		{
-			enemy.move(my_map, delta_time);
+			// enemy.move(my_map, delta_time);
+			enemy.BFSMove(my_map, delta_time);
 			enemy.shoot(prjcts);
 			enemy.draw(shaderProgram, VAO, _screen_width, _screen_height);
 			enemy.check_for_hit(prjcts);

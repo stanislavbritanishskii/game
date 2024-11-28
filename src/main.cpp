@@ -80,6 +80,7 @@ void processInput(GLFWwindow *window, Player* player, Map &map, int width, int h
 int main()
 {
 	// Initialize GLFW
+	float fps = 240;
 
 
 	int width = 800 * RATIO;
@@ -94,33 +95,33 @@ int main()
 	setupVertices(VAO, VBO, EBO);
 
 	// Main loop
-	int map_width = 100;
-	int map_height =100;
+	int map_width = 3000;
+	int map_height =3000;
 	int tile_size = 32 * RATIO;
 	Player player;
+	player.setShootDelay(0.1);
 	player.setVelocity(400 * RATIO);
 	player.setRotationSpeed(200);
 	player.setSize(25 * RATIO);
-	player.setBulletCount(2);
+	player.setBulletCount(4);
 	player.setTeleportDelay(0.2);
 	GLuint texture = loadTexture(player_texture);
 	Map my_map(width, height, map_width, map_height, window, texture, shaderProgram, VAO);
 	my_map.setTileSize(tile_size);
 
-	player.setAccuracy(1);
+	player.setAccuracy(10);
 	player.setBulletSpeed(400 * RATIO);
-
+	// Enemies enemies(player.getX(), player.getY(), player.getOrientation(), fps ,width, height, shaderProgram, VAO);
 	Projectiles prjcts(0,0,0,shaderProgram, VAO, width, height, 32 * RATIO, 60);
 	double lastTime = glfwGetTime();
 
-	float fps = 120;
 	float frame_duration = 1 / fps;
 	double delta_time;
 	double next_frame_time = lastTime + frame_duration;
 	double current_time = glfwGetTime();
 	GLuint pumpkin_tex = loadTexture(pumpkin_texture);
 	std::vector<Enemy> enemies;
-	for (int i =0; i < std::sqrt(map_height * map_width); i++)
+	for (int i =0; i < std::sqrt(map_height * map_width) / 10; i++)
 		enemies.push_back(Enemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::pumpkin_proj, pumpkin_tex, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
 
 
@@ -138,7 +139,7 @@ int main()
 		current_time = glfwGetTime();
 		delta_time = current_time - lastTime;
 		fps = 1 / delta_time;
-		std::cout << "\r\0[332Kfps: "<< fps<<std::flush;
+		std::cout << "\r\033[2Kfps: "<< fps<<std::flush;
 		lastTime = current_time;
 		next_frame_time = lastTime + frame_duration;
 
@@ -155,6 +156,7 @@ int main()
 		my_map.drawMap(shaderProgram, VAO);
 		player.draw(shaderProgram, VAO, width, height);
 		player.check_for_hit(prjcts);
+		// enemies.iterate(my_map, prjcts, player.getX(), player.getY(), player.getOrientation(), delta_time);
 		for (auto &enemy : enemies)
 		{
 			enemy.setPlayerPosition(player.getX(), player.getY(), player.getOrientation());
