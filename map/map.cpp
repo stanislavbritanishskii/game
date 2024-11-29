@@ -240,7 +240,7 @@ void Map::drawMap(GLuint shader_program, GLuint VAO)
 								orientation, screen_width, screen_height, tile_size);
 				}
 
-				if (distances[i][j] < dist_textures.size() && distances[i][j] < 20)
+				if (distances[i][j] < dist_textures.size() && distances[i][j] < 0)
 					renderTexture(shader_program, dist_textures[distances[i][j]], VAO, new_x, new_y, orientation - 90, screen_width, screen_height, tile_size / 2);
 			}
 		}

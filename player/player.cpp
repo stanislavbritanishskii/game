@@ -5,7 +5,7 @@
 
 Player::Player()
 	: _x(0.0f), _y(0.0f), _orientation(0.0f), _velocity(5.0f), _rotation_speed(5.0f), _fps(60.0f), _shoot_delay(0.1),
-	_teleport_delay(1), _bullet_count(1), _bullet_speed(200),_accuracy(60), _bullet_lifetime(1), _max_hp(1000), _cur_hp(1000), nova_delay(2),last_nova(0), nova_count(20)
+	_teleport_delay(1), _bullet_count(1), _bullet_speed(200),_accuracy(60), _bullet_lifetime(1), _max_hp(1000), _cur_hp(1000), nova_delay(2),last_nova(0), nova_count(20), hp_bar(32,32,3)
 {
 	_texture = loadTexture(player_texture);
 	_size = 32;
@@ -193,6 +193,12 @@ void Player::draw(GLuint shader_program, GLuint VAO, int screen_width, int scree
 {
 	renderTexture(shader_program, _texture, VAO, 0, 0,
 				180, screen_width, screen_height, _size);
+
+	renderTexture(shader_program, hp_bar.getContourTexture(), VAO, 0, -_size / 2,
+				180, screen_width, screen_height, _size);
+	renderTexture(shader_program, hp_bar.getRedTexture(), VAO, 0, -_size / 2,
+			180, screen_width, screen_height, _size);
+
 }
 
 void Player::update_cursor(int x, int y)
@@ -308,6 +314,8 @@ int Player::getBulletCount()
 void Player::check_for_hit(Projectiles &prjs)
 {
 	_cur_hp -= prjs.get_player_damage(_x, _y, _size);
+	hp_bar.setCurrentHP(_cur_hp);
+	hp_bar.setMaxHP(_max_hp);
 	if (_cur_hp < 0)
 	{
 		exit(0);

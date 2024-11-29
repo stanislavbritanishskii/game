@@ -95,8 +95,9 @@ int main()
 	setupVertices(VAO, VBO, EBO);
 
 	// Main loop
-	int map_width = 3000;
-	int map_height =3000;
+	int map_width = 300;
+	int map_height =300;
+	float enemies_per_tile = 0.01;
 	int tile_size = 32 * RATIO;
 	Player player;
 	player.setShootDelay(0.1);
@@ -121,7 +122,7 @@ int main()
 	double current_time = glfwGetTime();
 	GLuint pumpkin_tex = loadTexture(pumpkin_texture);
 	std::vector<Enemy> enemies;
-	for (int i =0; i < std::sqrt(map_height * map_width) / 10; i++)
+	for (int i =0; i < map_height * map_width * enemies_per_tile; i++)
 		enemies.push_back(Enemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::pumpkin_proj, pumpkin_tex, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
 
 

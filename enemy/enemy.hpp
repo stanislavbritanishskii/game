@@ -4,6 +4,7 @@
 #include "utils.hpp"
 #include "projectile.hpp"
 #include "map.hpp"
+#include "hp_bar.hpp"
 enum EnemyType {
 	pumpkin
 };
@@ -37,6 +38,7 @@ private:
 	EnemyType type;
 	PlayerPosition_T player_pos;
 	float active_distance;
+	HPBar hp_bar;
 
 public:
 	// Default constructor

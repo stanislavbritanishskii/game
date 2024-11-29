@@ -5,7 +5,7 @@ Enemy::Enemy() : x(0.0f), y(0.0f), speed(0.0f), fps(60.0f), bullet_count(0.0f),
 				bullet_speed(0.0f), bullet_duration(0.0f), bullet_damage(0.0f),
 				shoot_delay(0.0f), max_hp(100.0f), current_hp(100.0f), alive(true),
 				projectile_type(ProjectileType::pumpkin_proj), texture(0), type(EnemyType::pumpkin), bullet_spread(30),
-				last_shot(0), size(32)
+				last_shot(0), size(32), hp_bar(32,32,3)
 {
 	player_pos.x = 0;
 	player_pos.y = 0;
@@ -33,7 +33,8 @@ Enemy::Enemy(float x, float y, float speed, float fps, float bullet_count, float
 																					texture(texture), type(type),
 																					bullet_spread(bullet_spread),
 																					last_shot(0), size(size),
-																					active_distance(active_distance)
+																					active_distance(active_distance),
+hp_bar(size, size, size / 10)
 {
 	player_pos.x = 0;
 	player_pos.y = 0;
@@ -124,6 +125,10 @@ void Enemy::draw(GLuint shader_program, GLuint VAO, int screen_width, int screen
 		float new_y = (x - player_pos.x) * sin_theta + (y - player_pos.y) * cos_theta;
 		renderTexture(shader_program, texture, VAO, new_x, new_y,
 					180, screen_width, screen_height, size);
+		// renderTexture(shader_program, hp_bar.getContourTexture(), VAO, new_x, new_y -size / 2,
+		// 	180, screen_width, screen_height, size);
+		renderTexture(shader_program, hp_bar.getRedTexture(), VAO, new_x, new_y-size / 2,
+				180, screen_width, screen_height, size);
 	}
 }
 
@@ -221,6 +226,8 @@ void Enemy::BFSMove(Map &map, double delta_time)
 void Enemy::check_for_hit(Projectiles &prjs)
 {
 	current_hp -= prjs.get_enemy_damage(x, y, size);
+	hp_bar.setCurrentHP(current_hp);
+	hp_bar.setMaxHP(max_hp);
 	if (current_hp < 0)
 		alive = false;
 }

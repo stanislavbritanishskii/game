@@ -3,6 +3,7 @@
 #include "utils.hpp"
 #include "map.hpp"
 #include "projectile.hpp"
+#include "hp_bar.hpp"
 
 typedef struct cursor {
 	int x;
@@ -32,6 +33,7 @@ private:
 	float nova_delay;
 	double last_nova;
 	int nova_count;
+	HPBar hp_bar;
 
 public:
 	Player();
