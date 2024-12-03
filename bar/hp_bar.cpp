@@ -62,7 +62,7 @@ void HPBar::updateRedTexture() {
 	std::vector<unsigned char> textureData(static_cast<size_t>(totalWidth * totalHeight * 4), 0);
 	int index;
 	for (int y = totalHeight - 4; y >= totalHeight - bar_height - 4; --y) {
-		std::cout << y << std::endl;
+		// std::cout << y << std::endl;
 
 		for (int x = totalWidth; x > totalWidth - redWidth; --x) {
 			index = (y * static_cast<int>(totalWidth) + x) * 4;

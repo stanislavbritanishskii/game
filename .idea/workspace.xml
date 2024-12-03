@@ -29,16 +29,19 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbb6a145-60c0-4ff7-9dd9-4c724a8ec10f" name="Changes" comment="">
+    <list default="true" id="6ee3d3e2-4217-4cd7-9138-55ff6d79700a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bar/hp_bar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/bar/hp_bar.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/enemies.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/enemies.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/enemies.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/enemies.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enemy/enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemy/enemy.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enemy/enemy.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemy/enemy.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game" beforeDir="false" afterPath="$PROJECT_DIR$/game" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/map/map.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player/player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player/player.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +96,7 @@
   "customColor": "",
   "associatedIndex": 5
 }]]></component>
-  <component name="ProjectId" id="2pVtoyVJMGJplPFSiXCdjJ9LVyL" />
+  <component name="ProjectId" id="2pi8r3Ptm2JKzlonfZ4bETSRHwy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -170,12 +173,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cbb6a145-60c0-4ff7-9dd9-4c724a8ec10f" name="Changes" comment="" />
-      <created>1732863249246</created>
+      <changelist id="6ee3d3e2-4217-4cd7-9138-55ff6d79700a" name="Changes" comment="" />
+      <created>1733237731634</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1732863249246</updated>
-      <workItem from="1732863251170" duration="4035000" />
+      <updated>1733237731634</updated>
+      <workItem from="1733237733471" duration="9012000" />
     </task>
     <servers />
   </component>

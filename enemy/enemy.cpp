@@ -5,7 +5,7 @@ Enemy::Enemy() : x(0.0f), y(0.0f), speed(0.0f), fps(60.0f), bullet_count(0.0f),
 				bullet_speed(0.0f), bullet_duration(0.0f), bullet_damage(0.0f),
 				shoot_delay(0.0f), max_hp(100.0f), current_hp(100.0f), alive(true),
 				projectile_type(ProjectileType::pumpkin_proj), texture(0), type(EnemyType::pumpkin), bullet_spread(30),
-				last_shot(0), size(32), hp_bar(32,32,3)
+				last_shot(0), size(32), hp_bar(32, 32, 3)
 {
 	player_pos.x = 0;
 	player_pos.y = 0;
@@ -20,21 +20,21 @@ Enemy::Enemy(float x, float y, float speed, float fps, float bullet_count, float
 			float bullet_duration, float bullet_damage, float shoot_delay, float max_hp,
 			float current_hp, bool alive, ProjectileType projectile_type, GLuint texture,
 			EnemyType type, float bullet_spread, float size, float active_distance) : x(x), y(y), speed(speed),
-																					fps(fps),
-																					bullet_count(bullet_count),
-																					bullet_speed(bullet_speed),
-																					bullet_duration(bullet_duration),
-																					bullet_damage(bullet_damage),
-																					shoot_delay(shoot_delay),
-																					max_hp(max_hp),
-																					current_hp(current_hp),
-																					alive(alive),
-																					projectile_type(projectile_type),
-																					texture(texture), type(type),
-																					bullet_spread(bullet_spread),
-																					last_shot(0), size(size),
-																					active_distance(active_distance),
-hp_bar(size, size, size / 10)
+												fps(fps),
+												bullet_count(bullet_count),
+												bullet_speed(bullet_speed),
+												bullet_duration(bullet_duration),
+												bullet_damage(bullet_damage),
+												shoot_delay(shoot_delay),
+												max_hp(max_hp),
+												current_hp(current_hp),
+												alive(alive),
+												projectile_type(projectile_type),
+												texture(texture), type(type),
+												bullet_spread(bullet_spread),
+												last_shot(0), size(size),
+												active_distance(active_distance),
+												hp_bar(size, size, size / 10)
 {
 	player_pos.x = 0;
 	player_pos.y = 0;
@@ -127,8 +127,8 @@ void Enemy::draw(GLuint shader_program, GLuint VAO, int screen_width, int screen
 					180, screen_width, screen_height, size);
 		// renderTexture(shader_program, hp_bar.getContourTexture(), VAO, new_x, new_y -size / 2,
 		// 	180, screen_width, screen_height, size);
-		renderTexture(shader_program, hp_bar.getRedTexture(), VAO, new_x, new_y-size / 2,
-				180, screen_width, screen_height, size);
+		renderTexture(shader_program, hp_bar.getRedTexture(), VAO, new_x, new_y - size / 2,
+					180, screen_width, screen_height, size);
 	}
 }
 
@@ -194,7 +194,7 @@ void Enemy::BFSMove(Map &map, double delta_time)
 			}
 		}
 		float direction_x = best_move.first - cur_x;
-		float direction_y = best_move.second - cur_y ;
+		float direction_y = best_move.second - cur_y;
 		float length = sqrt(direction_x * direction_x + direction_y * direction_y);
 
 		if (length != 0.0f)

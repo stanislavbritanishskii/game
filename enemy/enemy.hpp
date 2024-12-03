@@ -5,9 +5,7 @@
 #include "projectile.hpp"
 #include "map.hpp"
 #include "hp_bar.hpp"
-enum EnemyType {
-	pumpkin
-};
+
 
 typedef struct PlayerPosition {
 	float x;

@@ -27,8 +27,9 @@ WHITE = \033[0;97m
 SRC_DIR := ./src
 OBJ_DIR	:= ./obj
 LIBS_DIR := libs
-VPATH =			./bar ./enemies ./enemy ./include ./libs ./map ./player ./projectile ./src ./textures ./tile ./utils 
+VPATH =			./bar ./config_reader ./enemies ./enemy ./include ./libs ./map ./player ./projectile ./src ./textures ./tile ./utils 
 SRCS=			$(shell find  ./bar -name "*.cpp")\
+			$(shell find  ./config_reader -name "*.cpp")\
 			$(shell find  ./enemies -name "*.cpp")\
 			$(shell find  ./enemy -name "*.cpp")\
 			$(shell find  ./include -name "*.cpp")\
@@ -41,7 +42,7 @@ SRCS=			$(shell find  ./bar -name "*.cpp")\
 			$(shell find  ./tile -name "*.cpp")\
 			$(shell find  ./utils -name "*.cpp")\
 			
-INCLUDE =		 -I ./libs -I/usr/include/freetype2 -I ./bar -I ./enemies -I ./enemy -I ./include -I ./libs -I ./map -I ./player -I ./projectile -I ./src -I ./textures -I ./tile -I ./utils 
+INCLUDE =		 -I ./libs -I/usr/include/freetype2 -I ./bar -I ./config_reader -I ./enemies -I ./enemy -I ./include -I ./libs -I ./map -I ./player -I ./projectile -I ./src -I ./textures -I ./tile -I ./utils 
 OBJS	= $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 NAME := game
 

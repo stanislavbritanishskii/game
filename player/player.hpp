@@ -8,7 +8,19 @@
 typedef struct cursor {
 	int x;
 	int y;
-}cursor_t;
+} cursor_t;
+
+enum Direction {
+	up,
+	down,
+	left,
+	right,
+	still_up,
+	still_down,
+	still_left,
+	still_right
+};
+
 class Player {
 private:
 	float _x;
@@ -33,6 +45,12 @@ private:
 	float nova_delay;
 	double last_nova;
 	int nova_count;
+	Direction direction;
+	std::map<Direction, std::vector<GLuint> > textures;
+	int _cur_texture;
+	double time_to_change_texture;
+	double last_change_texture;
+	int hit_box;
 	HPBar hp_bar;
 
 public:
@@ -95,16 +113,38 @@ public:
 	void teleport(Map &map);
 
 	void setShootDelay(float delay);
+
 	void setTeleportDelay(float delay);
+
 	void setBulletCount(int count);
+
 	void setBulletSpeed(float speed);
+
 	void setBulletLifetime(float lifetime);
+
 	void setAccuracy(int accuracy);
+
 	void shoot(Projectiles &projs);
+
 	void shoot_nova(Projectiles &projs);
+
+	void setNovaDelay(float delay);
+
 	int getBulletCount();
+
 	void check_for_hit(Projectiles &prjs);
+
 	void full_move(Map &map, int up, int right, int rotate_right, double delta_time);
+	void setHitBox(int new_hit_box);
+
+	void set_up_textures(std::vector<GLuint> ups);
+	void set_down_textures(std::vector<GLuint> downs);
+	void set_left_textures(std::vector<GLuint> lefts);
+	void set_right_textures(std::vector<GLuint> rights);
+	void set_still_up_textures(std::vector<GLuint> rights);
+	void set_still_down_textures(std::vector<GLuint> rights);
+	void set_still_right_textures(std::vector<GLuint> rights);
+	void set_still_left_textures(std::vector<GLuint> rights);
 };
 
 #endif

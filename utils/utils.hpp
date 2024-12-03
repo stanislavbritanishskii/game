@@ -21,6 +21,11 @@ inline const char * bigX = "textures/x.png";
 inline const char * player_projectile = "textures/arrow.png";
 inline const char * pumpkin_texture = "textures/pumpkin.png";
 
+
+enum EnemyType {
+	pumpkin
+};
+
 enum ProjectileType {
 	player_proj,
 	pumpkin_proj
@@ -36,18 +41,18 @@ typedef struct Projectile {
 	double start_time;
 	double lifetime;
 	float damage;
-};
+}Projectile_t;
 
 inline const float PUMPKIN_SPEED = 100;
-inline const float PUMPKIN_HP = 100;
+inline const float PUMPKIN_HP = 10;
 inline const float PUMPKIN_DAMAGE = 100;
-inline const float PUMPKIN_BULLET_COUNT = 100;
-inline const float PUMPKIN_SPREAD = 100;
-inline const float PUMPKIN_SIZE = 100;
-inline const float PUMPKIN_ACTIVE_DISTANCE = 100;
-inline const float PUMPKIN_BULLET_SPEED = 100;
-inline const float PUMPKIN_BULLET_DURATION = 100;
-inline const float PUMPKIN_SHOOT_DELAY = 100;
+inline const float PUMPKIN_BULLET_COUNT = 5;
+inline const float PUMPKIN_SPREAD = 90;
+inline const float PUMPKIN_SIZE = 32 * RATIO;
+inline const float PUMPKIN_ACTIVE_DISTANCE = 320;
+inline const float PUMPKIN_BULLET_SPEED = 100 * RATIO;
+inline const float PUMPKIN_BULLET_DURATION = 3;
+inline const float PUMPKIN_SHOOT_DELAY = 1;
 
 
 

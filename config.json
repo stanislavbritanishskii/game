@@ -1,0 +1,30 @@
+{
+	"RATIO": 1.5,
+	"player":
+	{
+		"shoot_delay": 0.1,
+		"bullet_count": 4,
+		"velocity": 400,
+		"rotation_speed": 200,
+		"size": 50,
+		"hit_box": 25,
+		"teleport_delay": 1,
+		"nova_delay": 0.1,
+		"texture_name": "textures/player.png"
+	},
+	"enemies": {
+		"Pumpkin": {
+			"speed": 100,
+			"health": 10,
+			"damage": 10,
+			"bullet_count": 5,
+			"spread": 90,
+			"size": 64,
+			"active_distance": 320,
+			"bullet_speed": 100,
+			"bullet_duration": 3,
+			"shoot_delay": 1,
+			"texture_name": "textures/pumpkin.png"
+		}
+	}
+}

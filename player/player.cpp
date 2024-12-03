@@ -8,9 +8,21 @@ Player::Player()
 	_teleport_delay(1), _bullet_count(1), _bullet_speed(200),_accuracy(60), _bullet_lifetime(1), _max_hp(1000), _cur_hp(1000), nova_delay(2),last_nova(0), nova_count(20), hp_bar(32,32,3)
 {
 	_texture = loadTexture(player_texture);
+	std::vector<GLuint> base_textures = {_texture};
+	textures.insert_or_assign(Direction::up, base_textures);
+	textures.insert_or_assign(Direction::down, base_textures);
+	textures.insert_or_assign(Direction::left, base_textures);
+	textures.insert_or_assign(Direction::right, base_textures);
+	textures.insert_or_assign(Direction::still_up, base_textures);
+	textures.insert_or_assign(Direction::still_down, base_textures);
+	textures.insert_or_assign(Direction::still_right, base_textures);
+	textures.insert_or_assign(Direction::still_left, base_textures);
+
 	_size = 32;
 	_cursor.x = 0;
 	_cursor.y = 0;
+	_cur_texture = 0;
+	time_to_change_texture = 0.1;
 }
 
 Player::~Player()
@@ -113,13 +125,13 @@ void Player::move(double new_x, double new_y, Map &map)
 	double x_size = 0;
 	double y_size = 0;
 	if (new_x > _x)
-		x_size = _size / 2;
+		x_size = hit_box / 2;
 	if (new_x < _x)
-		x_size = -_size / 2;
+		x_size = -hit_box / 2;
 	if (new_y > _y)
-		y_size = _size / 2;
+		y_size = hit_box / 2;
 	if (new_y < _y)
-		y_size = -_size / 2;
+		y_size = -hit_box / 2;
 	if (map.is_obstacle(new_x + x_size, _y))
 		new_x = _x;
 	if (map.is_obstacle(_x, new_y + y_size))
@@ -129,6 +141,7 @@ void Player::move(double new_x, double new_y, Map &map)
 		new_x = _x;
 		new_y = _y;
 	}
+
 	_x = new_x;
 	_y = new_y;
 }
@@ -185,18 +198,45 @@ void Player::full_move(Map &map, int up, int right, int rotate_right, double del
 	{
 		_orientation -= 360;
 	}
+	Direction new_direction;
+	if (right > 0)
+		new_direction = Direction::left;
+	else if (right < 0)
+		new_direction = Direction::right;
+	else if (up < 0)
+		new_direction = Direction::down;
+	else if (up > 0)
+		new_direction = Direction::up;
+	else
+		new_direction = Direction((int)direction % 4 + 4);
+	if (new_direction != direction)
+	{
+		_cur_texture = 0;
+		last_change_texture = glfwGetTime();
+	}
+	direction = new_direction;
 	move(new_x, new_y, map);
 
 }
 
 void Player::draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height)
 {
+	if (glfwGetTime() > last_change_texture + time_to_change_texture)
+	{
+		last_change_texture = glfwGetTime();
+		_cur_texture ++;
+		if (_cur_texture >= textures[direction].size())
+		{
+			_cur_texture = 0;
+		}
+	}
+	_texture = textures[direction][_cur_texture];
 	renderTexture(shader_program, _texture, VAO, 0, 0,
 				180, screen_width, screen_height, _size);
 
-	renderTexture(shader_program, hp_bar.getContourTexture(), VAO, 0, -_size / 2,
+	renderTexture(shader_program, hp_bar.getContourTexture(), VAO, 0, -hit_box / 2,
 				180, screen_width, screen_height, _size);
-	renderTexture(shader_program, hp_bar.getRedTexture(), VAO, 0, -_size / 2,
+	renderTexture(shader_program, hp_bar.getRedTexture(), VAO, 0, -hit_box / 2,
 			180, screen_width, screen_height, _size);
 
 }
@@ -255,6 +295,18 @@ void Player::setBulletLifetime(float lifetime)
 
 void Player::shoot(Projectiles &projs)
 {
+	if ((int)direction >= 4)
+	{
+		float orientation = atan2(_x - _cursor.x, _cursor.y - _y) + M_PI / 2.0f;
+		if (orientation > -M_PI / 4 && orientation < M_PI / 4)
+			direction = Direction::still_up;
+		else if (orientation > -M_PI* 3 / 4 && orientation < -M_PI / 4)
+			direction = Direction::still_left;
+		else if (orientation > M_PI / 4 && orientation < M_PI * 3 / 4)
+			direction = Direction::still_right;
+		else if (orientation < -M_PI * 3 / 4 || orientation > M_PI * 3 / 4)
+			direction = Direction::still_down;
+	}
 	if (glfwGetTime() > _shoot_delay + _last_shot)
 	{
 		for ( int i =0; i < _bullet_count; i++)
@@ -301,6 +353,12 @@ void Player::setShootDelay(float delay)
 	_shoot_delay = delay;
 }
 
+void Player::setNovaDelay(float delay)
+{
+	nova_delay = delay;
+}
+
+
 void Player::setTeleportDelay(float delay)
 {
 	_teleport_delay = delay;
@@ -313,11 +371,50 @@ int Player::getBulletCount()
 
 void Player::check_for_hit(Projectiles &prjs)
 {
-	_cur_hp -= prjs.get_player_damage(_x, _y, _size);
+	_cur_hp -= prjs.get_player_damage(_x, _y, hit_box);
 	hp_bar.setCurrentHP(_cur_hp);
 	hp_bar.setMaxHP(_max_hp);
 	if (_cur_hp < 0)
 	{
 		exit(0);
 	}
+}
+
+void Player::setHitBox(int new_hit_box)
+{
+	hit_box = new_hit_box;
+}
+
+
+void Player::set_up_textures(std::vector<GLuint> ups)
+{
+	textures.insert_or_assign(Direction::up, ups);
+}
+void Player::set_down_textures(std::vector<GLuint> downs)
+{
+	textures.insert_or_assign(Direction::down, downs);
+}
+void Player::set_left_textures(std::vector<GLuint> lefts)
+{
+	textures.insert_or_assign(Direction::left, lefts);
+}
+void Player::set_right_textures(std::vector<GLuint> rights)
+{
+	textures.insert_or_assign(Direction::right, rights);
+}
+void Player::set_still_up_textures(std::vector<GLuint> rights)
+{
+	textures.insert_or_assign(Direction::still_up, rights);
+}
+void Player::set_still_down_textures(std::vector<GLuint> rights)
+{
+	textures.insert_or_assign(Direction::still_down, rights);
+}
+void Player::set_still_right_textures(std::vector<GLuint> rights)
+{
+	textures.insert_or_assign(Direction::still_right, rights);
+}
+void Player::set_still_left_textures(std::vector<GLuint> rights)
+{
+	textures.insert_or_assign(Direction::still_left, rights);
 }
