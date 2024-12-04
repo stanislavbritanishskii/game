@@ -71,7 +71,7 @@ GLuint createTextTexture(const std::string &fontPath, const std::string &text, i
 
 				// Ensure x and y are within bounds
 				if (x >= textureWidth || y >= textureHeight || x < 0 || y < 0) {
-					std::cerr << "WARNING::TEXTURE: Out-of-bounds access for character '" << c << "' at (" << x << ", " << y << ")." << std::endl;
+					// std::cerr << "WARNING::TEXTURE: Out-of-bounds access for character '" << c << "' at (" << x << ", " << y << ")." << std::endl;
 					continue;
 				}
 
@@ -132,22 +132,22 @@ std::map<char, GLuint> char_textures(const std::string &fontPath, int fontSize, 
 
 	// Iterate over all printable ASCII characters
 	for (char c = 32; c < 127; ++c) { // ASCII printable characters
-		std::cout << c << std::endl;
+
 		std::string text(1, c); // Single-character string
-		std::cout << c << std::endl;
+
 		GLuint texture = createTextTexture(fontPath, text, fontSize, textureWidth, textureHeight);
-		std::cout << 'c' << std::endl;
+
 
 		// Check if the texture was successfully created
 		if (texture == 0) {
 			std::cerr << "ERROR::TEXTURE: Failed to create texture for character '" << c << "'" << std::endl;
 			continue;
 		}
-		std::cout << c << std::endl;
+
 
 		// Store the texture in the map
 		characters[c] = texture;
-		std::cout << characters[c] << std::endl;
+
 	}
 
 	return characters;

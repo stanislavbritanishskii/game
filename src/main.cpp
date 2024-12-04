@@ -11,6 +11,7 @@
 #include "enemy.hpp"
 #include <iomanip>
 #include "config_reader.hpp"
+#include "texture_reader.hpp"
 
 
 
@@ -81,10 +82,10 @@ void processInput(GLFWwindow *window, Player* player, Map &map, int width, int h
 int main()
 {
 	// Initialize GLFW
-	float fps = 240;
+	float fps = 120;
 
 	ConfigReader config;
-	config.loadFromJSON("config.json");
+	config.loadFromJSON("configs/config.json");
 	int width = 800 * RATIO;
 	int height = 800 * RATIO;
 	GLFWwindow *window = init_glfw_window(width, height);
@@ -97,95 +98,20 @@ int main()
 	setupVertices(VAO, VBO, EBO);
 
 	// Main loop
-	int map_width = 300;
-	int map_height =300;
-	float enemies_per_tile = 0.01;
+	int map_width = 1000;
+	int map_height =1000;
+	float enemies_per_tile = 0.003;
 	int tile_size = 32 * RATIO;
-	Player player;
 	PlayerData playerData = config.getPlayerData();
+	TextureManager player_textures;
+	player_textures.loadFromFile(playerData.texture_config_path);
+	Player player;
 	std::vector<GLuint> up_textures;
 	std::vector<GLuint> down_textures;
 	std::vector<GLuint> right_textures;
 	std::vector<GLuint> left_textures;
-	up_textures.push_back(loadTexture("textures/new_char_textures/08_Slime2_Run_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/09_Slime2_Run_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/10_Slime2_Run_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/11_Slime2_Run_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/12_Slime2_Run_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/13_Slime2_Run_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/14_Slime2_Run_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/15_Slime2_Run_full.png"));
-	player.set_up_textures(up_textures);
-	up_textures.clear();
-	up_textures.push_back(loadTexture("textures/new_char_textures/06_Slime2_Idle_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/07_Slime2_Idle_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/08_Slime2_Idle_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/09_Slime2_Idle_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/10_Slime2_Idle_full.png"));
-	up_textures.push_back(loadTexture("textures/new_char_textures/11_Slime2_Idle_full.png"));
-	player.set_still_up_textures(up_textures);
 
-
-
-	down_textures.push_back(loadTexture("textures/new_char_textures/00_Slime2_Run_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/01_Slime2_Run_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/02_Slime2_Run_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/03_Slime2_Run_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/04_Slime2_Run_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/05_Slime2_Run_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/06_Slime2_Run_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/07_Slime2_Run_full.png"));
-	player.set_down_textures(down_textures);
-	down_textures.clear();
-	down_textures.push_back(loadTexture("textures/new_char_textures/00_Slime2_Idle_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/01_Slime2_Idle_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/02_Slime2_Idle_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/03_Slime2_Idle_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/04_Slime2_Idle_full.png"));
-	down_textures.push_back(loadTexture("textures/new_char_textures/05_Slime2_Idle_full.png"));
-	player.set_still_down_textures(down_textures);
-
-
-	left_textures.push_back(loadTexture("textures/new_char_textures/16_Slime2_Run_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/17_Slime2_Run_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/18_Slime2_Run_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/19_Slime2_Run_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/20_Slime2_Run_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/21_Slime2_Run_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/22_Slime2_Run_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/23_Slime2_Run_full.png"));
-	player.set_left_textures(left_textures);
-
-	left_textures.clear();
-
-	left_textures.push_back(loadTexture("textures/new_char_textures/12_Slime2_Idle_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/13_Slime2_Idle_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/14_Slime2_Idle_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/15_Slime2_Idle_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/16_Slime2_Idle_full.png"));
-	left_textures.push_back(loadTexture("textures/new_char_textures/17_Slime2_Idle_full.png"));
-
-	player.set_still_left_textures(left_textures);
-
-
-	right_textures.push_back(loadTexture("textures/new_char_textures/24_Slime2_Run_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/25_Slime2_Run_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/26_Slime2_Run_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/27_Slime2_Run_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/28_Slime2_Run_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/29_Slime2_Run_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/30_Slime2_Run_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/31_Slime2_Run_full.png"));
-	player.set_right_textures(right_textures);
-	right_textures.clear();
-	right_textures.push_back(loadTexture("textures/new_char_textures/18_Slime2_Idle_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/19_Slime2_Idle_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/20_Slime2_Idle_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/21_Slime2_Idle_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/22_Slime2_Idle_full.png"));
-	right_textures.push_back(loadTexture("textures/new_char_textures/23_Slime2_Idle_full.png"));
-
-	player.set_still_right_textures(right_textures);
+	player.set_all_textures(player_textures);
 
 
 
@@ -217,6 +143,8 @@ int main()
 		// enemies.push_back(Enemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::pumpkin_proj, pumpkin_tex, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
 	{
 		enemies.addEnemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, pumpkin);
+		enemies.addEnemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime3);
+		enemies.addEnemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime1);
 	}
 
 	std::cout << std::endl;
@@ -233,7 +161,7 @@ int main()
 		current_time = glfwGetTime();
 		delta_time = current_time - lastTime;
 		fps = 1 / delta_time;
-		std::cout << "\r\033[2Kfps: "<< fps<<std::flush;
+		// std::cout << "\r\033[2Kfps: "<< fps<<std::flush;
 		lastTime = current_time;
 		next_frame_time = lastTime + frame_duration;
 

@@ -4,6 +4,7 @@
 #include "utils.hpp"
 #include "enemy.hpp"
 #include "config_reader.hpp"
+#include "texture_reader.hpp"
 
 
 class Enemies {
@@ -16,6 +17,7 @@ private:
 	GLuint VAO;
 	int _screen_width;
 	int _screen_height;
+	std::map<EnemyType, std::map<Direction, std::vector<GLuint>>> textures_by_type;
 	Enemy create_enemy(float x, float y, EnemyType type, float fps);
 	ConfigReader config;
 public:

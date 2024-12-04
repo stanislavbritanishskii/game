@@ -9,6 +9,7 @@
 #include <stb_image.h> // Only include here, no implementation
 #include <iostream>
 #include <map>
+#include <vector>
 
 #define RATIO 1
 
@@ -23,7 +24,9 @@ inline const char * pumpkin_texture = "textures/pumpkin.png";
 
 
 enum EnemyType {
-	pumpkin
+	pumpkin,
+	Slime3,
+	Slime1
 };
 
 enum ProjectileType {
@@ -42,6 +45,17 @@ typedef struct Projectile {
 	double lifetime;
 	float damage;
 }Projectile_t;
+
+enum Direction {
+	up,
+	down,
+	left,
+	right,
+	still_up,
+	still_down,
+	still_left,
+	still_right
+};
 
 inline const float PUMPKIN_SPEED = 100;
 inline const float PUMPKIN_HP = 10;
@@ -67,5 +81,4 @@ bool is_player_projectile(ProjectileType type);
 bool is_enemy_projectile(ProjectileType type);
 GLuint createTextTexture(const std::string &fontPath, const std::string &text, int fontSize, int &textureWidth, int &textureHeight);
 std::map<char, GLuint> char_textures(const std::string &fontPath, int fontSize, int &textureWidth, int &textureHeight);
-
 #endif

@@ -4,22 +4,13 @@
 #include "map.hpp"
 #include "projectile.hpp"
 #include "hp_bar.hpp"
-
+#include "texture_reader.hpp"
 typedef struct cursor {
 	int x;
 	int y;
 } cursor_t;
 
-enum Direction {
-	up,
-	down,
-	left,
-	right,
-	still_up,
-	still_down,
-	still_left,
-	still_right
-};
+
 
 class Player {
 private:
@@ -145,6 +136,8 @@ public:
 	void set_still_down_textures(std::vector<GLuint> rights);
 	void set_still_right_textures(std::vector<GLuint> rights);
 	void set_still_left_textures(std::vector<GLuint> rights);
+	void set_all_textures(TextureManager text_conf);
+
 };
 
 #endif

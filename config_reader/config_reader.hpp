@@ -21,6 +21,7 @@ struct EnemyData {
 	float bullet_duration;
 	float shoot_delay;
 	std::string texture_name;
+	std::string texture_path;
 };
 
 // PlayerData structure
@@ -36,6 +37,7 @@ struct PlayerData {
 	float nova_delay;
 	int hit_box;
 	std::string texture_name;
+	std::string texture_config_path;
 };
 
 // ConfigReader class
@@ -47,6 +49,8 @@ private:
 
 	EnemyType stringToEnemyType(const std::string& str) {
 		if (str == "Pumpkin") return EnemyType::pumpkin;
+		if (str == "Slime3") return EnemyType::Slime3;
+		if (str == "Slime1") return EnemyType::Slime1;
 		// Add additional mappings here
 		throw std::invalid_argument("Unknown EnemyType: " + str);
 	}
@@ -80,6 +84,7 @@ public:
 			data.bullet_duration = value["bullet_duration"].get<float>();
 			data.shoot_delay = value["shoot_delay"].get<float>();
 			data.texture_name = value.contains("texture_name") ? value["texture_name"].get<std::string>() : "default";
+			data.texture_path= value.contains("texture_path") ? value["texture_path"].get<std::string>() : "default";
 			enemies_data[type] = data;
 		}
 
@@ -96,6 +101,7 @@ public:
 			player_data.teleport_delay = player_json["teleport_delay"].get<float>();
 			player_data.nova_delay = player_json["nova_delay"].get<float>();
 			player_data.hit_box = player_json["hit_box"].get<int>();
+			player_data.texture_config_path = player_json["texture_config_path"].get<std::string>();
 			player_data.texture_name = player_json.contains("texture_name") ? player_json["texture_name"].get<std::string>() : "player_default";
 		} else {
 			throw std::runtime_error("Missing 'player' data in configuration file");

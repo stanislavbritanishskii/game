@@ -1,0 +1,74 @@
+{
+  "up": [
+    "textures/enemy_textures/slime3/08_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/09_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/10_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/11_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/12_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/13_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/14_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/15_Slime3_Run_full.png"
+  ],
+  "still_up": [
+    "textures/enemy_textures/slime3/06_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/07_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/08_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/09_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/10_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/11_Slime3_Idle_full.png"
+  ],
+  "down": [
+    "textures/enemy_textures/slime3/00_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/01_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/02_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/03_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/04_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/05_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/06_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/07_Slime3_Run_full.png"
+  ],
+  "still_down": [
+    "textures/enemy_textures/slime3/00_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/01_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/02_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/03_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/04_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/05_Slime3_Idle_full.png"
+  ],
+  "left": [
+    "textures/enemy_textures/slime3/16_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/17_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/18_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/19_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/20_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/21_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/22_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/23_Slime3_Run_full.png"
+  ],
+  "still_left": [
+    "textures/enemy_textures/slime3/12_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/13_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/14_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/15_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/16_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/17_Slime3_Idle_full.png"
+  ],
+  "right": [
+    "textures/enemy_textures/slime3/24_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/25_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/26_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/27_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/28_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/29_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/30_Slime3_Run_full.png",
+    "textures/enemy_textures/slime3/31_Slime3_Run_full.png"
+  ],
+  "still_right": [
+    "textures/enemy_textures/slime3/18_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/19_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/20_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/21_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/22_Slime3_Idle_full.png",
+    "textures/enemy_textures/slime3/23_Slime3_Idle_full.png"
+  ]
+}

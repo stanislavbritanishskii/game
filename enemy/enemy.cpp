@@ -5,7 +5,7 @@ Enemy::Enemy() : x(0.0f), y(0.0f), speed(0.0f), fps(60.0f), bullet_count(0.0f),
 				bullet_speed(0.0f), bullet_duration(0.0f), bullet_damage(0.0f),
 				shoot_delay(0.0f), max_hp(100.0f), current_hp(100.0f), alive(true),
 				projectile_type(ProjectileType::pumpkin_proj), texture(0), type(EnemyType::pumpkin), bullet_spread(30),
-				last_shot(0), size(32), hp_bar(32, 32, 3)
+				last_shot(0), size(32), hp_bar(32, 32, 3), direction(Direction::up)
 {
 	player_pos.x = 0;
 	player_pos.y = 0;
@@ -20,26 +20,29 @@ Enemy::Enemy(float x, float y, float speed, float fps, float bullet_count, float
 			float bullet_duration, float bullet_damage, float shoot_delay, float max_hp,
 			float current_hp, bool alive, ProjectileType projectile_type, GLuint texture,
 			EnemyType type, float bullet_spread, float size, float active_distance) : x(x), y(y), speed(speed),
-												fps(fps),
-												bullet_count(bullet_count),
-												bullet_speed(bullet_speed),
-												bullet_duration(bullet_duration),
-												bullet_damage(bullet_damage),
-												shoot_delay(shoot_delay),
-												max_hp(max_hp),
-												current_hp(current_hp),
-												alive(alive),
-												projectile_type(projectile_type),
-												texture(texture), type(type),
-												bullet_spread(bullet_spread),
-												last_shot(0), size(size),
-												active_distance(active_distance),
-												hp_bar(size, size, size / 10)
+																					fps(fps),
+																					bullet_count(bullet_count),
+																					bullet_speed(bullet_speed),
+																					bullet_duration(bullet_duration),
+																					bullet_damage(bullet_damage),
+																					shoot_delay(shoot_delay),
+																					max_hp(max_hp),
+																					current_hp(current_hp),
+																					alive(alive),
+																					projectile_type(projectile_type),
+																					texture(texture), type(type),
+																					bullet_spread(bullet_spread),
+																					last_shot(0), size(size),
+																					active_distance(active_distance),
+																					hp_bar(size, size, size / 10),
+																					direction(Direction::up)
 {
 	player_pos.x = 0;
 	player_pos.y = 0;
 	player_pos.orientation = 0;
 	active = true;
+	time_to_change_texture = 0.1;
+	hit_box = 25;
 }
 
 // Getters
@@ -98,8 +101,12 @@ void Enemy::shoot(Projectiles &prjs)
 	{
 		last_shot = glfwGetTime();
 		float base_orientation = atan2(player_pos.y - y, player_pos.x - x); // Base angle towards the target
-		float spread_angle = M_PI / 2.0f; // 180 degrees (half-circle)
-		float angle_step = spread_angle / (bullet_count - 1); // Angle between each bullet
+		float spread_angle = bullet_spread / 180 * M_PI / 2.0f; // 180 degrees (half-circle)
+		float angle_step;
+		if (bullet_count > 1)
+			angle_step = spread_angle / (bullet_count - 1); // Angle between each bullet
+		else
+			angle_step = 0;
 
 		for (int i = 0; i < bullet_count; i++)
 		{
@@ -115,10 +122,26 @@ void Enemy::shoot(Projectiles &prjs)
 
 
 // Draw method - Renders the enemy
-void Enemy::draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height)
+void Enemy::draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height,
+				std::map<Direction, std::vector<GLuint> > out_textures)
 {
 	if (alive)
 	{
+		std::map<Direction, std::vector<GLuint> >::iterator it = out_textures.find(direction);
+		if (it != out_textures.end())
+		{
+			if (glfwGetTime() > last_change_texture + time_to_change_texture)
+			{
+				last_change_texture = glfwGetTime();
+				_cur_texture++;
+
+				if (_cur_texture >= it->second.size())
+				{
+					_cur_texture = 0;
+				}
+			}
+			texture = it->second[_cur_texture];
+		}
 		float cos_theta = cos(player_pos.orientation / 180 * M_PI);
 		float sin_theta = sin(player_pos.orientation / 180 * M_PI);
 		float new_x = (x - player_pos.x) * cos_theta - (y - player_pos.y) * sin_theta;
@@ -180,7 +203,8 @@ void Enemy::BFSMove(Map &map, double delta_time)
 			{cur_x - 1, cur_y}, // Up
 			{cur_x + 1, cur_y}, // Down
 			{cur_x, cur_y - 1}, // Left
-			{cur_x, cur_y + 1} // Right
+			{cur_x, cur_y + 1}, // Right
+			{cur_x, cur_y}
 		};
 		for (auto &dir: directions)
 		{
@@ -217,6 +241,39 @@ void Enemy::BFSMove(Map &map, double delta_time)
 			new_x = x;
 			new_y = y;
 		}
+		Direction new_direction = Direction::up;
+		float orientation;
+		if (length != 0.0f)
+		{
+			orientation = player_pos.orientation / 180 * M_PI - atan2(direction_x, direction_y);
+		} else
+		{
+			orientation = player_pos.orientation / 180 * M_PI - atan2(player_pos.x - x, player_pos.y - y);
+		}
+		while (orientation > M_PI)
+			orientation -= 2 * M_PI;
+		while (orientation < -M_PI)
+			orientation += 2 * M_PI;
+		if (orientation > -M_PI / 4 && orientation < M_PI / 4)
+			new_direction = Direction::up;
+		else if (orientation > -M_PI * 3 / 4 && orientation < -M_PI / 4)
+			new_direction = Direction::left;
+		else if (orientation > M_PI / 4 && orientation < M_PI * 3 / 4)
+			new_direction = Direction::right;
+		else if (orientation < -M_PI * 3 / 4 || orientation > M_PI * 3 / 4)
+			new_direction = Direction::down;
+		if (length == 0.0f)
+		{
+			new_direction = (Direction)((int)new_direction + 4);
+		}
+
+		if (new_direction != direction)
+		{
+			_cur_texture = 0;
+			last_change_texture = glfwGetTime();
+		}
+		direction = new_direction;
+
 		x = new_x;
 		y = new_y;
 	}
@@ -225,7 +282,7 @@ void Enemy::BFSMove(Map &map, double delta_time)
 
 void Enemy::check_for_hit(Projectiles &prjs)
 {
-	current_hp -= prjs.get_enemy_damage(x, y, size);
+	current_hp -= prjs.get_enemy_damage(x, y, hit_box);
 	hp_bar.setCurrentHP(current_hp);
 	hp_bar.setMaxHP(max_hp);
 	if (current_hp < 0)

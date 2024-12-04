@@ -1,0 +1,74 @@
+{
+  "up": [
+    "textures/enemy_textures/Slime1/08_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/09_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/10_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/11_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/12_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/13_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/14_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/15_Slime1_Run_full.png"
+  ],
+  "still_up": [
+    "textures/enemy_textures/Slime1/06_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/07_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/08_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/09_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/10_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/11_Slime1_Idle_full.png"
+  ],
+  "down": [
+    "textures/enemy_textures/Slime1/00_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/01_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/02_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/03_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/04_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/05_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/06_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/07_Slime1_Run_full.png"
+  ],
+  "still_down": [
+    "textures/enemy_textures/Slime1/00_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/01_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/02_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/03_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/04_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/05_Slime1_Idle_full.png"
+  ],
+  "left": [
+    "textures/enemy_textures/Slime1/16_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/17_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/18_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/19_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/20_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/21_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/22_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/23_Slime1_Run_full.png"
+  ],
+  "still_left": [
+    "textures/enemy_textures/Slime1/12_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/13_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/14_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/15_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/16_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/17_Slime1_Idle_full.png"
+  ],
+  "right": [
+    "textures/enemy_textures/Slime1/24_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/25_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/26_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/27_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/28_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/29_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/30_Slime1_Run_full.png",
+    "textures/enemy_textures/Slime1/31_Slime1_Run_full.png"
+  ],
+  "still_right": [
+    "textures/enemy_textures/Slime1/18_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/19_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/20_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/21_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/22_Slime1_Idle_full.png",
+    "textures/enemy_textures/Slime1/23_Slime1_Idle_full.png"
+  ]
+}

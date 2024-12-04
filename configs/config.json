@@ -1,0 +1,60 @@
+{
+	"RATIO": 1,
+	"player":
+	{
+		"shoot_delay": 0.1,
+		"bullet_count": 4,
+		"velocity": 400,
+		"rotation_speed": 200,
+		"size": 100,
+		"hit_box": 25,
+		"teleport_delay": 1,
+		"nova_delay": 0.1,
+		"texture_name": "textures/player.png",
+		"texture_config_path": "configs/player_textures_config.json"
+	},
+	"enemies": {
+		"Pumpkin": {
+			"speed": 100,
+			"health": 10,
+			"damage": 10,
+			"bullet_count": 5,
+			"spread": 90,
+			"size": 100,
+			"active_distance": 640,
+			"bullet_speed": 100,
+			"bullet_duration": 3,
+			"shoot_delay": 1,
+			"texture_name": "textures/pumpkin.png",
+			"texture_path": "configs/Slime2_textures.json"
+		},
+		"Slime3": {
+			"speed": 100,
+			"health": 10,
+			"damage": 50,
+			"bullet_count": 1,
+			"spread": 5,
+			"size": 100,
+			"active_distance": 640,
+			"bullet_speed": 400,
+			"bullet_duration": 3,
+			"shoot_delay": 1,
+			"texture_name": "textures/pumpkin.png",
+			"texture_path": "configs/Slime3_textures.json"
+		},
+		"Slime1": {
+			"speed": 100,
+			"health": 10,
+			"damage": 50,
+			"bullet_count": 3,
+			"spread": 30,
+			"size": 100,
+			"active_distance": 640,
+			"bullet_speed": 400,
+			"bullet_duration": 3,
+			"shoot_delay": 1,
+			"texture_name": "textures/pumpkin.png",
+			"texture_path": "configs/Slime1_textures.json"
+		}
+	}
+}

@@ -5,6 +5,7 @@
 #include "projectile.hpp"
 #include "map.hpp"
 #include "hp_bar.hpp"
+#include "texture_reader.hpp"
 
 
 typedef struct PlayerPosition {
@@ -36,6 +37,11 @@ private:
 	EnemyType type;
 	PlayerPosition_T player_pos;
 	float active_distance;
+	Direction direction;
+	int _cur_texture;
+	double time_to_change_texture;
+	double last_change_texture;
+	int hit_box;
 	HPBar hp_bar;
 
 public:
@@ -87,7 +93,7 @@ public:
 	float setActiveDistance(float active_distance);
 
 	void shoot(Projectiles &prjs);
-	void draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height);
+	void draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height, std::map<Direction, std::vector<GLuint>> out_textures);
 	void move(Map &map, double delta_time);
 	void BFSMove(Map &map, double delta_time);
 	void check_for_hit(Projectiles &prjs);

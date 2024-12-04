@@ -5,7 +5,8 @@
 
 Player::Player()
 	: _x(0.0f), _y(0.0f), _orientation(0.0f), _velocity(5.0f), _rotation_speed(5.0f), _fps(60.0f), _shoot_delay(0.1),
-	_teleport_delay(1), _bullet_count(1), _bullet_speed(200),_accuracy(60), _bullet_lifetime(1), _max_hp(1000), _cur_hp(1000), nova_delay(2),last_nova(0), nova_count(20), hp_bar(32,32,3)
+	_teleport_delay(1), _bullet_count(1), _bullet_speed(200), _accuracy(60), _bullet_lifetime(1), _max_hp(1000),
+	_cur_hp(1000), nova_delay(2), last_nova(0), nova_count(20), hp_bar(32, 32, 3)
 {
 	_texture = loadTexture(player_texture);
 	std::vector<GLuint> base_textures = {_texture};
@@ -94,6 +95,7 @@ void Player::setFps(float fps)
 {
 	_fps = fps;
 }
+
 float Player::getCurHP()
 {
 	return _cur_hp;
@@ -183,7 +185,7 @@ void Player::full_move(Map &map, int up, int right, int rotate_right, double del
 {
 	double dist = _velocity * delta_time;
 	if (up and right)
-		 dist /= M_SQRT2;
+		dist /= M_SQRT2;
 
 	double new_x = _x + up * (dist * cos(_orientation * PI / 180.0f));
 	new_x += right * (dist * cos((_orientation + 90.0f) * PI / 180.0f));
@@ -208,7 +210,7 @@ void Player::full_move(Map &map, int up, int right, int rotate_right, double del
 	else if (up > 0)
 		new_direction = Direction::up;
 	else
-		new_direction = Direction((int)direction % 4 + 4);
+		new_direction = Direction((int) direction % 4 + 4);
 	if (new_direction != direction)
 	{
 		_cur_texture = 0;
@@ -216,7 +218,6 @@ void Player::full_move(Map &map, int up, int right, int rotate_right, double del
 	}
 	direction = new_direction;
 	move(new_x, new_y, map);
-
 }
 
 void Player::draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height)
@@ -224,7 +225,7 @@ void Player::draw(GLuint shader_program, GLuint VAO, int screen_width, int scree
 	if (glfwGetTime() > last_change_texture + time_to_change_texture)
 	{
 		last_change_texture = glfwGetTime();
-		_cur_texture ++;
+		_cur_texture++;
 		if (_cur_texture >= textures[direction].size())
 		{
 			_cur_texture = 0;
@@ -237,8 +238,7 @@ void Player::draw(GLuint shader_program, GLuint VAO, int screen_width, int scree
 	renderTexture(shader_program, hp_bar.getContourTexture(), VAO, 0, -hit_box / 2,
 				180, screen_width, screen_height, _size);
 	renderTexture(shader_program, hp_bar.getRedTexture(), VAO, 0, -hit_box / 2,
-			180, screen_width, screen_height, _size);
-
+				180, screen_width, screen_height, _size);
 }
 
 void Player::update_cursor(int x, int y)
@@ -247,9 +247,6 @@ void Player::update_cursor(int x, int y)
 	_cursor.y = _y - (sin((_orientation + 90.0f) * PI / 180.0f) * x + cos((_orientation + 90.0f) * PI / 180.0f) * y);
 	// _cursor.x = 0;
 }
-
-
-
 
 
 int Player::getCursorX() const
@@ -295,21 +292,25 @@ void Player::setBulletLifetime(float lifetime)
 
 void Player::shoot(Projectiles &projs)
 {
-	if ((int)direction >= 4)
+	if ((int) direction >= 4)
 	{
-		float orientation = atan2(_x - _cursor.x, _cursor.y - _y) + M_PI / 2.0f;
+		float orientation = atan2(_x - _cursor.x ,_y -  _cursor.y) + M_PI / 2.0f;
+		while (orientation < -M_PI)
+			orientation += 2 * M_PI;
+		while (orientation > M_PI)
+			orientation -= 2 * M_PI;
 		if (orientation > -M_PI / 4 && orientation < M_PI / 4)
 			direction = Direction::still_up;
-		else if (orientation > -M_PI* 3 / 4 && orientation < -M_PI / 4)
-			direction = Direction::still_left;
-		else if (orientation > M_PI / 4 && orientation < M_PI * 3 / 4)
+		else if (orientation > -M_PI * 3 / 4 && orientation < -M_PI / 4)
 			direction = Direction::still_right;
+		else if (orientation > M_PI / 4 && orientation < M_PI * 3 / 4)
+			direction = Direction::still_left;
 		else if (orientation < -M_PI * 3 / 4 || orientation > M_PI * 3 / 4)
 			direction = Direction::still_down;
 	}
 	if (glfwGetTime() > _shoot_delay + _last_shot)
 	{
-		for ( int i =0; i < _bullet_count; i++)
+		for (int i = 0; i < _bullet_count; i++)
 		{
 			_last_shot = glfwGetTime();
 			float offset = (std::rand() % _accuracy) - _accuracy / 2;
@@ -318,8 +319,8 @@ void Player::shoot(Projectiles &projs)
 
 
 			Projectile new_proj = {
-					_x, _y, orientation, true, _bullet_speed, ProjectileType::player_proj,
-					glfwGetTime(), _bullet_lifetime, 1
+				_x, _y, orientation, true, _bullet_speed, ProjectileType::player_proj,
+				glfwGetTime(), _bullet_lifetime, 1
 			};
 			projs.add_projectile(new_proj);
 		}
@@ -330,12 +331,13 @@ void Player::shoot_nova(Projectiles &projs)
 {
 	if (glfwGetTime() > nova_delay + last_nova)
 	{
-		for ( int i =0; i < nova_count; i++)
+		for (int i = 0; i < nova_count; i++)
 		{
 			float orientation = 2 * M_PI / nova_count * i;
 			Projectile new_proj = {
-					static_cast<float>(_cursor.x), static_cast<float>(_cursor.y), orientation, true, _bullet_speed, ProjectileType::player_proj,
-					glfwGetTime(), _bullet_lifetime, 1
+				static_cast<float>(_cursor.x), static_cast<float>(_cursor.y), orientation, true, _bullet_speed,
+				ProjectileType::player_proj,
+				glfwGetTime(), _bullet_lifetime, 1
 			};
 			projs.add_projectile(new_proj);
 		}
@@ -390,31 +392,115 @@ void Player::set_up_textures(std::vector<GLuint> ups)
 {
 	textures.insert_or_assign(Direction::up, ups);
 }
+
 void Player::set_down_textures(std::vector<GLuint> downs)
 {
 	textures.insert_or_assign(Direction::down, downs);
 }
+
 void Player::set_left_textures(std::vector<GLuint> lefts)
 {
 	textures.insert_or_assign(Direction::left, lefts);
 }
+
 void Player::set_right_textures(std::vector<GLuint> rights)
 {
 	textures.insert_or_assign(Direction::right, rights);
 }
+
 void Player::set_still_up_textures(std::vector<GLuint> rights)
 {
 	textures.insert_or_assign(Direction::still_up, rights);
 }
+
 void Player::set_still_down_textures(std::vector<GLuint> rights)
 {
 	textures.insert_or_assign(Direction::still_down, rights);
 }
+
 void Player::set_still_right_textures(std::vector<GLuint> rights)
 {
 	textures.insert_or_assign(Direction::still_right, rights);
 }
+
 void Player::set_still_left_textures(std::vector<GLuint> rights)
 {
 	textures.insert_or_assign(Direction::still_left, rights);
+}
+
+void Player::set_all_textures(TextureManager text_conf)
+{
+	std::vector<std::string> text_names;
+	std::vector<GLuint> texts;
+
+	// Load textures for the "up" direction
+	text_names = text_conf.getTextures(Direction::up);
+	for (std::vector<std::string>::iterator it = text_names.begin(); it != text_names.end(); ++it)
+	{
+		texts.push_back(loadTexture(it->c_str()));
+	}
+	set_up_textures(texts);
+	texts.clear();
+
+	// Load textures for the "down" direction
+	text_names = text_conf.getTextures(Direction::down);
+	for (std::vector<std::string>::iterator it = text_names.begin(); it != text_names.end(); ++it)
+	{
+		texts.push_back(loadTexture(it->c_str()));
+	}
+	set_down_textures(texts);
+	texts.clear();
+
+	// Load textures for the "left" direction
+	text_names = text_conf.getTextures(Direction::left);
+	for (std::vector<std::string>::iterator it = text_names.begin(); it != text_names.end(); ++it)
+	{
+		texts.push_back(loadTexture(it->c_str()));
+	}
+	set_left_textures(texts);
+	texts.clear();
+
+	// Load textures for the "right" direction
+	text_names = text_conf.getTextures(Direction::right);
+	for (std::vector<std::string>::iterator it = text_names.begin(); it != text_names.end(); ++it)
+	{
+		texts.push_back(loadTexture(it->c_str()));
+	}
+	set_right_textures(texts);
+	texts.clear();
+
+	// Load textures for the "still_up" direction
+	text_names = text_conf.getTextures(Direction::still_up);
+	for (std::vector<std::string>::iterator it = text_names.begin(); it != text_names.end(); ++it)
+	{
+		texts.push_back(loadTexture(it->c_str()));
+	}
+	set_still_up_textures(texts);
+	texts.clear();
+
+	// Load textures for the "still_down" direction
+	text_names = text_conf.getTextures(Direction::still_down);
+	for (std::vector<std::string>::iterator it = text_names.begin(); it != text_names.end(); ++it)
+	{
+		texts.push_back(loadTexture(it->c_str()));
+	}
+	set_still_down_textures(texts);
+	texts.clear();
+
+	// Load textures for the "still_left" direction
+	text_names = text_conf.getTextures(Direction::still_left);
+	for (std::vector<std::string>::iterator it = text_names.begin(); it != text_names.end(); ++it)
+	{
+		texts.push_back(loadTexture(it->c_str()));
+	}
+	set_still_left_textures(texts);
+	texts.clear();
+
+	// Load textures for the "still_right" direction
+	text_names = text_conf.getTextures(Direction::still_right);
+	for (std::vector<std::string>::iterator it = text_names.begin(); it != text_names.end(); ++it)
+	{
+		texts.push_back(loadTexture(it->c_str()));
+	}
+	set_still_right_textures(texts);
 }
