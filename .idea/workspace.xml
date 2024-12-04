@@ -29,24 +29,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e2bb190-6a9f-418a-bf34-30700ad889c8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_reader/config_reader.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/config_reader/config_reader.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemies/enemies.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/enemies.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemies/enemies.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/enemies.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemy/enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemy/enemy.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemy/enemy.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemy/enemy.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game" beforeDir="false" afterPath="$PROJECT_DIR$/game" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/map/map.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player/player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player/player.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/script.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/text.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utils/text.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.hpp" afterDir="false" />
-    </list>
+    <list default="true" id="0e2bb190-6a9f-418a-bf34-30700ad889c8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -182,7 +165,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1733316529721</updated>
-      <workItem from="1733316532963" duration="13504000" />
+      <workItem from="1733316532963" duration="14131000" />
     </task>
     <servers />
   </component>
