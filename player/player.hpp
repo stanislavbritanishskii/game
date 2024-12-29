@@ -29,6 +29,7 @@ private:
 	float _bullet_speed;
 	int _accuracy;
 	float _bullet_lifetime;
+	float _bullet_damage;
 	double _last_shot;
 	double _last_teleport;
 	float _max_hp;
@@ -39,8 +40,12 @@ private:
 	Direction direction;
 	std::map<Direction, std::vector<GLuint> > textures;
 	int _cur_texture;
+	int _xp;
+	int _level;
 	double time_to_change_texture;
 	double last_change_texture;
+	double _time_to_level;
+	double _start_level_up;
 	int hit_box;
 	HPBar hp_bar;
 
@@ -62,6 +67,7 @@ public:
 	int getFps();
 
 	float getCurHP();
+	void setMaxHp(float maxHp);
 
 	void setX(float x);
 
@@ -137,6 +143,21 @@ public:
 	void set_still_right_textures(std::vector<GLuint> rights);
 	void set_still_left_textures(std::vector<GLuint> rights);
 	void set_all_textures(TextureManager text_conf);
+	void level_up();
+	void add_xp(int exp);
+	float getMaxHp() const;
+	float getShootDelay() const;
+	float getTeleportDelay() const;
+	float getBulletSpeed() const;
+	float getBulletLifetime() const;
+	float getBulletDamage() const;
+	float getNovaDelay() const;
+	int getNovaCount() const;
+	int getLevel() const;
+	int getXp() const;
+	int getHitBox() const;
+	int getXpToNextLevel() const;
+	int getAccuracy() const;
 
 };
 

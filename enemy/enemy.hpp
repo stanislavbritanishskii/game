@@ -28,6 +28,7 @@ private:
 	double last_shot;
 	float max_hp;
 	float current_hp;
+	int xp;
 	float bullet_spread;
 	float size;
 	bool alive;
@@ -52,7 +53,7 @@ public:
 	Enemy(float x, float y, float speed, float fps, float bullet_count, float bullet_speed,
 		  float bullet_duration, float bullet_damage, float shoot_delay, float max_hp,
 		  float current_hp, bool alive, ProjectileType projectile_type, GLuint texture,
-		  EnemyType type, float bullet_spread, float size, float active_distance);
+		  EnemyType type, float bullet_spread, float size, float active_distance, int xp);
 
 	// Getters
 	float getX() const;
@@ -96,7 +97,7 @@ public:
 	void draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height, std::map<Direction, std::vector<GLuint>> out_textures);
 	void move(Map &map, double delta_time);
 	void BFSMove(Map &map, double delta_time);
-	void check_for_hit(Projectiles &prjs);
+	int check_for_hit(Projectiles &prjs);
 };
 
 #endif

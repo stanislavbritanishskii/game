@@ -25,6 +25,7 @@ public:
 				GLuint VAO, ConfigReader &conf);
 	~Enemies();
 	void addEnemy(float x, float y, EnemyType type);
-	void iterate(Map &my_map, Projectiles &prjcts, float x, float y, float orientation, double delta_time);
+	bool addEnemy(Map &my_map, float x, float y, EnemyType type);
+	int iterate(Map &my_map, Projectiles &prjcts, float x, float y, float orientation, double delta_time);
 };
 #endif

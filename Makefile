@@ -27,9 +27,10 @@ WHITE = \033[0;97m
 SRC_DIR := ./src
 OBJ_DIR	:= ./obj
 LIBS_DIR := libs
-VPATH =			./bar ./config_reader ./enemies ./enemy ./include ./libs ./map ./player ./projectile ./src ./texture_reader ./textures ./tile ./utils 
+VPATH =			./bar ./config_reader ./configs ./enemies ./enemy ./include ./libs ./map ./player ./projectile ./side_tab ./src ./texture_reader ./textures ./tile ./utils 
 SRCS=			$(shell find  ./bar -name "*.cpp")\
 			$(shell find  ./config_reader -name "*.cpp")\
+			$(shell find  ./configs -name "*.cpp")\
 			$(shell find  ./enemies -name "*.cpp")\
 			$(shell find  ./enemy -name "*.cpp")\
 			$(shell find  ./include -name "*.cpp")\
@@ -37,13 +38,14 @@ SRCS=			$(shell find  ./bar -name "*.cpp")\
 			$(shell find  ./map -name "*.cpp")\
 			$(shell find  ./player -name "*.cpp")\
 			$(shell find  ./projectile -name "*.cpp")\
+			$(shell find  ./side_tab -name "*.cpp")\
 			$(shell find  ./src -name "*.cpp")\
 			$(shell find  ./texture_reader -name "*.cpp")\
 			$(shell find  ./textures -name "*.cpp")\
 			$(shell find  ./tile -name "*.cpp")\
 			$(shell find  ./utils -name "*.cpp")\
 			
-INCLUDE =		 -I ./libs -I/usr/include/freetype2 -I ./bar -I ./config_reader -I ./enemies -I ./enemy -I ./include -I ./libs -I ./map -I ./player -I ./projectile -I ./src -I ./texture_reader -I ./textures -I ./tile -I ./utils 
+INCLUDE =		 -I ./libs -I/usr/include/freetype2 -I ./bar -I ./config_reader -I ./configs -I ./enemies -I ./enemy -I ./include -I ./libs -I ./map -I ./player -I ./projectile -I ./side_tab -I ./src -I ./texture_reader -I ./textures -I ./tile -I ./utils 
 OBJS	= $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 NAME := game
 

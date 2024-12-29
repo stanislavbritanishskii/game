@@ -112,7 +112,8 @@ Enemy Enemies::create_enemy(float x, float y, EnemyType type, float fps)
 				  type,
 				  data.spread,
 				  data.size,
-				  data.active_distance);
+				  data.active_distance,
+				  data.xp);
 		return res;
 
 }
@@ -146,9 +147,18 @@ void Enemies::addEnemy(float x, float y, EnemyType type)
 	enemies.push_back(create_enemy(x, y, type, _fps));
 }
 
-void Enemies::iterate(Map &my_map, Projectiles &prjcts, float x, float y, float orientation, double delta_time)
+bool Enemies::addEnemy(Map &my_map, float x, float y, EnemyType type)
+{
+	if (my_map.is_obstacle(x ,y))
+		return false;
+	enemies.push_back(create_enemy(x, y, type, _fps));
+	return true;
+}
+
+int Enemies::iterate(Map &my_map, Projectiles &prjcts, float x, float y, float orientation, double delta_time)
 {
 	int i =0;
+	int exp_gained = 0;
 	for (std::vector<Enemy>::iterator it = enemies.begin(); it != enemies.end(); it++)
 	{
 		it->setPlayerPosition(x, y, orientation);
@@ -158,8 +168,9 @@ void Enemies::iterate(Map &my_map, Projectiles &prjcts, float x, float y, float 
 			it->BFSMove(my_map, delta_time);
 			it->shoot(prjcts);
 			it->draw(shaderProgram, VAO, _screen_width, _screen_height, textures_by_type[it->getType()]);
-			it->check_for_hit(prjcts);
+			exp_gained +=  it->check_for_hit(prjcts);
 			// std::cout << i++ << std::endl;
 		}
 	}
+	return exp_gained;
 }

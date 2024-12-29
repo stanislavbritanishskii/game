@@ -22,6 +22,7 @@ struct EnemyData {
 	float shoot_delay;
 	std::string texture_name;
 	std::string texture_path;
+	int xp;
 };
 
 // PlayerData structure
@@ -33,11 +34,21 @@ struct PlayerData {
 	float size;
 	float bullet_speed;
 	float bullet_duration;
+	int accuracy;
 	int bullet_count;
 	float nova_delay;
 	int hit_box;
+	int hp;
 	std::string texture_name;
 	std::string texture_config_path;
+};
+
+struct MapData {
+	int width;
+	int height;
+	float enemies_per_tile;
+	int obstacle_density;
+	int tile_size;
 };
 
 // ConfigReader class
@@ -45,6 +56,7 @@ class ConfigReader {
 private:
 	std::unordered_map<EnemyType, EnemyData> enemies_data;
 	PlayerData player_data;
+	MapData map_data;
 	float ratio;
 
 	EnemyType stringToEnemyType(const std::string& str) {
@@ -77,6 +89,7 @@ public:
 			data.health = value["health"].get<float>();
 			data.damage = value["damage"].get<float>();
 			data.bullet_count = value["bullet_count"].get<int>();
+			data.xp = value["xp"].get<int>();
 			data.spread = value["spread"].get<float>();
 			data.size = value["size"].get<float>() * ratio;
 			data.active_distance = value["active_distance"].get<float>() * ratio;
@@ -89,6 +102,15 @@ public:
 		}
 
 		// Load player data
+		if (json_data.contains("map"))
+		{
+			auto& map_json = json_data["map"];
+			map_data.width = map_json["width"].get<int>();
+			map_data.height = map_json["height"].get<int>();
+			map_data.enemies_per_tile = map_json["enemies_per_tile"].get<float>();
+			map_data.obstacle_density = map_json["obstacle_density"].get<float>();
+			map_data.tile_size = map_json["tile_size"].get<float>();
+		}
 		if (json_data.contains("player")) {
 			auto& player_json = json_data["player"];
 			player_data.shoot_delay = player_json["shoot_delay"].get<float>();
@@ -98,6 +120,8 @@ public:
 			player_data.bullet_speed = player_json["velocity"].get<float>() * ratio;
 			player_data.bullet_duration = player_json["teleport_delay"].get<float>();
 			player_data.bullet_count = player_json["bullet_count"].get<int>();
+			player_data.hp = player_json["hp"].get<int>();
+			player_data.accuracy = player_json["accuracy"].get<int>();
 			player_data.teleport_delay = player_json["teleport_delay"].get<float>();
 			player_data.nova_delay = player_json["nova_delay"].get<float>();
 			player_data.hit_box = player_json["hit_box"].get<int>();
@@ -116,6 +140,9 @@ public:
 	// Get player data
 	const PlayerData& getPlayerData() const {
 		return player_data;
+	}
+	const MapData& getMapData() const {
+		return map_data;
 	}
 
 	// Get ratio

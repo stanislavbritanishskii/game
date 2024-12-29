@@ -6,7 +6,7 @@
 #define TEST_MAP 0
 
 
-Map::Map(int screen_width, int screen_height, int map_width, int map_height, GLFWwindow *window, GLuint texture, GLuint shader, GLuint VAO)
+Map::Map(int screen_width, int screen_height, int map_width, int map_height, GLFWwindow *window, GLuint texture, GLuint shader, GLuint VAO, float obstacle_density)
 	: screen_width(screen_width), screen_height(screen_height),
 	map_width(map_width), map_height(map_height),
 	tile_size(32), // Assuming default tile size
@@ -78,7 +78,7 @@ Map::Map(int screen_width, int screen_height, int map_width, int map_height, GLF
 			// std::cout <<"\rcreating map "<< ((float)(i * map_width + j) * 100) / (map_height * map_width) << "%" << std::flush;
 			glfwPollEvents();
 			// Randomly assign TileTypes
-			if (std::rand() % 3 > 0)
+			if (std::rand() % 100 + 1 > obstacle_density)
 				terrain[i][j] = normal;
 			else
 			{

@@ -19,7 +19,7 @@ Enemy::Enemy() : x(0.0f), y(0.0f), speed(0.0f), fps(60.0f), bullet_count(0.0f),
 Enemy::Enemy(float x, float y, float speed, float fps, float bullet_count, float bullet_speed,
 			float bullet_duration, float bullet_damage, float shoot_delay, float max_hp,
 			float current_hp, bool alive, ProjectileType projectile_type, GLuint texture,
-			EnemyType type, float bullet_spread, float size, float active_distance) : x(x), y(y), speed(speed),
+			EnemyType type, float bullet_spread, float size, float active_distance, int xp) : x(x), y(y), speed(speed),
 																					fps(fps),
 																					bullet_count(bullet_count),
 																					bullet_speed(bullet_speed),
@@ -35,7 +35,7 @@ Enemy::Enemy(float x, float y, float speed, float fps, float bullet_count, float
 																					last_shot(0), size(size),
 																					active_distance(active_distance),
 																					hp_bar(size, size, size / 10),
-																					direction(Direction::up)
+																					direction(Direction::up), xp(xp)
 {
 	player_pos.x = 0;
 	player_pos.y = 0;
@@ -280,11 +280,15 @@ void Enemy::BFSMove(Map &map, double delta_time)
 }
 
 
-void Enemy::check_for_hit(Projectiles &prjs)
+int Enemy::check_for_hit(Projectiles &prjs)
 {
 	current_hp -= prjs.get_enemy_damage(x, y, hit_box);
 	hp_bar.setCurrentHP(current_hp);
 	hp_bar.setMaxHP(max_hp);
 	if (current_hp < 0)
+	{
 		alive = false;
+		return xp;
+	}
+	return 0;
 }

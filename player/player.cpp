@@ -6,7 +6,7 @@
 Player::Player()
 	: _x(0.0f), _y(0.0f), _orientation(0.0f), _velocity(5.0f), _rotation_speed(5.0f), _fps(60.0f), _shoot_delay(0.1),
 	_teleport_delay(1), _bullet_count(1), _bullet_speed(200), _accuracy(60), _bullet_lifetime(1), _max_hp(1000),
-	_cur_hp(1000), nova_delay(2), last_nova(0), nova_count(20), hp_bar(32, 32, 3)
+	_cur_hp(1000), nova_delay(2), last_nova(0), nova_count(20), hp_bar(32, 32, 3), _level(0), _xp(0), _bullet_damage(1)
 {
 	_texture = loadTexture(player_texture);
 	std::vector<GLuint> base_textures = {_texture};
@@ -100,6 +100,13 @@ float Player::getCurHP()
 {
 	return _cur_hp;
 }
+
+void Player::setMaxHp(float maxHp)
+{
+	_max_hp = maxHp;
+	_cur_hp = maxHp;
+}
+
 
 // Rotate left by decreasing the orientation, considering FPS
 void Player::rotate_left()
@@ -222,7 +229,8 @@ void Player::full_move(Map &map, int up, int right, int rotate_right, double del
 
 void Player::draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height)
 {
-	if (glfwGetTime() > last_change_texture + time_to_change_texture)
+	double cur_time = glfwGetTime();
+	if (cur_time > last_change_texture + time_to_change_texture)
 	{
 		last_change_texture = glfwGetTime();
 		_cur_texture++;
@@ -239,6 +247,7 @@ void Player::draw(GLuint shader_program, GLuint VAO, int screen_width, int scree
 				180, screen_width, screen_height, _size);
 	renderTexture(shader_program, hp_bar.getRedTexture(), VAO, 0, -hit_box / 2,
 				180, screen_width, screen_height, _size);
+
 }
 
 void Player::update_cursor(int x, int y)
@@ -320,7 +329,7 @@ void Player::shoot(Projectiles &projs)
 
 			Projectile new_proj = {
 				_x, _y, orientation, true, _bullet_speed, ProjectileType::player_proj,
-				glfwGetTime(), _bullet_lifetime, 1
+				glfwGetTime(), _bullet_lifetime, _bullet_damage
 			};
 			projs.add_projectile(new_proj);
 		}
@@ -376,7 +385,7 @@ void Player::check_for_hit(Projectiles &prjs)
 	_cur_hp -= prjs.get_player_damage(_x, _y, hit_box);
 	hp_bar.setCurrentHP(_cur_hp);
 	hp_bar.setMaxHP(_max_hp);
-	if (_cur_hp < 0)
+	if (_cur_hp <= 0)
 	{
 		exit(0);
 	}
@@ -503,4 +512,110 @@ void Player::set_all_textures(TextureManager text_conf)
 		texts.push_back(loadTexture(it->c_str()));
 	}
 	set_still_right_textures(texts);
+}
+
+void Player::level_up()
+{
+	_level++;
+	int val = std::rand() % 7;
+	if (val == 0)
+	{
+		_max_hp += 10;
+	}
+	else if (val == 1)
+	{
+		_velocity += 10;
+	}
+	else if (val == 2)
+	{
+		_shoot_delay -= 0.1;
+		if (_shoot_delay < 0.1)
+			_shoot_delay = 0.1;
+	}
+	else if (val == 3)
+	{
+		_bullet_count += 1;
+	}
+	else if (val == 4)
+	{
+		_accuracy -= 1;
+		if (_accuracy < 1)
+			_accuracy = 1;
+	}
+	else if (val == 5)
+	{
+		_bullet_lifetime += 0.1;
+	}
+	else if (val == 6)
+	{
+		_bullet_damage += 1;
+	}
+	_cur_hp = _max_hp;
+	_start_level_up = glfwGetTime();
+}
+
+
+void Player::add_xp(int exp)
+{
+	_xp += exp;
+	while (_xp >= (_level + 1) * 10)
+	{
+		_xp -= (_level + 1) * 10;
+		level_up();
+	}
+}
+// Implementations of the missing getters
+
+float Player::getMaxHp() const {
+	return _max_hp;
+}
+
+float Player::getShootDelay() const {
+	return _shoot_delay;
+}
+
+float Player::getTeleportDelay() const {
+	return _teleport_delay;
+}
+
+float Player::getBulletSpeed() const {
+	return _bullet_speed;
+}
+
+float Player::getBulletLifetime() const {
+	return _bullet_lifetime;
+}
+
+float Player::getBulletDamage() const {
+	return _bullet_damage;
+}
+
+float Player::getNovaDelay() const {
+	return nova_delay;
+}
+
+int Player::getNovaCount() const {
+	return nova_count;
+}
+
+int Player::getLevel() const {
+	return _level;
+}
+
+int Player::getXp() const {
+	return _xp;
+}
+
+int Player::getHitBox() const {
+	return hit_box;
+}
+
+int Player::getXpToNextLevel() const
+{
+	return (_level + 1) * 10;
+}
+
+int Player::getAccuracy() const
+{
+	return _accuracy;
 }

@@ -29,7 +29,22 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e2bb190-6a9f-418a-bf34-30700ad889c8" name="Changes" comment="" />
+    <list default="true" id="9addee1d-92c0-4903-860b-e97c98f6e0d3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_reader/config_reader.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/config_reader/config_reader.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/configs/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/enemies.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/enemies.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/enemies.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/enemies.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemy/enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemy/enemy.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemy/enemy.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemy/enemy.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game" beforeDir="false" afterPath="$PROJECT_DIR$/game" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/map/map.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/map/map.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player/player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player/player.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,14 +91,14 @@
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2024" />
-    <option name="minorVersion" value="3" />
+    <option name="minorVersion" value="3.1.1" />
     <option name="productBranch" value="Classic" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
   "associatedIndex": 5
 }]]></component>
-  <component name="ProjectId" id="2pkiZ9DTnv9l9NOjCMs4qAnjfUx" />
+  <component name="ProjectId" id="2qu0nfLmNRwYF2FDV5zcdD4J5yO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -160,12 +175,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0e2bb190-6a9f-418a-bf34-30700ad889c8" name="Changes" comment="" />
-      <created>1733316529721</created>
+      <changelist id="9addee1d-92c0-4903-860b-e97c98f6e0d3" name="Changes" comment="" />
+      <created>1735497321582</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1733316529721</updated>
-      <workItem from="1733316532963" duration="14131000" />
+      <updated>1735497321582</updated>
+      <workItem from="1735497323693" duration="8947000" />
     </task>
     <servers />
   </component>

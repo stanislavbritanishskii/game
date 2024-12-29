@@ -28,7 +28,7 @@ private:
 	GLuint shader_program;
 	std::vector<std::pair<int, int>> chosen_tiles;
 public:
-	Map(int screen_width, int screen_height, int map_width, int map_height, GLFWwindow *window, GLuint texture, GLuint shader, GLuint VAO);
+	Map(int screen_width, int screen_height, int map_width, int map_height, GLFWwindow *window, GLuint texture, GLuint shader, GLuint VAO, float obstacle_density);
 
 	~Map();
 

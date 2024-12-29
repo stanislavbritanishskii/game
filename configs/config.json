@@ -2,16 +2,26 @@
 	"RATIO": 1,
 	"player":
 	{
-		"shoot_delay": 0.1,
-		"bullet_count": 4,
-		"velocity": 400,
+		"shoot_delay": 0.2,
+		"bullet_count": 1,
+		"velocity": 40,
 		"rotation_speed": 200,
+		"accuracy": 20,
 		"size": 100,
 		"hit_box": 25,
-		"teleport_delay": 1,
-		"nova_delay": 0.1,
+		"hp": 50,
+		"teleport_delay": 2,
+		"nova_delay": 2,
 		"texture_name": "textures/player.png",
 		"texture_config_path": "configs/player_textures_config.json"
+	},
+	"map":
+	{
+		"width": 100,
+		"height": 100,
+		"enemies_per_tile": 0.0005,
+		"obstacle_density": 20,
+		"tile_size": 32
 	},
 	"enemies": {
 		"Pumpkin": {
@@ -26,7 +36,8 @@
 			"bullet_duration": 3,
 			"shoot_delay": 1,
 			"texture_name": "textures/pumpkin.png",
-			"texture_path": "configs/Slime2_textures.json"
+			"texture_path": "configs/Slime2_textures.json",
+			"xp": 10
 		},
 		"Slime3": {
 			"speed": 100,
@@ -40,7 +51,8 @@
 			"bullet_duration": 3,
 			"shoot_delay": 1,
 			"texture_name": "textures/pumpkin.png",
-			"texture_path": "configs/Slime3_textures.json"
+			"texture_path": "configs/Slime3_textures.json",
+			"xp": 10
 		},
 		"Slime1": {
 			"speed": 100,
@@ -54,7 +66,8 @@
 			"bullet_duration": 3,
 			"shoot_delay": 1,
 			"texture_name": "textures/pumpkin.png",
-			"texture_path": "configs/Slime1_textures.json"
+			"texture_path": "configs/Slime1_textures.json",
+			"xp": 10
 		}
 	}
 }

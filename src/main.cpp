@@ -12,6 +12,7 @@
 #include <iomanip>
 #include "config_reader.hpp"
 #include "texture_reader.hpp"
+#include "side_tab.hpp"
 
 
 
@@ -86,9 +87,10 @@ int main()
 
 	ConfigReader config;
 	config.loadFromJSON("configs/config.json");
+	int side_tab_width = 200 * RATIO;
 	int width = 800 * RATIO;
 	int height = 800 * RATIO;
-	GLFWwindow *window = init_glfw_window(width, height);
+	GLFWwindow *window = init_glfw_window(width + side_tab_width, height);
 
 	// Compile shaders
 	GLuint shaderProgram = init_shader();
@@ -98,11 +100,14 @@ int main()
 	setupVertices(VAO, VBO, EBO);
 
 	// Main loop
-	int map_width = 1000;
-	int map_height =1000;
-	float enemies_per_tile = 0.003;
-	int tile_size = 32 * RATIO;
+	MapData map_data = config.getMapData();
+	int map_width = map_data.width;
+	int map_height = map_data.height;
+	float enemies_per_tile = map_data.enemies_per_tile;
+	int tile_size = map_data.tile_size * RATIO;
+	SideTab side_tab(side_tab_width, height, "DejaVuSans.ttf", 20);
 	PlayerData playerData = config.getPlayerData();
+
 	TextureManager player_textures;
 	player_textures.loadFromFile(playerData.texture_config_path);
 	Player player;
@@ -124,10 +129,12 @@ int main()
 	GLuint texture = loadTexture(player_texture);
 	player.setNovaDelay(playerData.nova_delay);
 	player.setHitBox(playerData.hit_box);
-	Map my_map(width, height, map_width, map_height, window, texture, shaderProgram, VAO);
+	player.setMaxHp(playerData.hp);
+	player.setAccuracy(playerData.accuracy);
+	Map my_map(width, height, map_width, map_height, window, texture, shaderProgram, VAO, map_data.obstacle_density);
 	my_map.setTileSize(tile_size);
 
-	player.setAccuracy(10);
+
 	player.setBulletSpeed(400 * RATIO);
 	Enemies enemies(player.getX(), player.getY(), player.getOrientation(), fps ,width, height, shaderProgram, VAO, config);
 	Projectiles prjcts(0,0,0,shaderProgram, VAO, width, height, 32 * RATIO, 60);
@@ -142,29 +149,28 @@ int main()
 	for (int i =0; i < map_height * map_width * enemies_per_tile; i++)
 		// enemies.push_back(Enemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::pumpkin_proj, pumpkin_tex, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
 	{
-		enemies.addEnemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, pumpkin);
-		enemies.addEnemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime3);
-		enemies.addEnemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime1);
+		while ( ! enemies.addEnemy(my_map, (std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, pumpkin));
+		while ( ! enemies.addEnemy(my_map, (std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime3));
+		while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime1));
 	}
 
 	std::cout << std::endl;
 	std::cout << std::fixed << std::setprecision(1);
 	while (!glfwWindowShouldClose(window))
 	{
-		current_time = glfwGetTime();
-		while (glfwGetTime() < next_frame_time)
-		{
-			std::this_thread::sleep_for(std::chrono::duration<double>((lastTime + frame_duration - current_time) / 10));
-			glfwPollEvents();
+		glViewport(0, 0, width, height);
 
-		}
 		current_time = glfwGetTime();
 		delta_time = current_time - lastTime;
 		fps = 1 / delta_time;
 		// std::cout << "\r\033[2Kfps: "<< fps<<std::flush;
 		lastTime = current_time;
 		next_frame_time = lastTime + frame_duration;
-
+		while (glfwGetTime() < next_frame_time - frame_duration / 2)
+		{
+			std::this_thread::sleep_for(std::chrono::duration<double>((lastTime + frame_duration - current_time) / 10));
+			glfwPollEvents();
+		}
 		glfwPollEvents();
 
 		// Clear the screen
@@ -178,7 +184,7 @@ int main()
 		my_map.drawMap(shaderProgram, VAO);
 		player.draw(shaderProgram, VAO, width, height);
 		player.check_for_hit(prjcts);
-		enemies.iterate(my_map, prjcts, player.getX(), player.getY(), player.getOrientation(), delta_time);
+		player.add_xp( enemies.iterate(my_map, prjcts, player.getX(), player.getY(), player.getOrientation(), delta_time));
 		// for (auto &enemy : enemies)
 		// {
 		// 	enemy.setPlayerPosition(player.getX(), player.getY(), player.getOrientation());
@@ -196,7 +202,20 @@ int main()
 		prjcts.setOrientation(player.getOrientation());
 		prjcts.move(my_map, current_time, delta_time);
 		prjcts.draw();
-		// Swap buffers
+
+
+		while (glfwGetTime() < next_frame_time)
+		{
+			std::this_thread::sleep_for(std::chrono::duration<double>((lastTime + frame_duration - current_time) / 10));
+			glfwPollEvents();
+		}
+		glViewport(width,0, side_tab_width, height);
+
+
+
+		side_tab.updateFps(fps);
+		side_tab.getPlayerParams(player);
+		side_tab.render(shaderProgram, VAO);
 		glfwSwapBuffers(window);
 	}
 
