@@ -85,7 +85,7 @@ void Enemy::setAlive(bool alive) { this->alive = alive; }
 void Enemy::setProjectileType(ProjectileType projectile_type) { this->projectile_type = projectile_type; }
 void Enemy::setTexture(GLuint texture) { this->texture = texture; }
 void Enemy::setType(EnemyType type) { this->type = type; }
-float Enemy::setActiveDistance(float active_distance) { this->active_distance = active_distance; }
+void Enemy::setActiveDistance(float active_distance) { this->active_distance = active_distance; }
 
 void Enemy::setPlayerPosition(float player_x, float player_y, float player_or)
 {
@@ -115,6 +115,7 @@ void Enemy::shoot(Projectiles &prjs)
 				x, y, current_angle, true, bullet_speed, projectile_type,
 				glfwGetTime(), bullet_duration, bullet_damage
 			};
+
 			prjs.add_projectile(new_proj);
 		}
 	}

@@ -92,6 +92,7 @@ std::map<Direction, std::vector<GLuint>> load_textures(TextureManager text_conf)
 Enemy Enemies::create_enemy(float x, float y, EnemyType type, float fps)
 {
 		EnemyData data = config.getEnemyData(type);
+
 		Enemy res(x, y,
 				  data.speed,
 				  fps,
@@ -103,7 +104,7 @@ Enemy Enemies::create_enemy(float x, float y, EnemyType type, float fps)
 				  data.health,
 				  data.health,
 				  true,
-				  ProjectileType::pumpkin_proj,
+				  data.projectile_type,
 				  enemy_textures[EnemyType::pumpkin],
 				  type,
 				  data.spread,

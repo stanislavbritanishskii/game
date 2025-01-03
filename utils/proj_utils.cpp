@@ -7,5 +7,5 @@ bool is_player_projectile(ProjectileType type)
 
 bool is_enemy_projectile(ProjectileType type)
       {
-  return type == ProjectileType::pumpkin_proj;
+  return type != ProjectileType::player_proj ;
   }

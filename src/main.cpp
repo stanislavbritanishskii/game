@@ -13,6 +13,7 @@
 #include "config_reader.hpp"
 #include "texture_reader.hpp"
 #include "side_tab.hpp"
+#include "projectile_reader.hpp"
 
 
 
@@ -61,21 +62,24 @@ void processInput(GLFWwindow *window, Player* player, Map &map, int width, int h
 	// Mouse position tracking
 	double xpos, ypos;
 	glfwGetCursorPos(window, &xpos, &ypos);
-	player->update_cursor(xpos - width / 2, ypos - height / 2);
+	if (xpos < width && ypos < height)
+	{
+		player->update_cursor(xpos - width / 2, ypos - height / 2);
 
-	// Mouse button tracking
-	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
-		player->teleport(map);
-	}
-	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
-		player->shoot_nova(prjcts);
-	}
-	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
-		player->shoot(prjcts);
-		// prjcts->add_projectile(ProjectileType::player_proj, player->getX(), player->getY(), player->getOrientation() + atan2(ypos - height / 2, xpos - width / 2)/ M_PI * 180 + 90, 50);
-	}
-	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
-		std::cout << "Right Mouse Button Pressed" << std::endl;
+		// Mouse button tracking
+		if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+			player->teleport(map);
+		}
+		if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
+			player->shoot_nova(prjcts);
+		}
+		if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
+			player->shoot(prjcts);
+			// prjcts->add_projectile(ProjectileType::player_proj, player->getX(), player->getY(), player->getOrientation() + atan2(ypos - height / 2, xpos - width / 2)/ M_PI * 180 + 90, 50);
+		}
+		if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
+			std::cout << "Right Mouse Button Pressed" << std::endl;
+		}
 	}
 }
 
@@ -131,13 +135,15 @@ int main()
 	player.setHitBox(playerData.hit_box);
 	player.setMaxHp(playerData.hp);
 	player.setAccuracy(playerData.accuracy);
+	ProjectileReader prj_reader;
+	prj_reader.loadFromJSON("configs/projectiles.json");
 	Map my_map(width, height, map_width, map_height, window, texture, shaderProgram, VAO, map_data.obstacle_density);
 	my_map.setTileSize(tile_size);
 
 
 	player.setBulletSpeed(400 * RATIO);
 	Enemies enemies(player.getX(), player.getY(), player.getOrientation(), fps ,width, height, shaderProgram, VAO, config);
-	Projectiles prjcts(0,0,0,shaderProgram, VAO, width, height, 32 * RATIO, 60);
+	Projectiles prjcts(0,0,0,shaderProgram, VAO, width, height, 32 * RATIO, 60, prj_reader.get_data());
 	double lastTime = glfwGetTime();
 
 	float frame_duration = 1 / fps;

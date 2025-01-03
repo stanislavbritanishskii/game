@@ -37,7 +37,8 @@
 			"shoot_delay": 1,
 			"texture_name": "textures/pumpkin.png",
 			"texture_path": "configs/pumpkin_textures.json",
-			"xp": 10
+			"xp": 10,
+			"projectile_type" : "pumpkin_proj"
 		},
 		"Slime3": {
 			"speed": 100,
@@ -52,7 +53,8 @@
 			"shoot_delay": 1,
 			"texture_name": "textures/pumpkin.png",
 			"texture_path": "configs/Slime3_textures.json",
-			"xp": 10
+			"xp": 10,
+			"projectile_type" : "player_proj"
 		},
 		"Slime2": {
 			"speed": 100,
@@ -67,7 +69,8 @@
 			"shoot_delay": 1,
 			"texture_name": "textures/pumpkin.png",
 			"texture_path": "configs/Slime3_textures.json",
-			"xp": 10
+			"xp": 10,
+			"projectile_type" : "Slime2_proj"
 		},
 		"Slime1": {
 			"speed": 100,
@@ -82,7 +85,8 @@
 			"shoot_delay": 1,
 			"texture_name": "textures/pumpkin.png",
 			"texture_path": "configs/Slime1_textures.json",
-			"xp": 10
+			"xp": 10,
+			"projectile_type" : "Slime1_proj"
 		},
 		"Bee": {
 			"speed": 100,
@@ -97,7 +101,8 @@
 			"shoot_delay": 1,
 			"texture_name": "textures/pumpkin.png",
 			"texture_path": "configs/bee_textures.json",
-			"xp": 10
+			"xp": 10,
+			"projectile_type" : "Bee_proj"
 		},
 		"Wolf": {
 			"speed": 100,
@@ -112,7 +117,8 @@
 			"shoot_delay": 1,
 			"texture_name": "textures/pumpkin.png",
 			"texture_path": "configs/wolf_textures.json",
-			"xp": 10
+			"xp": 10,
+			"projectile_type" : "Wolf_proj"
 		},
 		"Orc": {
 			"speed": 100,
@@ -127,7 +133,8 @@
 			"shoot_delay": 1,
 			"texture_name": "textures/pumpkin.png",
 			"texture_path": "configs/orc_textures.json",
-			"xp": 10
+			"xp": 10,
+			"projectile_type" : "Orc_proj"
 		},
 		"Slime4": {
 			"speed": 100,
@@ -142,7 +149,8 @@
 			"shoot_delay": 1,
 			"texture_name": "textures/pumpkin.png",
 			"texture_path": "configs/other_slime_textures.json",
-			"xp": 10
+			"xp": 10,
+			"projectile_type" : "Slime4_proj"
 		}
 	}
 }

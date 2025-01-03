@@ -1,14 +1,16 @@
 #include "projectile.hpp"
 
 Projectiles::Projectiles(float x, float y, float orientation, GLuint shader, GLuint VAO, int screen_width,
-						int screen_height, int proj_size, float fps)
+						int screen_height, int proj_size, float fps, std::map<ProjectileType, ProjectileData> projectile_data)
 	: _x(x), _y(y), _orientation(orientation), shader(shader), VAO(VAO), screen_width(screen_width),
-	screen_height(screen_height), proj_size(proj_size), _fps(fps)
+	screen_height(screen_height), proj_size(proj_size), _fps(fps), _projectile_data(projectile_data)
 {
 	// Initialize textures for different projectile types
 	// Load texture for player projectile as an example
-	_textures[player_proj] = loadTexture(player_projectile); // Assuming you have a loadTexture function in utils.hpp
-	_textures[pumpkin_proj] = loadTexture(player_projectile);
+	for (std::map<ProjectileType, ProjectileData>::iterator it = _projectile_data.begin(); it != _projectile_data.end(); it++)
+	{
+		_projectile_data[it->first].texture = loadTexture(_projectile_data[it->first].texture_path.c_str());
+	}
 }
 
 Projectiles::~Projectiles()
@@ -72,8 +74,8 @@ void Projectiles::draw()
 		{
 			float new_x = (proj.x - this->_x) * cos_theta - (proj.y - this->_y) * sin_theta;
 			float new_y = (proj.x - this->_x) * sin_theta + (proj.y - this->_y) * cos_theta;
-			renderTexture(shader, _textures[proj.type], VAO, new_x, new_y,
-						_orientation + proj.orientation / M_PI * 180 + 50, screen_width, screen_height, proj_size);
+			renderTexture(shader, _projectile_data[proj.type].texture, VAO, new_x, new_y,
+						_orientation + proj.orientation / M_PI * 180 + _projectile_data[proj.type].rotation, screen_width, screen_height, proj_size);
 		}
 	}
 }

@@ -23,6 +23,7 @@ struct EnemyData {
 	std::string texture_name;
 	std::string texture_path;
 	int xp;
+	ProjectileType projectile_type;
 };
 
 // PlayerData structure
@@ -72,6 +73,20 @@ private:
 		// Add additional mappings here
 		throw std::invalid_argument("Unknown EnemyType: " + str);
 	}
+	ProjectileType stringToProjectileType(const std::string& str)
+	{
+		if (str == "player_proj") return ProjectileType::player_proj;
+		if (str == "pumpkin_proj") return ProjectileType::pumpkin_proj;
+		if (str == "Slime1_proj") return ProjectileType::Slime1_proj;
+		if (str == "Slime2_proj") return ProjectileType::Slime2_proj;
+		if (str == "Slime3_proj") return ProjectileType::Slime3_proj;
+		if (str == "Slime4_proj") return ProjectileType::Slime4_proj;
+		if (str == "Wolf_proj") return ProjectileType::Wolf_proj;
+		if (str == "Bee_proj") return ProjectileType::Bee_proj;
+		if (str == "Orc_proj") return ProjectileType::Orc_proj;
+
+		throw std::invalid_argument("Unknown ProjectileType: " + str);
+	}
 
 public:
 	// Load configuration from JSON
@@ -104,6 +119,7 @@ public:
 			data.shoot_delay = value["shoot_delay"].get<float>();
 			data.texture_name = value.contains("texture_name") ? value["texture_name"].get<std::string>() : "default";
 			data.texture_path= value.contains("texture_path") ? value["texture_path"].get<std::string>() : "default";
+			data.projectile_type = stringToProjectileType(value["projectile_type"].get<std::string>());
 			enemies_data[type] = data;
 		}
 

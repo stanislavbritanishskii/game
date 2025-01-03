@@ -91,7 +91,7 @@ public:
 	void setTexture(GLuint texture);
 	void setType(EnemyType type);
 	void setPlayerPosition(float player_x, float player_y, float player_or);
-	float setActiveDistance(float active_distance);
+	void setActiveDistance(float active_distance);
 
 	void shoot(Projectiles &prjs);
 	void draw(GLuint shader_program, GLuint VAO, int screen_width, int screen_height, std::map<Direction, std::vector<GLuint>> out_textures);

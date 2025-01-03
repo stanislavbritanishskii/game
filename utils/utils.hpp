@@ -36,7 +36,14 @@ enum EnemyType {
 
 enum ProjectileType {
 	player_proj,
-	pumpkin_proj
+	pumpkin_proj,
+	Slime1_proj,
+	Slime2_proj,
+	Slime3_proj,
+	Slime4_proj,
+	Wolf_proj,
+	Orc_proj,
+	Bee_proj
 };
 
 typedef struct Projectile {
@@ -51,6 +58,12 @@ typedef struct Projectile {
 	float damage;
 }Projectile_t;
 
+struct ProjectileData {
+	std::string texture_path;
+	float rotation;
+	GLuint texture;
+	ProjectileType projectile_type;
+};
 enum Direction {
 	up,
 	down,

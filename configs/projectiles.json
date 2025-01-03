@@ -1,0 +1,38 @@
+{
+  "player_proj" : {
+    "textures_path": "textures/projectile_textures/shit_arrow.png",
+    "texture_rotation" : 80.0
+  },
+  "pumpkin_proj" : {
+    "textures_path": "textures/bone.png",
+    "texture_rotation" : 135.0
+  },
+  "Slime1_proj" : {
+    "textures_path": "textures/bone.png",
+    "texture_rotation" : 50.0
+  },
+  "Slime2_proj" : {
+    "textures_path": "textures/bone.png",
+    "texture_rotation" : 50.0
+  },
+  "Slime3_proj": {
+    "textures_path": "textures/bone.png",
+    "texture_rotation" : 50.0
+  },
+  "Slime4_proj" : {
+    "textures_path": "textures/bone.png",
+    "texture_rotation" : 50.0
+  },
+  "Wolf_proj": {
+    "textures_path": "textures/bone.png",
+    "texture_rotation" : 50.0
+  },
+  "Orc_proj" : {
+    "textures_path": "textures/bone.png",
+    "texture_rotation" : 50.0
+  },
+  "Bee_proj" : {
+    "textures_path": "textures/bone.png",
+    "texture_rotation" : 50.0
+  }
+}

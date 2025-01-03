@@ -14,14 +14,15 @@ private:
 	GLuint VAO;
 	int screen_width;
 	int screen_height;
-	std::map<ProjectileType, GLuint> _textures;
+	std::map<ProjectileType, ProjectileData> _projectile_data;
+
 	std::vector<Projectile> _projectiles;
 	int proj_size;
 	float _fps;
 
 
 public:
-	Projectiles(float x, float y, float orientation, GLuint shader, GLuint VAO, int screen_width, int screen_height, int proj_size, float fps);
+	Projectiles(float x, float y, float orientation, GLuint shader, GLuint VAO, int screen_width, int screen_height, int proj_size, float fps, std::map<ProjectileType, ProjectileData> projectile_data);
 
 	~Projectiles();
 
