@@ -1,0 +1,46 @@
+{
+  "up": [
+    "textures/enemy_textures/orc/walk_up_000.png",
+    "textures/enemy_textures/orc/walk_up_001.png",
+    "textures/enemy_textures/orc/walk_up_002.png",
+    "textures/enemy_textures/orc/walk_up_003.png",
+    "textures/enemy_textures/orc/walk_up_004.png",
+    "textures/enemy_textures/orc/walk_up_005.png"
+  ],
+  "still_up": [
+    "textures/enemy_textures/orc/walk_up_000.png"
+  ],
+  "down": [
+    "textures/enemy_textures/orc/walk_down_000.png",
+    "textures/enemy_textures/orc/walk_down_001.png",
+    "textures/enemy_textures/orc/walk_down_002.png",
+    "textures/enemy_textures/orc/walk_down_003.png",
+    "textures/enemy_textures/orc/walk_down_004.png",
+    "textures/enemy_textures/orc/walk_down_005.png"
+  ],
+  "still_down": [
+    "textures/enemy_textures/orc/walk_down_000.png"
+  ],
+  "left": [
+    "textures/enemy_textures/orc/walk_left_000.png",
+    "textures/enemy_textures/orc/walk_left_001.png",
+    "textures/enemy_textures/orc/walk_left_002.png",
+    "textures/enemy_textures/orc/walk_left_003.png",
+    "textures/enemy_textures/orc/walk_left_004.png",
+    "textures/enemy_textures/orc/walk_left_005.png"
+  ],
+  "still_left": [
+    "textures/enemy_textures/orc/walk_left_000.png"
+  ],
+  "right": [
+    "textures/enemy_textures/orc/walk_right_000.png",
+    "textures/enemy_textures/orc/walk_right_001.png",
+    "textures/enemy_textures/orc/walk_right_002.png",
+    "textures/enemy_textures/orc/walk_right_003.png",
+    "textures/enemy_textures/orc/walk_right_004.png",
+    "textures/enemy_textures/orc/walk_right_005.png"
+  ],
+  "still_right": [
+    "textures/enemy_textures/orc/walk_right_000.png"
+  ]
+}

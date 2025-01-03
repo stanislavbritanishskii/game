@@ -26,7 +26,12 @@ inline const char * pumpkin_texture = "textures/pumpkin.png";
 enum EnemyType {
 	pumpkin,
 	Slime3,
-	Slime1
+	Slime2,
+	Slime1,
+	Slime4,
+	Wolf,
+	Orc,
+	Bee
 };
 
 enum ProjectileType {

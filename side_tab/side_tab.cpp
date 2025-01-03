@@ -31,6 +31,7 @@ void SideTab::getPlayerParams(Player &player)
 	player_level = player.getLevel();
 	player_exp = player.getXp();
 	player_accuracy = player.getAccuracy();
+	shots_per_second = 1 / player.getShootDelay();
 }
 
 // Update FPS
@@ -65,13 +66,18 @@ void SideTab::render(unsigned int shaderProgram, unsigned int VAO)
 	renderTextValue("SPD ", player_speed, x_offset, y_offset, shaderProgram, VAO);
 	y_offset -= 30;
 
+
+	renderTextValue("ACC ", player_accuracy, x_offset, y_offset, shaderProgram, VAO);
+	y_offset -= 30;
+
+	renderTextValue("SPS ", shots_per_second, x_offset, y_offset, shaderProgram, VAO);
+	y_offset -= 30;
+
 	renderTextValue("LVL ", player_level, x_offset, y_offset, shaderProgram, VAO);
 	y_offset -= 30;
 
 	renderTextValue("EXP ", player_exp, x_offset, y_offset, shaderProgram, VAO);
-	y_offset -= 30;
 
-	renderTextValue("ACC ", player_accuracy, x_offset, y_offset, shaderProgram, VAO);
 }
 
 

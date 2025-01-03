@@ -91,10 +91,6 @@ std::map<Direction, std::vector<GLuint>> load_textures(TextureManager text_conf)
 
 Enemy Enemies::create_enemy(float x, float y, EnemyType type, float fps)
 {
-
-		// Enemy res(x, y, PUMPKIN_SPEED, fps, PUMPKIN_BULLET_COUNT, PUMPKIN_BULLET_SPEED, PUMPKIN_BULLET_DURATION,
-		// 		PUMPKIN_DAMAGE, PUMPKIN_SHOOT_DELAY, PUMPKIN_HP, PUMPKIN_HP, true, ProjectileType::pumpkin_proj, enemy_textures[EnemyType::pumpkin],
-		// 		type, PUMPKIN_SPREAD, PUMPKIN_SIZE, PUMPKIN_ACTIVE_DISTANCE);
 		EnemyData data = config.getEnemyData(type);
 		Enemy res(x, y,
 				  data.speed,
@@ -127,7 +123,7 @@ Enemies::Enemies(float x, float y, float orientation, float fps, int screen_widt
 	player_pos.y = y;
 	player_pos.orientation = orientation;
 	TextureManager textures;
-	std::vector<EnemyType> allEnemies = { pumpkin, Slime3 , Slime1};
+	std::vector<EnemyType> allEnemies = { pumpkin, Slime3, Slime2, Slime1, Slime4, Wolf, Orc, Bee};
 
 	for (EnemyType type : allEnemies) {
 

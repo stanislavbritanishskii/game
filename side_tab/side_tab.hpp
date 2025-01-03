@@ -21,6 +21,7 @@ private:
 	float player_level;
 	float player_exp;
 	float fps;
+	float shots_per_second;
 	float player_accuracy;
 
 public:

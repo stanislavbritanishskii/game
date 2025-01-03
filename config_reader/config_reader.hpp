@@ -61,8 +61,14 @@ private:
 
 	EnemyType stringToEnemyType(const std::string& str) {
 		if (str == "Pumpkin") return EnemyType::pumpkin;
-		if (str == "Slime3") return EnemyType::Slime3;
 		if (str == "Slime1") return EnemyType::Slime1;
+		if (str == "Slime2") return EnemyType::Slime2;
+		if (str == "Slime3") return EnemyType::Slime3;
+		if (str == "Slime4") return EnemyType::Slime4;
+		if (str == "Orc") return EnemyType::Orc;
+		if (str == "Wolf") return EnemyType::Wolf;
+		if (str == "Bee") return EnemyType::Bee;
+
 		// Add additional mappings here
 		throw std::invalid_argument("Unknown EnemyType: " + str);
 	}

@@ -1,0 +1,26 @@
+{
+  "up": [
+    "textures/enemy_textures/pumpkin/pumpkin.png"
+  ],
+  "still_up": [
+    "textures/enemy_textures/pumpkin/pumpkin.png"
+  ],
+  "down": [
+    "textures/enemy_textures/pumpkin/pumpkin.png"
+  ],
+  "still_down": [
+    "textures/enemy_textures/pumpkin/pumpkin.png"
+  ],
+  "left": [
+    "textures/enemy_textures/pumpkin/pumpkin.png"
+  ],
+  "still_left": [
+    "textures/enemy_textures/pumpkin/pumpkin.png"
+  ],
+  "right": [
+    "textures/enemy_textures/pumpkin/pumpkin.png"
+  ],
+  "still_right": [
+    "textures/enemy_textures/pumpkin/pumpkin.png"
+  ]
+}

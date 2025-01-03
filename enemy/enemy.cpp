@@ -285,7 +285,7 @@ int Enemy::check_for_hit(Projectiles &prjs)
 	current_hp -= prjs.get_enemy_damage(x, y, hit_box);
 	hp_bar.setCurrentHP(current_hp);
 	hp_bar.setMaxHP(max_hp);
-	if (current_hp < 0)
+	if (current_hp <= 0)
 	{
 		alive = false;
 		return xp;
