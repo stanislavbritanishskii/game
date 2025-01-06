@@ -31,6 +31,18 @@
     "textures_path": "textures/bone.png",
     "texture_rotation" : 50.0
   },
+  "Orc1_proj" : {
+    "textures_path": "textures/bone.png",
+    "texture_rotation" : 50.0
+  },
+  "Orc2_proj" : {
+    "textures_path": "textures/bone.png",
+    "texture_rotation" : 50.0
+  },
+  "Orc3_proj" : {
+    "textures_path": "textures/bone.png",
+    "texture_rotation" : 50.0
+  },
   "Bee_proj" : {
     "textures_path": "textures/bone.png",
     "texture_rotation" : 50.0

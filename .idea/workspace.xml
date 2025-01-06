@@ -7,8 +7,8 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
     <option name="/Default/Housekeeping/OptionsDialog/SelectedPageId/@EntryValue" value="CppFormatterOtherPage" type="string" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
   <component name="CMakeProjectFlavorService">
     <option name="flavorId" value="CMakePlainProjectFlavor" />
@@ -32,541 +32,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4f192998-1ea0-4271-8a6d-cfb1d923f2f5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config_reader/config_reader.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/config_reader/config_reader.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configs/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/configs/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/player_textures_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/configs/player_textures_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/projectiles.json" beforeDir="false" afterPath="$PROJECT_DIR$/configs/projectiles.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enemies/enemies.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/enemies.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemy/enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemy/enemy.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemy/enemy.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/enemy/enemy.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game" beforeDir="false" afterPath="$PROJECT_DIR$/game" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectile/projectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/projectile/projectile.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectile/projectile.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/projectile/projectile.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player/player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectile_reader/projectile_reader.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/projectile_reader/projectile_reader.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Attack/Slime1_Attack_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Attack/Slime1_Attack_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Attack/Slime1_Attack_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Attack/Slime1_Attack_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Death/Slime1_Death_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Death/Slime1_Death_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Death/Slime1_Death_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Death/Slime1_Death_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Hurt/Slime1_Hurt_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Hurt/Slime1_Hurt_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Hurt/Slime1_Hurt_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Hurt/Slime1_Hurt_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Idle/Slime1_Idle_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Idle/Slime1_Idle_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Idle/Slime1_Idle_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Idle/Slime1_Idle_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Run/Slime1_Run_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Run/Slime1_Run_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Run/Slime1_Run_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Run/Slime1_Run_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Walk/Slime1_Walk_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Walk/Slime1_Walk_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Walk/Slime1_Walk_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime1/Walk/Slime1_Walk_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Attack/Slime2_Attack_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Attack/Slime2_Attack_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Attack/Slime2_Attack_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Attack/Slime2_Attack_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Death/Slime2_Death_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Death/Slime2_Death_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Death/Slime2_Death_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Death/Slime2_Death_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Hurt/Slime2_Hurt_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Hurt/Slime2_Hurt_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Hurt/Slime2_Hurt_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Hurt/Slime2_Hurt_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Idle/Slime2_Idle_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Idle/Slime2_Idle_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Idle/Slime2_Idle_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Idle/Slime2_Idle_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Run/Slime2_Run_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Run/Slime2_Run_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Run/Slime2_Run_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Run/Slime2_Run_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Walk/Slime2_Walk_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Walk/Slime2_Walk_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Walk/Slime2_Walk_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime2/Walk/Slime2_Walk_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Attack/Slime3_Attack_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Attack/Slime3_Attack_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Attack/Slime3_Attack_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Attack/Slime3_Attack_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Death/Slime3_Death_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Death/Slime3_Death_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Death/Slime3_Death_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Death/Slime3_Death_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Hurt/Slime3_Hurt_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Hurt/Slime3_Hurt_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Hurt/Slime3_Hurt_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Hurt/Slime3_Hurt_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Idle/Slime3_Idle_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Idle/Slime3_Idle_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Idle/Slime3_Idle_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Idle/Slime3_Idle_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Run/Slime3_Run_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Run/Slime3_Run_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Run/Slime3_Run_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Run/Slime3_Run_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Walk/Slime3_Walk_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Walk/Slime3_Walk_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Walk/Slime3_Walk_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/ASEPRITE/Slime3/Walk/Slime3_Walk_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/COUPON.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/COUPON.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Free Assets Craftpix!.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/License.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Attack/Slime1_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Attack/Slime1_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Attack/Slime1_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Death/Slime1_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Death/Slime1_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Death/Slime1_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Hurt/Slime1_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Hurt/Slime1_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Hurt/Slime1_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Idle/Slime1_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Idle/Slime1_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Idle/Slime1_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Run/Slime1_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Run/Slime1_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Run/Slime1_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Walk/Slime1_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Walk/Slime1_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime1/Walk/Slime1_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Attack/Slime2_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Attack/Slime2_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Attack/Slime2_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Death/Slime2_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Death/Slime2_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Death/Slime2_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Hurt/Slime2_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Hurt/Slime2_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Hurt/Slime2_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Idle/Slime2_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Idle/Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Idle/Slime2_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Run/Slime2_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Run/Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Run/Slime2_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Walk/Slime2_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Walk/Slime2_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime2/Walk/Slime2_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Attack/Slime3_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Attack/Slime3_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Attack/Slime3_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Death/Slime3_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Death/Slime3_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Death/Slime3_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Hurt/Slime3_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Hurt/Slime3_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Hurt/Slime3_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Idle/Slime3_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Idle/Slime3_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Idle/Slime3_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Run/Slime3_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Run/Slime3_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Run/Slime3_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Walk/Slime3_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Walk/Slime3_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PNG/Slime3/Walk/Slime3_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime1/Slime1_Attack.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime1/Slime1_Death.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime1/Slime1_Hurt.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime1/Slime1_Idle.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime1/Slime1_Run.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime1/Slime1_Walk.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime2/Slime2_Attack.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime2/Slime2_Death.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime2/Slime2_Hurt.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime2/Slime2_Idle.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime2/Slime2_Run.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime2/Slime2_Walk.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime3/Slime3_Attack.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime3/Slime3_Death.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime3/Slime3_Hurt.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime3/Slime3_Idle.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime3/Slime3_Run.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/PSD/Slime3/Slime3_Walk.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1.tmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime1_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2.tmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime2_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3.tmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime3_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/Tiled_files/Slime_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/._ASEPRITE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/._COUPON.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/._COUPON.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/._Free Assets Craftpix!.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/._License.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/._PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/._PSD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/._Tiled_files" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/._readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/._.DS_Store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/._Slime1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/._Slime2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/._Slime3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/._Attack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/._Death" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/._Hurt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/._Idle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/._Run" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/._Walk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Attack/._Slime1_Attack_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Attack/._Slime1_Attack_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Attack/._Slime1_Attack_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Attack/._Slime1_Attack_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Death/._Slime1_Death_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Death/._Slime1_Death_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Death/._Slime1_Death_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Death/._Slime1_Death_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Hurt/._Slime1_Hurt_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Hurt/._Slime1_Hurt_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Hurt/._Slime1_Hurt_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Hurt/._Slime1_Hurt_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Idle/._Slime1_Idle_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Idle/._Slime1_Idle_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Idle/._Slime1_Idle_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Idle/._Slime1_Idle_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Run/._Slime1_Run_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Run/._Slime1_Run_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Run/._Slime1_Run_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Run/._Slime1_Run_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Walk/._Slime1_Walk_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Walk/._Slime1_Walk_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Walk/._Slime1_Walk_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime1/Walk/._Slime1_Walk_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/._Attack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/._Death" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/._Hurt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/._Idle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/._Run" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/._Walk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Attack/._Slime2_Attack_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Attack/._Slime2_Attack_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Attack/._Slime2_Attack_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Attack/._Slime2_Attack_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Death/._Slime2_Death_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Death/._Slime2_Death_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Death/._Slime2_Death_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Death/._Slime2_Death_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Hurt/._Slime2_Hurt_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Hurt/._Slime2_Hurt_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Hurt/._Slime2_Hurt_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Hurt/._Slime2_Hurt_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Idle/._Slime2_Idle_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Idle/._Slime2_Idle_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Idle/._Slime2_Idle_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Idle/._Slime2_Idle_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Run/._Slime2_Run_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Run/._Slime2_Run_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Run/._Slime2_Run_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Run/._Slime2_Run_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Walk/._Slime2_Walk_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Walk/._Slime2_Walk_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Walk/._Slime2_Walk_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime2/Walk/._Slime2_Walk_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/._Attack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/._Death" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/._Hurt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/._Idle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/._Run" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/._Walk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Attack/._Slime3_Attack_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Attack/._Slime3_Attack_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Attack/._Slime3_Attack_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Attack/._Slime3_Attack_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Death/._Slime3_Death_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Death/._Slime3_Death_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Death/._Slime3_Death_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Death/._Slime3_Death_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Hurt/._Slime3_Hurt_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Hurt/._Slime3_Hurt_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Hurt/._Slime3_Hurt_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Hurt/._Slime3_Hurt_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Idle/._Slime3_Idle_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Idle/._Slime3_Idle_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Idle/._Slime3_Idle_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Idle/._Slime3_Idle_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Run/._Slime3_Run_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Run/._Slime3_Run_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Run/._Slime3_Run_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Run/._Slime3_Run_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Walk/._Slime3_Walk_back.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Walk/._Slime3_Walk_front.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Walk/._Slime3_Walk_left.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/ASEPRITE/Slime3/Walk/._Slime3_Walk_right.aseprite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/._.DS_Store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/._Slime1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/._Slime2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/._Slime3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/._Attack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/._Death" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/._Hurt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/._Idle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/._Run" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/._Walk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Attack/._Slime1_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Attack/._Slime1_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Attack/._Slime1_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Death/._Slime1_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Death/._Slime1_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Death/._Slime1_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Hurt/._Slime1_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Hurt/._Slime1_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Hurt/._Slime1_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Idle/._Slime1_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Idle/._Slime1_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Idle/._Slime1_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Run/._Slime1_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Run/._Slime1_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Run/._Slime1_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Walk/._Slime1_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Walk/._Slime1_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime1/Walk/._Slime1_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/._Attack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/._Death" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/._Hurt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/._Idle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/._Run" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/._Walk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Attack/._Slime2_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Attack/._Slime2_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Attack/._Slime2_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Death/._Slime2_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Death/._Slime2_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Death/._Slime2_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Hurt/._Slime2_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Hurt/._Slime2_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Hurt/._Slime2_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Idle/._Slime2_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Idle/._Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Idle/._Slime2_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Run/._Slime2_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Run/._Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Run/._Slime2_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Walk/._Slime2_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Walk/._Slime2_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime2/Walk/._Slime2_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/._Attack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/._Death" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/._Hurt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/._Idle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/._Run" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/._Walk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Attack/._Slime3_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Attack/._Slime3_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Attack/._Slime3_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Death/._Slime3_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Death/._Slime3_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Death/._Slime3_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Hurt/._Slime3_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Hurt/._Slime3_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Hurt/._Slime3_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Idle/._Slime3_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Idle/._Slime3_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Idle/._Slime3_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Run/._Slime3_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Run/._Slime3_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Run/._Slime3_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Walk/._Slime3_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Walk/._Slime3_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PNG/Slime3/Walk/._Slime3_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/._.DS_Store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/._Slime1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/._Slime2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/._Slime3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime1/._Slime1_Attack.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime1/._Slime1_Death.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime1/._Slime1_Hurt.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime1/._Slime1_Idle.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime1/._Slime1_Run.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime1/._Slime1_Walk.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime2/._Slime2_Attack.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime2/._Slime2_Death.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime2/._Slime2_Hurt.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime2/._Slime2_Idle.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime2/._Slime2_Run.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime2/._Slime2_Walk.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime3/._Slime3_Attack.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime3/._Slime3_Death.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime3/._Slime3_Hurt.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime3/._Slime3_Idle.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime3/._Slime3_Run.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/PSD/Slime3/._Slime3_Walk.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1.tmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime1_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2.tmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime2_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3.tmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Attack_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Attack_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Death_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Death_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Hurt_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Hurt_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Idle_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Run_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Walk_body.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Walk_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime3_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime_Attack_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime_Death_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime_Hurt_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime_Idle_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime_Run_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/__MACOSX/Tiled_files/._Slime_Walk_shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/craftpix-net-879657-free-slime-mobs-pixel-art-top-down-sprite-pack.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/char_textures/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/00_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/00_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/01_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/01_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/02_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/02_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/03_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/03_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/04_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/04_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/05_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/05_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/06_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/06_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/07_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/07_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/08_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/08_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/09_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/09_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/10_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/10_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/11_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/11_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/12_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/12_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/13_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/13_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/14_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/14_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/15_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/15_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/16_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/16_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/17_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/17_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/18_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/18_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/19_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/19_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/20_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/20_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/21_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/21_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/22_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/22_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/23_Slime2_Idle_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/23_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/24_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/25_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/26_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/27_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/28_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/29_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/30_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/31_Slime2_Run_full.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/Slime2_Idle_full.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/new_char_textures/Slime2_Run_full.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/proj_utils.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/utils/proj_utils.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/utils.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -618,39 +91,34 @@
     <option name="minorVersion" value="3.1.1" />
     <option name="productBranch" value="Classic" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2r7wuZp24DbSclMfs5RvNkIyMlM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Native Application.all">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="game" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -686,6 +154,11 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.fclean" />
@@ -704,7 +177,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1735923645812</updated>
-      <workItem from="1735923647627" duration="7137000" />
+      <workItem from="1735923647627" duration="7678000" />
+      <workItem from="1736179394662" duration="2267000" />
     </task>
     <servers />
   </component>

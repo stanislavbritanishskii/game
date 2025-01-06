@@ -31,7 +31,11 @@ enum EnemyType {
 	Slime4,
 	Wolf,
 	Orc,
-	Bee
+	Orc1,
+	Orc2,
+	Orc3,
+	Bee,
+	EnemyTypeCount
 };
 
 enum ProjectileType {
@@ -43,7 +47,11 @@ enum ProjectileType {
 	Slime4_proj,
 	Wolf_proj,
 	Orc_proj,
-	Bee_proj
+	Orc1_proj,
+	Orc2_proj,
+	Orc3_proj,
+	Bee_proj,
+	ProjectileTypeCount
 };
 
 typedef struct Projectile {
@@ -99,4 +107,6 @@ bool is_player_projectile(ProjectileType type);
 bool is_enemy_projectile(ProjectileType type);
 GLuint createTextTexture(const std::string &fontPath, const std::string &text, int fontSize, int &textureWidth, int &textureHeight);
 std::map<char, GLuint> char_textures(const std::string &fontPath, int fontSize, int &textureWidth, int &textureHeight);
+EnemyType stringToEnemyType(const std::string& str);
+ProjectileType stringToProjectileType(const std::string& str);
 #endif

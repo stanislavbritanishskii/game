@@ -1,9 +1,9 @@
 #include "enemies.hpp"
 
 
-std::map<Direction, std::vector<GLuint>> load_textures(TextureManager text_conf)
+std::map<Direction, std::vector<GLuint> > load_textures(TextureManager text_conf)
 {
-	std::map<Direction, std::vector<GLuint>> res;
+	std::map<Direction, std::vector<GLuint> > res;
 	std::vector<std::string> text_names;
 	std::vector<GLuint> texts;
 
@@ -91,32 +91,32 @@ std::map<Direction, std::vector<GLuint>> load_textures(TextureManager text_conf)
 
 Enemy Enemies::create_enemy(float x, float y, EnemyType type, float fps)
 {
-		EnemyData data = config.getEnemyData(type);
+	EnemyData data = config.getEnemyData(type);
 
-		Enemy res(x, y,
-				  data.speed,
-				  fps,
-				  data.bullet_count,
-				  data.bullet_speed,
-				  data.bullet_duration,
-				  data.damage,
-				  data.shoot_delay,
-				  data.health,
-				  data.health,
-				  true,
-				  data.projectile_type,
-				  enemy_textures[EnemyType::pumpkin],
-				  type,
-				  data.spread,
-				  data.size,
-				  data.active_distance,
-				  data.xp);
-		return res;
-
+	Enemy res(x, y,
+			data.speed,
+			fps,
+			data.bullet_count,
+			data.bullet_speed,
+			data.bullet_duration,
+			data.damage,
+			data.shoot_delay,
+			data.health,
+			data.health,
+			true,
+			data.projectile_type,
+			enemy_textures[EnemyType::pumpkin],
+			type,
+			data.spread,
+			data.size,
+			data.active_distance,
+			data.xp);
+	return res;
 }
 
 Enemies::Enemies(float x, float y, float orientation, float fps, int screen_width, int screen_height, GLuint shader,
-				GLuint VAO, ConfigReader &conf): _screen_width(screen_width), _screen_height(screen_height), shaderProgram(shader), VAO(VAO)
+				GLuint VAO, ConfigReader &conf): _screen_width(screen_width), _screen_height(screen_height),
+												shaderProgram(shader), VAO(VAO)
 {
 	config = conf;
 	_fps = fps;
@@ -124,15 +124,19 @@ Enemies::Enemies(float x, float y, float orientation, float fps, int screen_widt
 	player_pos.y = y;
 	player_pos.orientation = orientation;
 	TextureManager textures;
-	std::vector<EnemyType> allEnemies = { pumpkin, Slime3, Slime2, Slime1, Slime4, Wolf, Orc, Bee};
-
-	for (EnemyType type : allEnemies) {
-
-	enemy_textures.emplace(type, loadTexture(conf.getEnemyData(type).texture_name.c_str()));
-	textures.loadFromFile(conf.getEnemyData(type).texture_path.c_str());
-	textures_by_type[type] = load_textures(textures);
+	std::vector<EnemyType> allEnemies;
+	allEnemies.reserve(EnemyTypeCount);
+	for (int i = 0; i < EnemyTypeCount; ++i)
+	{
+		allEnemies.push_back(static_cast<EnemyType>(i));
 	}
 
+	for (EnemyType type: allEnemies)
+	{
+		enemy_textures.emplace(type, loadTexture(conf.getEnemyData(type).texture_name.c_str()));
+		textures.loadFromFile(conf.getEnemyData(type).texture_path.c_str());
+		textures_by_type[type] = load_textures(textures);
+	}
 }
 
 Enemies::~Enemies()
@@ -146,7 +150,7 @@ void Enemies::addEnemy(float x, float y, EnemyType type)
 
 bool Enemies::addEnemy(Map &my_map, float x, float y, EnemyType type)
 {
-	if (my_map.is_obstacle(x ,y))
+	if (my_map.is_obstacle(x, y))
 		return false;
 	enemies.push_back(create_enemy(x, y, type, _fps));
 	return true;
@@ -154,7 +158,7 @@ bool Enemies::addEnemy(Map &my_map, float x, float y, EnemyType type)
 
 int Enemies::iterate(Map &my_map, Projectiles &prjcts, float x, float y, float orientation, double delta_time)
 {
-	int i =0;
+	int i = 0;
 	int exp_gained = 0;
 	for (std::vector<Enemy>::iterator it = enemies.begin(); it != enemies.end(); it++)
 	{
@@ -165,7 +169,7 @@ int Enemies::iterate(Map &my_map, Projectiles &prjcts, float x, float y, float o
 			it->BFSMove(my_map, delta_time);
 			it->shoot(prjcts);
 			it->draw(shaderProgram, VAO, _screen_width, _screen_height, textures_by_type[it->getType()]);
-			exp_gained +=  it->check_for_hit(prjcts);
+			exp_gained += it->check_for_hit(prjcts);
 			// std::cout << i++ << std::endl;
 		}
 	}

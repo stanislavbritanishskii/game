@@ -136,7 +136,7 @@ int main()
 	player.setMaxHp(playerData.hp);
 	player.setAccuracy(playerData.accuracy);
 	ProjectileReader prj_reader;
-	prj_reader.loadFromJSON("configs/projectiles.json");
+	prj_reader.loadFromJSON(config.getPathToProjectileConfig());
 	Map my_map(width, height, map_width, map_height, window, texture, shaderProgram, VAO, map_data.obstacle_density);
 	my_map.setTileSize(tile_size);
 
@@ -152,17 +152,27 @@ int main()
 	double current_time = glfwGetTime();
 	GLuint pumpkin_tex = loadTexture(pumpkin_texture);
 	// std::vector<Enemy> enemies;
+	std::vector<EnemyType> allEnemies;
+	allEnemies.reserve(EnemyTypeCount);
+	for (int i = 0; i < EnemyTypeCount; ++i)
+	{
+		allEnemies.push_back(static_cast<EnemyType>(i));
+	}
 	for (int i =0; i < map_height * map_width * enemies_per_tile; i++)
 		// enemies.push_back(Enemy((std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, 100 * RATIO, 60, 5, 400 * RATIO, 1, 10, 1, 10, 10, true, ProjectileType::pumpkin_proj, pumpkin_tex, EnemyType::pumpkin, 30, 32 * RATIO, 400 * RATIO));
 	{
-		while ( ! enemies.addEnemy(my_map, (std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, pumpkin));
-		while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime1));
-		while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime2));
-		while ( ! enemies.addEnemy(my_map, (std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime3));
-		while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime4));
-		while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Orc));
-		while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Bee));
-		while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Wolf));
+		for (EnemyType type: allEnemies)
+		{
+			while ( ! enemies.addEnemy(my_map, (std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, type));
+		}
+		// while ( ! enemies.addEnemy(my_map, (std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, pumpkin));
+		// while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime1));
+		// while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime2));
+		// while ( ! enemies.addEnemy(my_map, (std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime3));
+		// while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Slime4));
+		// while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Orc));
+		// while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Bee));
+		// while ( ! enemies.addEnemy(my_map,(std::rand() % (map_width - 2 ) - map_width / 2 + 2) * tile_size , (std::rand() % (map_height - 2)  - map_height / 2 +2) * tile_size, Wolf));
 
 	}
 

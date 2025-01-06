@@ -17,20 +17,20 @@ private:
 	std::map<ProjectileType, ProjectileData> projectile_data;
 
 	// Convert string to ProjectileType
-	ProjectileType stringToProjectileType(const std::string& str)
-	{
-		if (str == "player_proj") return ProjectileType::player_proj;
-		if (str == "pumpkin_proj") return ProjectileType::pumpkin_proj;
-		if (str == "Slime1_proj") return ProjectileType::Slime1_proj;
-		if (str == "Slime2_proj") return ProjectileType::Slime2_proj;
-		if (str == "Slime3_proj") return ProjectileType::Slime3_proj;
-		if (str == "Slime4_proj") return ProjectileType::Slime4_proj;
-		if (str == "Wolf_proj") return ProjectileType::Wolf_proj;
-		if (str == "Bee_proj") return ProjectileType::Bee_proj;
-		if (str == "Orc_proj") return ProjectileType::Orc_proj;
-
-		throw std::invalid_argument("Unknown ProjectileType: " + str);
-	}
+	// ProjectileType stringToProjectileType(const std::string& str)
+	// {
+	// 	if (str == "player_proj") return ProjectileType::player_proj;
+	// 	if (str == "pumpkin_proj") return ProjectileType::pumpkin_proj;
+	// 	if (str == "Slime1_proj") return ProjectileType::Slime1_proj;
+	// 	if (str == "Slime2_proj") return ProjectileType::Slime2_proj;
+	// 	if (str == "Slime3_proj") return ProjectileType::Slime3_proj;
+	// 	if (str == "Slime4_proj") return ProjectileType::Slime4_proj;
+	// 	if (str == "Wolf_proj") return ProjectileType::Wolf_proj;
+	// 	if (str == "Bee_proj") return ProjectileType::Bee_proj;
+	// 	if (str == "Orc_proj") return ProjectileType::Orc_proj;
+	//
+	// 	throw std::invalid_argument("Unknown ProjectileType: " + str);
+	// }
 
 public:
 	// Load configuration from JSON

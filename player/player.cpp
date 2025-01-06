@@ -303,7 +303,7 @@ void Player::shoot(Projectiles &projs)
 {
 	if ((int) direction >= 4)
 	{
-		float orientation = atan2(_x - _cursor.x ,_y -  _cursor.y) + M_PI / 2.0f;
+		float orientation = atan2(_x - _cursor.x ,_y -  _cursor.y) + M_PI / 2.0f - _orientation / 180.0f * M_PI;
 		while (orientation < -M_PI)
 			orientation += 2 * M_PI;
 		while (orientation > M_PI)
@@ -316,6 +316,11 @@ void Player::shoot(Projectiles &projs)
 			direction = Direction::still_left;
 		else if (orientation < -M_PI * 3 / 4 || orientation > M_PI * 3 / 4)
 			direction = Direction::still_down;
+
+		if (_cur_texture >= textures[direction].size())
+		{
+			_cur_texture = 0;
+		}
 	}
 	if (glfwGetTime() > _shoot_delay + _last_shot)
 	{

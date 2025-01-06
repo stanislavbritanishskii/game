@@ -1,0 +1,58 @@
+{
+  "up": [
+    "textures/enemy_textures/orc2/06_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/07_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/08_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/09_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/10_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/11_orc2_walk_full.png"
+  ],
+  "still_up": [
+    "textures/enemy_textures/orc2/04_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/05_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/06_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/07_orc2_idle_full.png"
+  ],
+  "down": [
+    "textures/enemy_textures/orc2/00_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/01_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/02_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/03_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/04_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/05_orc2_walk_full.png"
+  ],
+  "still_down": [
+    "textures/enemy_textures/orc2/00_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/01_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/02_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/03_orc2_idle_full.png"
+  ],
+  "left": [
+    "textures/enemy_textures/orc2/12_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/13_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/14_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/15_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/16_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/17_orc2_walk_full.png"
+  ],
+  "still_left": [
+    "textures/enemy_textures/orc2/08_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/09_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/10_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/11_orc2_idle_full.png"
+  ],
+  "right": [
+    "textures/enemy_textures/orc2/18_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/19_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/20_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/21_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/22_orc2_walk_full.png",
+    "textures/enemy_textures/orc2/23_orc2_walk_full.png"
+  ],
+  "still_right": [
+    "textures/enemy_textures/orc2/12_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/13_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/14_orc2_idle_full.png",
+    "textures/enemy_textures/orc2/15_orc2_idle_full.png"
+  ]
+}
