@@ -18,7 +18,7 @@
 
 
 
-void processInput(GLFWwindow *window, Player* player, Map &map, int width, int height, Projectiles &prjcts, double time, double delta_time) {
+void processInput(GLFWwindow *window, Player* player, Map &map, int width, int height, Projectiles &prjcts, double time, double delta_time, SideTab &side_tab, int side_tab_width, int side_tab_height) {
 	// Check if the ESC key is pressed
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true); // Close the window
@@ -62,6 +62,10 @@ void processInput(GLFWwindow *window, Player* player, Map &map, int width, int h
 	// Mouse position tracking
 	double xpos, ypos;
 	glfwGetCursorPos(window, &xpos, &ypos);
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE)
+	{
+		side_tab.unclick();
+	}
 	if (xpos < width && ypos < height)
 	{
 		player->update_cursor(xpos - width / 2, ypos - height / 2);
@@ -79,6 +83,13 @@ void processInput(GLFWwindow *window, Player* player, Map &map, int width, int h
 		}
 		if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
 			std::cout << "Right Mouse Button Pressed" << std::endl;
+		}
+	}
+	else
+	{
+		if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+		{
+			side_tab.click(xpos - width - side_tab_width / 2, side_tab_height / 2 - ypos, player);
 		}
 	}
 }
@@ -198,7 +209,7 @@ int main()
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		processInput(window, &player, my_map, width, height, prjcts, current_time, delta_time);
+		processInput(window, &player, my_map, width, height, prjcts, current_time, delta_time, side_tab, side_tab_width, height);
 		my_map.setX(player.getX());
 		my_map.setY(player.getY());
 		my_map.setOrientation(player.getOrientation());

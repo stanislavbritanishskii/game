@@ -6,7 +6,8 @@
 Player::Player()
 	: _x(0.0f), _y(0.0f), _orientation(0.0f), _velocity(5.0f), _rotation_speed(5.0f), _fps(60.0f), _shoot_delay(0.1),
 	_teleport_delay(1), _bullet_count(1), _bullet_speed(200), _accuracy(60), _bullet_lifetime(1), _max_hp(1000),
-	_cur_hp(1000), nova_delay(2), last_nova(0), nova_count(20), hp_bar(32, 32, 3), _level(0), _xp(0), _bullet_damage(1)
+	_cur_hp(1000), nova_delay(2), last_nova(0), nova_count(20), hp_bar(32, 32, 3), _level(0), _xp(0), _bullet_damage(1),
+	_upgrade_points(0)
 {
 	_texture = loadTexture(player_texture);
 	std::vector<GLuint> base_textures = {_texture};
@@ -247,7 +248,6 @@ void Player::draw(GLuint shader_program, GLuint VAO, int screen_width, int scree
 				180, screen_width, screen_height, _size);
 	renderTexture(shader_program, hp_bar.getRedTexture(), VAO, 0, -hit_box / 2,
 				180, screen_width, screen_height, _size);
-
 }
 
 void Player::update_cursor(int x, int y)
@@ -303,7 +303,7 @@ void Player::shoot(Projectiles &projs)
 {
 	if ((int) direction >= 4)
 	{
-		float orientation = atan2(_x - _cursor.x ,_y -  _cursor.y) + M_PI / 2.0f - _orientation / 180.0f * M_PI;
+		float orientation = atan2(_x - _cursor.x, _y - _cursor.y) + M_PI / 2.0f - _orientation / 180.0f * M_PI;
 		while (orientation < -M_PI)
 			orientation += 2 * M_PI;
 		while (orientation > M_PI)
@@ -522,39 +522,34 @@ void Player::set_all_textures(TextureManager text_conf)
 void Player::level_up()
 {
 	_level++;
-	int val = std::rand() % 7;
-	if (val == 0)
-	{
-		_max_hp += 10;
-	}
-	else if (val == 1)
-	{
-		_velocity += 10;
-	}
-	else if (val == 2)
-	{
-		_shoot_delay -= 0.1;
-		if (_shoot_delay < 0.1)
-			_shoot_delay = 0.1;
-	}
-	else if (val == 3)
-	{
-		_bullet_count += 1;
-	}
-	else if (val == 4)
-	{
-		_accuracy -= 1;
-		if (_accuracy < 1)
-			_accuracy = 1;
-	}
-	else if (val == 5)
-	{
-		_bullet_lifetime += 0.1;
-	}
-	else if (val == 6)
-	{
-		_bullet_damage += 1;
-	}
+	_upgrade_points++;
+	// int val = std::rand() % 7;
+	// if (val == 0)
+	// {
+	// 	_max_hp += 10;
+	// } else if (val == 1)
+	// {
+	// 	_velocity += 10;
+	// } else if (val == 2)
+	// {
+	// 	_shoot_delay -= 0.1;
+	// 	if (_shoot_delay < 0.1)
+	// 		_shoot_delay = 0.1;
+	// } else if (val == 3)
+	// {
+	// 	_bullet_count += 1;
+	// } else if (val == 4)
+	// {
+	// 	_accuracy -= 1;
+	// 	if (_accuracy < 1)
+	// 		_accuracy = 1;
+	// } else if (val == 5)
+	// {
+	// 	_bullet_lifetime += 0.1;
+	// } else if (val == 6)
+	// {
+	// 	_bullet_damage += 1;
+	// }
 	_cur_hp = _max_hp;
 	_start_level_up = glfwGetTime();
 }
@@ -569,49 +564,61 @@ void Player::add_xp(int exp)
 		level_up();
 	}
 }
+
 // Implementations of the missing getters
 
-float Player::getMaxHp() const {
+float Player::getMaxHp() const
+{
 	return _max_hp;
 }
 
-float Player::getShootDelay() const {
+float Player::getShootDelay() const
+{
 	return _shoot_delay;
 }
 
-float Player::getTeleportDelay() const {
+float Player::getTeleportDelay() const
+{
 	return _teleport_delay;
 }
 
-float Player::getBulletSpeed() const {
+float Player::getBulletSpeed() const
+{
 	return _bullet_speed;
 }
 
-float Player::getBulletLifetime() const {
+float Player::getBulletLifetime() const
+{
 	return _bullet_lifetime;
 }
 
-float Player::getBulletDamage() const {
+float Player::getBulletDamage() const
+{
 	return _bullet_damage;
 }
 
-float Player::getNovaDelay() const {
+float Player::getNovaDelay() const
+{
 	return nova_delay;
 }
 
-int Player::getNovaCount() const {
+int Player::getNovaCount() const
+{
 	return nova_count;
 }
 
-int Player::getLevel() const {
+int Player::getLevel() const
+{
 	return _level;
 }
 
-int Player::getXp() const {
+int Player::getXp() const
+{
 	return _xp;
 }
 
-int Player::getHitBox() const {
+int Player::getHitBox() const
+{
 	return hit_box;
 }
 
@@ -623,4 +630,71 @@ int Player::getXpToNextLevel() const
 int Player::getAccuracy() const
 {
 	return _accuracy;
+}
+
+
+bool Player::upgrade_hp()
+{
+	if (_upgrade_points > 0)
+	{
+		_upgrade_points--;
+		_max_hp += 10;
+		_cur_hp += 10;
+		return true;
+	}
+	return false;
+}
+
+bool Player::upgrade_damage()
+{
+	if (_upgrade_points > 0)
+	{
+		_upgrade_points--;
+		_bullet_damage += 0.5;
+		return true;
+	}
+	return false;
+}
+
+bool Player::upgrade_accuracy()
+{
+	if (_upgrade_points > 0)
+	{
+		_upgrade_points--;
+		_accuracy -=1;
+		if (_accuracy < 1)
+			_accuracy = 1;
+		return true;
+	}
+	return false;
+}
+
+bool Player::upgrade_velocity()
+{
+	if (_upgrade_points > 0)
+	{
+		_upgrade_points--;
+		_velocity += 10;
+		return true;
+	}
+	return false;
+}
+
+
+bool Player::upgrade_shots_per_second()
+{
+	if (_upgrade_points > 0)
+	{
+		_upgrade_points--;
+		float sps = 1 / _shoot_delay;
+		sps += 0.5;
+		_shoot_delay = 1 / sps;
+		return true;
+	}
+	return false;
+}
+
+int Player::get_upgrade_points() const
+{
+	return _upgrade_points;
 }

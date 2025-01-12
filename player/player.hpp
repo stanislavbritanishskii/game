@@ -47,6 +47,7 @@ private:
 	double _time_to_level;
 	double _start_level_up;
 	int hit_box;
+	int _upgrade_points;
 	HPBar hp_bar;
 
 public:
@@ -144,6 +145,7 @@ public:
 	void set_still_left_textures(std::vector<GLuint> rights);
 	void set_all_textures(TextureManager text_conf);
 	void level_up();
+
 	void add_xp(int exp);
 	float getMaxHp() const;
 	float getShootDelay() const;
@@ -158,7 +160,12 @@ public:
 	int getHitBox() const;
 	int getXpToNextLevel() const;
 	int getAccuracy() const;
-
+	int get_upgrade_points() const;
+	bool upgrade_hp();
+	bool upgrade_damage();
+	bool upgrade_accuracy();
+	bool upgrade_velocity();
+	bool upgrade_shots_per_second();
 };
 
 #endif
